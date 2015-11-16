@@ -799,7 +799,7 @@
    \color@endgroup} %g}
 \fi
 \setcounter{footnote}{0}
-\section*{ABSTRACT}\normalsize %\the\parskip \the\baselineskip%\ninept
+\section*{ZUSAMMENFASSUNG}\normalsize %\the\parskip \the\baselineskip%\ninept
 }
 
 \def\endabstract{\if@twocolumn\else\endquotation\fi}
