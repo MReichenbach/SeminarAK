@@ -3,11 +3,11 @@
 	Grundlagen ... [TODO]
 	
 	\subsection{Algebraische Strukturen}
-		In diesem Kapitel werden die algebraischen Strukturen: Halbgruppen, Gruppen, Ringe und Körper vorgestellt. Diese werden für ein späteres Kapitel benötigt. Die algebraischen Strukturen beschreiben ein abstraktes Rechnen mit Zahlen. Dies ermöglicht gezielter nur die Rechenregeln an sich zu untersuchen, unabhängig von der Rechengröße und der jeweiligen Operation. Ein Anwendungsbereich ist u. a. in der Kryptographie zu finden.~\cite[S.~95]{Kryptographie:und:Algorithmen}
+		In diesem Kapitel werden die algebraischen Strukturen: Halbgruppen, Gruppen, Ringe und Körper vorgestellt. Diese werden für ein späteres Kapitel benötigt. Die algebraischen Strukturen beschreiben ein abstraktes Rechnen mit Zahlen. Dies ermöglicht gezielter nur die Rechenregeln an sich zu untersuchen, unabhängig von der Rechengröße und der jeweiligen Operation. Ein Anwendungsbereich ist u. a. in der Kryptographie zu finden.~\cite{Kryptographie:und:Algorithmen}
 	
 		\subsection{Halbgruppen}
 			%TODO siehe Text
-			Eine Halbgruppe ist eine Menge M mit einer assoziativen Operation °. Assoziativgesetz: (a ° b) ° c = a ° (b ° c) für alle a, b, c € M. Es gilt für sämtliche Elemente einer Halbgruppe. Das Zeichen ° ist Platzhalter für eine beliebige Operation. Der Wertebereich von ° ist eine Teilmenge von M so dass, a ° b € M für alle a, b €. Für das Zeichen ° werden auch die folgenden Operationszeichen verwendet: *, [MAL], +. Auch muss die Menge nicht zwangsläufig M sein. Durch das Assoziativgesetz können also Klammern weggelassen werden. \textbf{[TODO Definition (Halbgruppe, Assoziativgesetz) S. 44]} Zum besseren Verständnis konkrete Beispiele von Halbgruppen~\cite[S.~45]{Erste:Hilfe:in:Linearer:Algebra}:
+			Eine Halbgruppe ist eine Menge M mit einer assoziativen Operation °. Assoziativgesetz: (a ° b) ° c = a ° (b ° c) für alle a, b, c € M. Es gilt für sämtliche Elemente einer Halbgruppe. Das Zeichen ° ist Platzhalter für eine beliebige Operation. Der Wertebereich von ° ist eine Teilmenge von M so dass, a ° b € M für alle a, b €. Für das Zeichen ° werden auch die folgenden Operationszeichen verwendet: *, [MAL], +. Auch muss die Menge nicht zwangsläufig M sein. Durch das Assoziativgesetz können also Klammern weggelassen werden. \textbf{[TODO Definition (Halbgruppe, Assoziativgesetz) S. 44]} Zum besseren Verständnis konkrete Beispiele von Halbgruppen~\cite{Erste:Hilfe:in:Linearer:Algebra}:
 			
 			\begin{itemize}
 				\item N, Z, Q, R, C \textbf{[TODO noch die richtigen Symbole rein]} sind Halbgruppen mit der Addition als Operation, ebenso mit der Multiplikation.
@@ -15,13 +15,13 @@
 			\end{itemize}
 		
 		\subsection{Monoide}
-			Sobald es ein neutrales Element in einer Halbgruppe gibt heißt diese Monoid. Ein neutrales Element ist immer dann gegeben wenn es ein e € M, sodass für alle a € M gilt: a ° e = e ° a = a. Diese weitere Axiom muss von jeder Halbgruppe erfüllt werden um ein Monoid zu sein. Als Zeichen für ein Monoid wird neben e oft 1 verwendet bei den Operationszeichen °, *, [MAL]. Wird das + als Operationszeichen verwendet ist oft 0 das neutrale Element.~\cite[S.~46]{Erste:Hilfe:in:Linearer:Algebra}
+			Sobald es ein neutrales Element in einer Halbgruppe gibt heißt diese Monoid. Ein neutrales Element ist immer dann gegeben wenn es ein e € M, sodass für alle a € M gilt: a ° e = e ° a = a. Diese weitere Axiom muss von jeder Halbgruppe erfüllt werden um ein Monoid zu sein. Als Zeichen für ein Monoid wird neben e oft 1 verwendet bei den Operationszeichen °, *, [MAL]. Wird das + als Operationszeichen verwendet ist oft 0 das neutrale Element.~\cite{Erste:Hilfe:in:Linearer:Algebra}
 		
 		\subsection{Gruppe}
-			Wenn ein Monoid das folgende Axiom erfüllt, ist es eine Gruppe. Wenn für alle a € G ein b € G mit a ° b = b ° a = e. Ist die der Fall, so heißt b invers zu a.~\cite[S.~48]{Erste:Hilfe:in:Linearer:Algebra}
+			Wenn ein Monoid das folgende Axiom erfüllt, ist es eine Gruppe. Wenn für alle a € G ein b € G mit a ° b = b ° a = e. Ist die der Fall, so heißt b invers zu a.~\cite{Erste:Hilfe:in:Linearer:Algebra}
 		
 		\subsection{Ringe}
-			In einem Ring als Algebraische Strukturen sind mehr als nur eine Operation vorhanden. Eine Menge R mit den zwei Operationen + und [MAL] auf R ist genau dann ein Ring wenn folgenden drei Bedingungen gelten~\cite[S.~58]{Erste:Hilfe:in:Linearer:Algebra}:
+			In einem Ring als Algebraische Strukturen sind mehr als nur eine Operation vorhanden. Eine Menge R mit den zwei Operationen + und [MAL] auf R ist genau dann ein Ring wenn folgenden drei Bedingungen gelten~\cite{Erste:Hilfe:in:Linearer:Algebra}:
 			
 			\begin{itemize}
 				\item (R, +) ist eine abelsche Gruppe. (Eine Operation ° auf einer Menge M heiß kommutativ oder abelsch, wenn: a ° b = b ° a für alle a, b € M.)
@@ -29,14 +29,14 @@
 				\item Für alle a, b, c € R gilt: a(b + c) = ab + ac, (a + b)c = ac + bc (Distributivgesetze)
 			\end{itemize}
 			
-			Zusätzlich heißt ein Ring kommutativ, wenn die Operation [MAL] kommutativ ist. Ein Ring besitzt also immer eine kommutative Addition und eine nicht notwendigerweise kommutative Multiplikation. Die beiden Distributivgesetze verbinden diese beiden Operationen miteinander.~\cite[S.~58]{Erste:Hilfe:in:Linearer:Algebra}
+			Zusätzlich heißt ein Ring kommutativ, wenn die Operation [MAL] kommutativ ist. Ein Ring besitzt also immer eine kommutative Addition und eine nicht notwendigerweise kommutative Multiplikation. Die beiden Distributivgesetze verbinden diese beiden Operationen miteinander.~\cite{Erste:Hilfe:in:Linearer:Algebra}
 			
-			Ein Ring heißt nullteilerfrei wenn a [MAL] b = 0 ist und dadurch impliziert wird, dass a = 0 oder b = 0 sein muss, für alle a, b € R.~\cite[S.~58]{Erste:Hilfe:in:Linearer:Algebra}
+			Ein Ring heißt nullteilerfrei wenn a [MAL] b = 0 ist und dadurch impliziert wird, dass a = 0 oder b = 0 sein muss, für alle a, b € R.~\cite{Erste:Hilfe:in:Linearer:Algebra}
 			
-			Wenn es für ein a € R ein b gibt, so dass ab = ba = 1 gilt, dann ist a invertierbar oder eine Einheit. Alle Elemente im Monoid (R, [MAL]) wo dies zutrifft sind in einer multiplikativen Gruppe zusammengefasst, bezeichnet wird diese mit R^X.~\cite[S.~58]{Erste:Hilfe:in:Linearer:Algebra}
+			Wenn es für ein a € R ein b gibt, so dass ab = ba = 1 gilt, dann ist a invertierbar oder eine Einheit. Alle Elemente im Monoid (R, [MAL]) wo dies zutrifft sind in einer multiplikativen Gruppe zusammengefasst, bezeichnet wird diese mit R^X.~\cite{Erste:Hilfe:in:Linearer:Algebra}
 			
 		
 		\subsection{Körper}
-			Es gibt spezielle Ringe, die sogenannten Körper. Ist eine Menge (K; +, [MAL]) ein Ring und ist (K - {0}; [MAL]) eine kommutative Gruppe, heißt K ein Körper. Alle von Null verschiedenen Elementen sind Einheiten und es gilt: K^X = K* = K - {0}.~\cite[S.~60]{Erste:Hilfe:in:Linearer:Algebra}
+			Es gibt spezielle Ringe, die sogenannten Körper. Ist eine Menge (K; +, [MAL]) ein Ring und ist (K - {0}; [MAL]) eine kommutative Gruppe, heißt K ein Körper. Alle von Null verschiedenen Elementen sind Einheiten und es gilt: K^X = K* = K - {0}.~\cite{Erste:Hilfe:in:Linearer:Algebra}
 			
 			
