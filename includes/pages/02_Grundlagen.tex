@@ -7,25 +7,27 @@
 	
 		\subsection{Halbgruppen}
 			%TODO siehe Text
-			Eine Halbgruppe ist eine Menge M mit einer assoziativen Operation \mycircOhne. Assoziativgesetz: (a \mycirc b) \mycirc c = a \mycirc (b \mycirc c) für alle a, b, c \myin M. Es gilt für sämtliche Elemente einer Halbgruppe. Das Zeichen \mycirc ist Platzhalter für eine beliebige Operation. Der Wertebereich von \mycirc ist eine Teilmenge von M so dass, a \mycirc b \myin M für alle a, b \myin. Für das Zeichen \mycirc werden auch die folgenden Operationszeichen verwendet: *, \mycdot, +. Auch muss die Menge nicht zwangsläufig M sein. Durch das Assoziativgesetz können also Klammern weggelassen werden. \textbf{[TODO Definition (Halbgruppe, Assoziativgesetz) S. 44]} Zum besseren Verständnis konkrete Beispiele von Halbgruppen~\cite{Erste:Hilfe:in:Linearer:Algebra}:
+			Eine Halbgruppe ist eine Menge M mit einer assoziativen Operation \mycircOhne, geschrieben mit (M, \mycircOhne) oder einfach nur M. Assoziativgesetz: (a \mycirc b) \mycirc c = a \mycirc (b \mycirc c) für alle a, b, c \myin M. Es gilt für sämtliche Elemente einer Halbgruppe. Das Zeichen \mycirc ist Platzhalter für eine beliebige Operation. Der Wertebereich von \mycirc ist eine Teilmenge von M so dass, a \mycirc b \myin M für alle a, b \myin M. Für das Zeichen \mycirc werden auch die folgenden Operationszeichen verwendet: $*$, \mycdotOhne, +. Auch muss die Menge nicht zwangsläufig M sein.~\cite{Erste:Hilfe:in:Linearer:Algebra}
+			
+			Durch das Assoziativgesetz können also Klammern weggelassen werden. \textbf{[TODO Definition (Halbgruppe, Assoziativgesetz) S. 44]} Zum besseren Verständnis konkrete Beispiele von Halbgruppen~\cite{Erste:Hilfe:in:Linearer:Algebra}:
 			
 			\begin{itemize}
-				\item N, Z, Q, R, C \textbf{[TODO noch die richtigen Symbole rein]} sind Halbgruppen mit der Addition als Operation, ebenso mit der Multiplikation.
-				\item Wenn a \mycirc b = |b - a| für alle a, b \myin Z, dann ist (Z, \mycirc) keine Halbgruppe. Da in diesem Fall (1 \mycirc 2) \mycirc 3 = 1 \mycirc (2 \mycirc 3) = 2 ist, aber 1 \mycirc (2 \mycirc 3) = 1 \mycirc 1 = 0 ist. Ein verändern der Klammerung ergibt unterschiedliche Ergebnisse, so ist in diesem Fall das Assoziativgesetz nicht mehr gewährleistet.
+				\item \myMenge{N}, \myMenge{Z}, \myMenge{Q}, \myMenge{R}, \myMenge{C} sind Halbgruppen mit der Addition als Operation, ebenso wie mit der Multiplikation.
+				\item Wenn a \mycirc b = |b - a| für alle a, b \myin \myMenge{Z}, dann ist (\myMenge{Z}, \mycircOhne) keine Halbgruppe. Da in diesem Fall (1 \mycirc 2) \mycirc 3 = 1 \mycirc 3 = 2 ist, aber 1 \mycirc (2 \mycirc 3) = 1 \mycirc 1 = 0 ist. Ein verändern der Klammerung ergibt unterschiedliche Ergebnisse, somit ist das Assoziativgesetz nicht mehr gewährleistet, wodurch \myMenge{Z} in diesem Fall keine Halbgruppe mehr sein kann.
 			\end{itemize}
 		
 		\subsection{Monoide}
-			Sobald es ein neutrales Element in einer Halbgruppe gibt heißt diese Monoid. Ein neutrales Element ist immer dann gegeben wenn es ein e \myin M, sodass für alle a \myin M gilt: a \mycirc e = e \mycirc a = a. Diese weitere Axiom muss von jeder Halbgruppe erfüllt werden um ein Monoid zu sein. Als Zeichen für ein Monoid wird neben e oft 1 verwendet bei den Operationszeichen \mycirc, *, \mycdot. Wird das + als Operationszeichen verwendet ist oft 0 das neutrale Element.~\cite{Erste:Hilfe:in:Linearer:Algebra}
+			Sobald es ein neutrales Element in einer Halbgruppe gibt heißt diese Monoid. Ein neutrales Element ist immer dann gegeben wenn es ein e \myin M gibt, sodass für alle a \myin M gilt: a \mycirc e = e \mycirc a = a. Dieses weitere Axiom muss von jeder Halbgruppe erfüllt werden um ein Monoid zu sein. Als Zeichen für ein Monoid wird neben e oft auch 1 verwendet, bei den Operationszeichen \mycircOhne, \mycdotOhne, $*$. Wird das + als Operationszeichen verwendet ist oft 0 das neutrale Element.~\cite{Erste:Hilfe:in:Linearer:Algebra}
 		
 		\subsection{Gruppe}
-			Wenn ein Monoid das folgende Axiom erfüllt, ist es eine Gruppe. Wenn für alle a \myin G ein b \myin G mit a \mycirc b = b \mycirc a = e. Ist die der Fall, so heißt b invers zu a.~\cite{Erste:Hilfe:in:Linearer:Algebra}
+			Wenn ein Monoid auch das folgende Axiom erfüllt, ist es eine Gruppe. Existiert für alle a \myin G ein b \myin G, sodass a \mycirc b = b \mycirc a = e gilt, so heißt b invers zu a.~\cite{Erste:Hilfe:in:Linearer:Algebra}
 		
 		\subsection{Ringe}
-			In einem Ring als Algebraische Strukturen sind mehr als nur eine Operation vorhanden. Eine Menge R mit den zwei Operationen + und \mycdot auf R ist genau dann ein Ring wenn folgenden drei Bedingungen gelten~\cite{Erste:Hilfe:in:Linearer:Algebra}:
+			In einem Ring als Algebraische Struktur sind mehr als nur eine Operation vorhanden. Eine Menge R mit den zwei Operationen + und \mycdot auf R ist genau dann ein Ring wenn folgenden drei Bedingungen gelten~\cite{Erste:Hilfe:in:Linearer:Algebra}:
 			
 			\begin{itemize}
-				\item (R, +) ist eine abelsche Gruppe. (Eine Operation \mycirc auf einer Menge M heiß kommutativ oder abelsch, wenn: a \mycirc b = b \mycirc a für alle a, b \myin M.)
-				\item (R, \mycdot) ist ein Monoid
+				\item (R, +) ist eine abelsche Gruppe. (Eine Operation \mycirc auf einer Menge M heiß kommutativ oder abelsch, wenn: a \mycirc b = b \mycirc a für alle a, b \myin M gilt.)
+				\item (R, \mycdotOhne) ist ein Monoid
 				\item Für alle a, b, c \myin R gilt: a(b + c) = ab + ac, (a + b)c = ac + bc (Distributivgesetze)
 			\end{itemize}
 			
@@ -33,10 +35,10 @@
 			
 			Ein Ring heißt nullteilerfrei wenn a \mycdot b = 0 ist und dadurch impliziert wird, dass a = 0 oder b = 0 sein muss, für alle a, b \myin R.~\cite{Erste:Hilfe:in:Linearer:Algebra}
 			
-			Wenn es für ein a \myin R ein b gibt, so dass ab = ba = 1 gilt, dann ist a invertierbar oder eine Einheit. Alle Elemente im Monoid (R, \mycdot) wo dies zutrifft sind in einer multiplikativen Gruppe zusammengefasst, bezeichnet wird diese mit R$^X$.~\cite{Erste:Hilfe:in:Linearer:Algebra}
+			Wenn es für ein a \myin R ein b gibt, so dass ab = ba = 1 gilt, dann ist a invertierbar oder eine Einheit. Alle Elemente im Monoid (R, \mycdotOhne) wo dies zutrifft sind in einer multiplikativen Gruppe zusammengefasst, bezeichnet wird diese mit R$^X$.~\cite{Erste:Hilfe:in:Linearer:Algebra}
 			
 		
 		\subsection{Körper}
-			Es gibt spezielle Ringe, die sogenannten Körper. Ist eine Menge (K; +, \mycdot) ein Ring und ist (K - {0}; \mycdot) eine kommutative Gruppe, heißt K ein Körper. Alle von Null verschiedenen Elementen sind Einheiten und es gilt: K$^X$ = K* = K - {0}.~\cite{Erste:Hilfe:in:Linearer:Algebra}
+			Es gibt spezielle Ringe, die sogenannten Körper. Ist eine Menge (K, +, \mycdotOhne) ein Ring und ist (K - {0}, \mycdotOhne) eine kommutative Gruppe, heißt K ein Körper. Alle von Null verschiedenen Elementen sind Einheiten und es gilt: K$^X$ = K* = K - {0}.~\cite{Erste:Hilfe:in:Linearer:Algebra}
 			
 			
