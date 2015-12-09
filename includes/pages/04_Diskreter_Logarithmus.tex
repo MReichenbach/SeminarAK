@@ -1,3 +1,52 @@
 \section{Diskreter Logarithmus}
 	%TODO Diskreter Logarithmus
 	Diskreter Logarithmus ... [TODO]
+	
+	\subsection{Elliptischen Kurven Grundlagen}
+	
+		Eine Elliptische Kurve ist eine ebene Kurve und durch nachfolgender Gleichung beschrieben: [TODO Gleichung von S. 153 aus \cite{Kryptographie:und:IT-Sicherheit}] 
+		
+		
+		Addition von Punkten: Das Verknüpfen von zwei Punkten auf einer elliptischen Kurve ergibt wieder einen Punkt auf der Kurve und ist wie folgt geometrisch definiert:
+		 
+		Definition: Durch die gegebenen Punkte P und Q wird eine Gerade gelegt, welche die Kurve in 
+		einem dritten Punkt R schneidet. Dieser wird anschließend an der x-Achse 
+		gespiegelt. Als Ergebnis erhält man den Punkt S, welcher als Addition von P und Q 
+		bezeichnet wird. \cite{Information:und:Kommunikation}
+		
+		Mit Addition ist das Verknüpfen von zwei Punkten gemeint, man könnte es auch als Multiplikation bezeichnen.\cite{Information:und:Kommunikation}
+		
+		[TODO Bild von S. 252 \cite{Information:und:Kommunikation}]
+		
+		
+		Die so definierte Addition ist kommutativ, zur Erinnerung: P + Q = Q + P.
+		
+				Damit die Additionsoperation, die wir definieren werden, für beliebige Punkte 
+				der Kurve durchführbar ist, darf die Kurve sich nicht selbst schneiden (wie in dem Fall a= 3, 
+				b=2 in Abb. 4-3). Bei so einer Kurve würde man die Addition nicht durchführen können, falls 
+				der Schnittpunkt involviert wäre. Der Grund dafür wird bei der geometrischen Definition der 
+				Addition  klar werden.\cite{Kryptographie:und:IT-Sicherheit}
+		
+		
+		
+		[TODO die zwei Spezialfälle]
+
+		
+
+		Eine  Gerade  durch  zwei  Punkte  der 
+		elliptischen Kurve muss diese also in einem dritten Punkt schneiden. \cite{Information:und:Kommunikation}		
+		
+		
+		Die Menge aller Punkte (x, y) die die nachfolgende Gleichung erfüllen. Wichtig dabei ist das die Kurvenparameter a und b so gewählt sind das die partiellen Ableitungen nach x und nach y auf keinem Punkt der Kurve gleichzeitig null sind.\cite{Information:und:Kommunikation}
+		
+		
+		
+		
+		In diesem Kapitel sollen nur die Grundlagen von Elliptischen Kurven näher gebracht werden um so die ECC-Kryptographie verstehen zu können. Um die Funktionsweise der Elliptischen Kurven zu verstehen ist dafür eine sehr komplexe Mathematik notwendig. Innerhalb dieser Seminararbeit kann diese Thema nicht tiefer durchleuchtet werden und es sei ihr auf die Folgende Literatur verwiesen. 
+		
+		
+		
+		Asymmetrische Verschlüsselungsverfahren basieren auf Einwegfunktionen. Wobei es nicht allzu schwierig ist k \mycdot P zu Berechnen allerdings ist das Berechnen von k aus k \mycdot P und P sehr aufwendig. Anzumerken ist das diese aussage allerdings bis heute noch nicht bewiesen wurde.
+		
+		
+		Motivation: Der Vorteil des ECC-Verfahrens im vergleich zum RSA-Verfahren, ligt darin das die Schlüssellänge deutlich kürze ausfallen kann ohne dabei "Sicherheit" zu verlieren. Ein RSA-Schlüssel mit 1024 Bit ist etwa so sicher wie ein Schlüssel mit elliptischen Kurven mit ca. 160 Bit. Dazu kommt das der Rechenaufwand und der Speicherbedarf beim ECC-Verfahren wesentlich geringer ist als beim RSA-Verfahren. So kann ECC in Smartcards und Mobiltelefonen genutzt werden.\cite{Information:und:Kommunikation}
