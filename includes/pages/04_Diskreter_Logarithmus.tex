@@ -3,12 +3,13 @@
 	Diskreter Logarithmus ... [TODO]
 	
 	\subsection{Elliptischen Kurven Grundlagen}
-	
+		
 		Eine Elliptische Kurve ist eine ebene Kurve und durch nachfolgender Gleichung beschrieben: [TODO Gleichung von S. 153 aus \cite{Kryptographie:und:IT-Sicherheit}] 
 		
+		$y^2 = x^3 + ax +b$
 		
 		Addition von Punkten: Das Verknüpfen von zwei Punkten auf einer elliptischen Kurve ergibt wieder einen Punkt auf der Kurve und ist wie folgt geometrisch definiert:
-		 
+		
 		Definition: Durch die gegebenen Punkte P und Q wird eine Gerade gelegt, welche die Kurve in 
 		einem dritten Punkt R schneidet. Dieser wird anschließend an der x-Achse 
 		gespiegelt. Als Ergebnis erhält man den Punkt S, welcher als Addition von P und Q 
@@ -21,18 +22,24 @@
 		
 		Die so definierte Addition ist kommutativ, zur Erinnerung: P + Q = Q + P.
 		
-				Damit die Additionsoperation, die wir definieren werden, für beliebige Punkte 
-				der Kurve durchführbar ist, darf die Kurve sich nicht selbst schneiden (wie in dem Fall a= 3, 
-				b=2 in Abb. 4-3). Bei so einer Kurve würde man die Addition nicht durchführen können, falls 
-				der Schnittpunkt involviert wäre. Der Grund dafür wird bei der geometrischen Definition der 
-				Addition  klar werden.\cite{Kryptographie:und:IT-Sicherheit}
+		Damit die Additionsoperation, die wir definieren werden, für beliebige Punkte 
+		der Kurve durchführbar ist, darf die Kurve sich nicht selbst schneiden (wie in dem Fall a= 3, 
+		b=2 in Abb. 4-3). Bei so einer Kurve würde man die Addition nicht durchführen können, falls 
+		der Schnittpunkt involviert wäre. Der Grund dafür wird bei der geometrischen Definition der 
+		Addition  klar werden.\cite{Kryptographie:und:IT-Sicherheit}
 		
 		
 		
 		[TODO die zwei Spezialfälle]
-
+		Nun können bei einer Addition von zwei Punkten die nachfolgenden Spezialfälle auftreten:
 		
-
+		\begin{itemize}
+			\item Wenn für die beiden zu Addierenden Punkten Q = P gilt, wird die Tangente an der Kurve im Punkt P verwendet. Dabei entsteht der der Schnittpunkt mit der Kurve in R und durch Spiegelung resultiert daraus S = P + P = 2P
+			\item Sollten die x-Koordinaten beider zu addierender Punkte gleich sein, so dass (XQ = XP) gilt, entsteht eine vertikale Gerade und die Kurve wird kein weiteres mal geschnitten. Für diesen Fall wird die elliptische Kurve um einen weiteren Punkt O\textbf{[TODO anderes Symbol]}, welcher im Unendlichen liegt, ergänzt. Die Addition von Punk P mit O\textbf{[TODO anderes Symbol]} ist so definiert das man wiederum P als Ergebnis erhält (P + O\textbf{[TODO anderes Symbol]} = P). Somit ist O\textbf{[TODO anderes Symbol]} das neutral Element der Addition. Es gilt also: P + Q = O\textbf{[TODO anderes Symbol]} wenn die x-Koordinaten von P und Q gleich sind. Daraus folgt das Q das inverse Element vo P ist und es gilt: Q = -P.
+		\end{itemize}
+		
+		Addition mit einem Skalar: Die Addition von einem Punkt mit einem Skalar k \myin {1, 2, 3 ...} wird als wiederholte Addition definiert. Beispiel: kP = P + P + ... + P.
+		
 		Eine  Gerade  durch  zwei  Punkte  der 
 		elliptischen Kurve muss diese also in einem dritten Punkt schneiden. \cite{Information:und:Kommunikation}		
 		
@@ -50,3 +57,12 @@
 		
 		
 		Motivation: Der Vorteil des ECC-Verfahrens im vergleich zum RSA-Verfahren, ligt darin das die Schlüssellänge deutlich kürze ausfallen kann ohne dabei "Sicherheit" zu verlieren. Ein RSA-Schlüssel mit 1024 Bit ist etwa so sicher wie ein Schlüssel mit elliptischen Kurven mit ca. 160 Bit. Dazu kommt das der Rechenaufwand und der Speicherbedarf beim ECC-Verfahren wesentlich geringer ist als beim RSA-Verfahren. So kann ECC in Smartcards und Mobiltelefonen genutzt werden.\cite{Information:und:Kommunikation}
+		
+		
+		Rechnen in einem Endlichen Körper: Bei der Addition und Multiplikation in endlichem Körpern sind diese so definiert, dass das Ergebnis immer wider ein Element des endlichem Körpers ist. Sollte bei der Addition oder Multiplikation von zwei Elementen den Zahlenbereich des endlichen Körpers verlassen muss eine weitere Operation durchgeführt werden: \textit{mod}. Der Resultierende Rest ist dann wieder innerhalb des endlichen Körpers. Für die Addition besitzt jedes Element ein inverses Element -a, damit gilt für die Subtraktion: b - a = b + (-a). Bei der Multiplikation ist das inverse Element $a^-1$, damit gilt für die Division: b / a = b \mycdot $a^1$. Siehe auch konkretes Beispiel in \cite{Information:und:Kommunikation} S. 154 - 257.
+		
+		Um elliptische Kurven für kryptologische Anwendungsfälle zu nutzen muss die Ordnung eines Punktes, welches auf der Kurve liegt berechnet werden. Definition: Die Ordnung eines Punktes ist die Anzahl der Punkte, die durch fortwährender Addition dieses Punktes, erzeugt werden. Beispiel P + P = 2P -> 2P +P = 3P -> ... -> xP + P = (x+1)P . P ist dabei immer ein Punkt auf der elliptischen Kurve. Irgendwann ist xiP = O\textbf{[TODO anderes Symbol]} und damit hat der Punkt P die Ordnung xi.
+		
+		Schlüsselaustausch  mit elliptischen  Kurven: Zuerst muss der Körper bestimmt werden und eine elliptische Kurve, dazu wählt man ein große Primzahl und die Kurvenparameter a und b. Weiter wird nun ein Erzeugerpunkt G vereinbart, dabei soll die Ordnung des Punktes G möglichst groß und eine Primzahl sein. A wählt eine geheime ganze Zahl nA welche kleiner sein muss als n und berechnet daraus den öffentlichen Schlüssel PA = nA \mycdot G. Teilnehmer B mach das gleich jeweils mit nB und PB. PA und PB können nun über eine unsichere Leitung ausgeschaut werden. Nun kann Teilnehmer A den Schlüssel K = nA \mycdot PB berechnen. B berechnet ebenfalls K nur mit nB und PA. So habe dabei ein und das selbe geheime K berechnet. Angreifer müsste
+		
+		Beweis: Es folgt der Beweis das A und B wirklich das gleiche K berechnet haben müssen: A berechnet K = nA \mycdot PB. Für PB wurde ursprünglich von Teilnehmer B berechnet mit nB \mycdot G. Die kann in die berechnung für K in PB eingesetzt werden so das daraus folgt: K = nA \mycdot PB = nA \mycdot (nB \mycdot G). Das gleiche Prinzip angewendet für die Berechnung von K von Teilnehmer B ergibt: K = nB \mycdot PA = nB \mycdot (nA \mycdot G). Unter Berücksichtigung des Assoziativgesetzes können diese beiden Gleichungen, gleich gesetzt werden: nA \mycdot (nB \mycdot G) = nB \mycdot (nA \mycdot G)
