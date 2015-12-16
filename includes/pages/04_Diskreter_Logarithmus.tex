@@ -71,3 +71,19 @@
 			\end{quote}
 			
 			Asymmetrische Verschlüsselungsverfahren basieren auf Einwegfunktionen. Wobei es nicht allzu schwierig ist k \mycdot P zu Berechnen allerdings ist das Berechnen von k aus k \mycdot P und P sehr aufwendig. Anzumerken ist das diese aussage allerdings bis heute noch nicht bewiesen wurde.
+			
+	\subsection{Das Problem des diskreten Logarithmus im Detail}
+		Es existiert eine Primzahl p, ein erzeugendes Element g für \myZPStern~sowie eine ganze Zahl x. Zu der diskreten Exponentialfunktion $g^x~mod~p$ gibt es die diskrete Logarithmusfunktion, die zu einem gegebenen y und g, x beschreibt. Somit ist x der diskrete Logarithmus von y zur Basis g. ($y = g^x~mod~p$) Jede Zahl aus \myZPStern~lässt sich als Potenz von g darstellen, wenn g ein erzeugendes Element von \myZPStern~ist. Ist dies nicht der Fall, so muss es nicht zu jedem $y$ \myin \myZPStern einen diskreten Logarithmus geben. Bis heute sind keine Algorithmen bekannt um den diskreten Logarithmus effizient zu berechnen. Es gibt allerdings eine ganze Reihe von Algorithmen die in der Lage sind den diskreten Logarithmus gezielter zu berechnen als das naive Ausprobieren. Nachfolgend soll der Baby-Step-Giant-Step-Algorithmus genauer betrachtet werden.
+		
+	\subsection{Baby-Step-Giant-Step-Algorithmus}
+		In der Praxis ist es mit diesem Algorithmus nicht möglich eine Verschlüsselung die auf dem DLP aufbaut zu brechen. Die Komplexität diese Algorithmus liegt in $O(\sqrt[]{p-1})$ ist somit schon deutlich besser als eine naive vollständige Suche, deren Komplexität in $O(p-1)$ liegt, dennoch zu stark von der Größe der zugrundeliegenden Gruppe abhängig ist. Anzumerken ist, dieser Algorithmus ist ein sogenannter generischer Algorithmus, womit dieser für jede Gruppe funktioniert und nicht von einer speziellen Struktur der Gruppe abhängt.
+		
+		Zuerst wählt der Algorithmus eine Zahl t \myin \myMenge{N} aus welche größer als $\sqrt[]{p-1}$ ist. Mit einer zweiten Zahl r ($0<r<t$)\textbf{TODO[kleiner gleich]} lässt sich die Gleichung des diskreten Logarithmus schreiben als: $x = q \cdot + r$ und lässt sich wie folgt umformen
+		
+		\textbf{TODO[Gleichung von Kryptographie in Theo... S. 136]}
+		
+		Nun müssen die zwei Zahlen r und q gesucht werden, sodass die Gleichung $y \cdot g^{-r} = g^{q \cdot t}$ gilt. Dazu werden zwei Listen angelegt und im Nachhinein werden die eintrage miteinander verglichen. 
+		
+		\textbf{TODO[Baby-Step Liste Giant-Steo Liste von Kryptographie in Theo... S. 136]}
+		
+		Sollte ein Eintrag vorhanden sein der in beiden Listen vorkommt, liefert dieser den diskreten Logarithmus x.
