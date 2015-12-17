@@ -80,9 +80,9 @@
 		Die Gleichung \textbf{[TODO Nr.]} zeigt wie der Logarithmus von x zur Basis g, mit der Logarithmusfunktion berechnet werden kann. Auf diese Weise sind Gleichungen für die positiven reellen Zahlen \myMenge{R^+} immer eindeutig lösbar. Bei der Gleichung \textbf{[TODO Nr.]} wird ebenfalls mit der Logarithmusfunktion versucht den Logarithmus von 10 zu Basis 2 zu erhalten. Als Ergebnis erhält man eine Zahl die nicht in enthalten ist. Was auch nicht verwundert, da die Logarithmusfunktion $mod~11$ gar nicht berücksichtigt. Genau hier ist das grundsätzlich Problem beim diskreten Logarithmus. Es gibt keine mathematische Rechenoperation die es ermöglicht den diskreten Logarithmus in einem endlichen Körper mit nur einem Rechenschritt zu berechnen. Um dennoch eine Lösung zu erhalten, scheint das Enumerationsverfahren das naheliegendste zu sein. Hierbei werden einfach alle Werte die für $k$ in frage kommen durchprobiert. So ist die Lösung für Gleichung \textbf{[TODO Nr.]} $k = 5$. Für sehr große Gruppen, wo k Beispielsweise eine 160 Bit große Zahl ist, gibt es bis heute keine Algorithmen die den diskreten Logarithmus effizient berechnen.~\cite{DLP:ECDLP:Probleme:und:Loesungen} Es gibt allerdings eine ganze Reihe von Algorithmen die in der Lage sind den diskreten Logarithmus gezielter zu berechnen als das naive Ausprobieren. Nachfolgend soll der Baby-Step-Giant-Step-Algorithmus genauer betrachtet werden.
 		
 	\subsection{Baby-Step-Giant-Step-Algorithmus}
-		In der Praxis ist es mit diesem Algorithmus nicht möglich eine Verschlüsselung die auf dem DLP aufbaut zu brechen. Die Komplexität diese Algorithmus liegt in $O(\sqrt[]{p-1})$ ist somit schon deutlich besser als eine naive vollständige Suche, deren Komplexität in $O(p-1)$ liegt, dennoch zu stark von der Größe der zugrundeliegenden Gruppe abhängig ist. Anzumerken ist, dieser Algorithmus ist ein sogenannter generischer Algorithmus, womit dieser für jede Gruppe funktioniert und nicht von einer speziellen Struktur der Gruppe abhängt.
+		In der Praxis ist es mit diesem Algorithmus nicht möglich eine Verschlüsselung die auf dem DLP aufbaut zu brechen. Die Komplexität diese Algorithmus liegt in $O(\sqrt[]{p-1})$ ist somit schon deutlich besser als eine naive vollständige Suche, deren Komplexität in $O(p-1)$ liegt, dennoch zu stark von der Größe der zugrundeliegenden Gruppe abhängig ist. Anzumerken ist, dieser Algorithmus ist ein sogenannter generischer Algorithmus, womit dieser für jede Gruppe funktioniert und nicht von einer speziellen Struktur der Gruppe abhängt.~\cite{Kryptografie:in:Theorie:und:Praxis}
 		
-		Zuerst wählt der Algorithmus eine Zahl t \myin \myMenge{N} aus welche größer als $\sqrt[]{p-1}$ ist. Mit einer zweiten Zahl r ($0<r<t$)\textbf{TODO[kleiner gleich]} lässt sich die Gleichung des diskreten Logarithmus schreiben als: $x = q \cdot + r$ und lässt sich wie folgt umformen
+		Zuerst wählt der Algorithmus eine Zahl t \myin \myMenge{N}, sodass $t < \sqrt[]{p-1}$\textbf{[TODO Größer gleich]} ist. Mit einer zweiten Zahl r ($0<r<t$)\textbf{TODO[kleiner gleich]} lässt sich die Gleichung des diskreten Logarithmus schreiben als: $x = q \cdot + r$ und lässt sich wie folgt umformen
 		
 		\textbf{TODO[Gleichung von Kryptographie in Theo... S. 136]}
 		
@@ -90,4 +90,15 @@
 		
 		\textbf{TODO[Baby-Step Liste Giant-Steo Liste von Kryptographie in Theo... S. 136]}
 		
-		Sollte ein Eintrag vorhanden sein der in beiden Listen vorkommt, liefert dieser den diskreten Logarithmus x.
+		Sollte ein Eintrag vorhanden sein der in beiden Listen vorkommt, liefert dieser den diskreten Logarithmus x.~\cite{Kryptografie:in:Theorie:und:Praxis}
+		
+		\subsubsection{Baby-Step-Giant-Step Vorgehen}
+			Zu erst errechnet man t mit $\sqrt[]{p-1}$. Nun werden alle baby steps benötigt, diese werden mit Gleichung \textbf{[TODO Nr.]} ermittelt:
+			
+			\textbf{[Gleichung von \cite{DLP:ECDLP:Probleme:und:Loesungen} S. 26 für die Baby Steps]}
+			
+			Die Ergebnisse von \textbf{[TODO Gleichung]} mit dem dazugehörigen r werden in einer Liste gespeichert. Mit Gleichung \textbf{[TODO Nr.]} werden nun die giant step berechnet.
+			
+			\textbf{[Gleichung von \cite{DLP:ECDLP:Probleme:und:Loesungen} S. 27 für die Giant Steps]}
+			
+			Die so ermittelten Lösungen von \textbf{[TODO Gleichung]} werden mit denen aus der Liste der baby steps verglichen. Stimmen baby step und giant step überein wurde eine Kollision gefunden und \textbf{[TODO Gleichung]} ist erfüllt. Die so ermittelten Werte für $q$ und $r$ können nun in \textbf{[TODO Gleichung]} eingesetzt werden und erhält so den diskreten Logarithmus von y\textbf{[TODO wenn alle Gleichung drin sind nochmal sicherstellen das es wirklich y ist]}.
