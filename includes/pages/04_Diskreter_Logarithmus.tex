@@ -92,9 +92,6 @@
 	\subsection{Baby-Step-Giant-Step-Algorithmus}
 		In der Praxis ist es mit diesem Algorithmus nicht möglich eine Verschlüsselung die auf dem DLP aufbaut zu brechen. Die Komplexität diese Algorithmus liegt in $O(\sqrt[]{p-1})$ ist somit schon deutlich besser als eine naive vollständige Suche, deren Komplexität in $O(p-1)$ liegt, dennoch zu stark von der Größe der zugrundeliegenden Gruppe abhängig ist. Anzumerken ist, dieser Algorithmus ist ein sogenannter generischer Algorithmus, womit dieser für jede Gruppe funktioniert und nicht von einer speziellen Struktur der Gruppe abhängt.~\cite{Kryptografie:in:Theorie:und:Praxis}
 		
-<<<<<<< .merge_file_a05180
-		Zuerst wählt der Algorithmus eine Zahl t \myin \myMenge{N}, sodass $t < \sqrt[]{p-1}$\textbf{[TODO Größer gleich]} ist. Mit einer zweiten Zahl r ($0<r<t$)\textbf{TODO[kleiner gleich]} lässt sich die Gleichung des diskreten Logarithmus schreiben als: $x = q \cdot + r$ und lässt sich wie folgt umformen
-		
 		\textbf{TODO[Gleichung von Kryptographie in Theo... S. 136]}
 		
 		Nun müssen die zwei Zahlen r und q gesucht werden, sodass die Gleichung $y \cdot g^{-r} = g^{q \cdot t}$ gilt. Dazu werden zwei Listen angelegt und im Nachhinein werden die eintrage miteinander verglichen. 
