@@ -1,0 +1,41 @@
+diff a/includes/pages/04_Diskreter_Logarithmus.tex b/includes/pages/04_Diskreter_Logarithmus.tex	(rejected hunks)
+@@ -73,11 +73,39 @@
+ 			Asymmetrische Verschlüsselungsverfahren basieren auf Einwegfunktionen. Wobei es nicht allzu schwierig ist k \mycdot P zu Berechnen allerdings ist das Berechnen von k aus k \mycdot P und P sehr aufwendig. Anzumerken ist das diese aussage allerdings bis heute noch nicht bewiesen wurde.
+ 			
+ 	\subsection{Das Problem des diskreten Logarithmus im Detail}
++<<<<<<< .merge_file_a05180
+ 		Es existiert eine Primzahl p, ein erzeugendes Element g für \myZPStern~sowie eine ganze Zahl x. Zu der diskreten Exponentialfunktion $g^x~mod~p$ gibt es die diskrete Logarithmusfunktion, die zu einem gegebenen y und g, x beschreibt. Somit ist x der diskrete Logarithmus von y zur Basis g. ($y = g^x~mod~p$) Jede Zahl aus \myZPStern~lässt sich als Potenz von g darstellen, wenn g ein erzeugendes Element von \myZPStern~ist. Ist dies nicht der Fall, so muss es nicht zu jedem $y$ \myin \myZPStern einen diskreten Logarithmus geben.~\cite{Kryptografie:in:Theorie:und:Praxis} Um das eigentliche Problem des diskreten Logarithmus zu verstehen ist es hilfreich nochmal konkret Logarithmen in \myMenge{R} mit Logarithmen in \myZPStern gegenüberzustellen. 
+ 		
+ 		\textbf{[TODO die beiden Gleichungen von\cite{DLP:ECDLP:Probleme:und:Loesungen} S. 11 in einer miniPage gegenüberstellen]}
+ 		
+ 		Die Gleichung \textbf{[TODO Nr.]} zeigt wie der Logarithmus von x zur Basis g, mit der Logarithmusfunktion berechnet werden kann. Auf diese Weise sind Gleichungen für die positiven reellen Zahlen \myMenge{R^+} immer eindeutig lösbar. Bei der Gleichung \textbf{[TODO Nr.]} wird ebenfalls mit der Logarithmusfunktion versucht den Logarithmus von 10 zu Basis 2 zu erhalten. Als Ergebnis erhält man eine Zahl die nicht in enthalten ist. Was auch nicht verwundert, da die Logarithmusfunktion $mod~11$ gar nicht berücksichtigt. Genau hier ist das grundsätzlich Problem beim diskreten Logarithmus. Es gibt keine mathematische Rechenoperation die es ermöglicht den diskreten Logarithmus in einem endlichen Körper mit nur einem Rechenschritt zu berechnen. Um dennoch eine Lösung zu erhalten, scheint das Enumerationsverfahren das naheliegendste zu sein. Hierbei werden einfach alle Werte die für $k$ in frage kommen durchprobiert. So ist die Lösung für Gleichung \textbf{[TODO Nr.]} $k = 5$. Für sehr große Gruppen, wo k Beispielsweise eine 160 Bit große Zahl ist, gibt es bis heute keine Algorithmen die den diskreten Logarithmus effizient berechnen.~\cite{DLP:ECDLP:Probleme:und:Loesungen} Es gibt allerdings eine ganze Reihe von Algorithmen die in der Lage sind den diskreten Logarithmus gezielter zu berechnen als das naive Ausprobieren. Nachfolgend soll der Baby-Step-Giant-Step-Algorithmus genauer betrachtet werden.
++=======
++		Es existiert eine Primzahl p, ein erzeugendes Element g für \myZPStern~sowie eine ganze Zahl x. Zu der diskreten Exponentialfunktion $g^x~mod~p$ gibt es die diskrete Logarithmusfunktion, die zu einem gegebenen y und g, x beschreibt. Somit ist x der diskrete Logarithmus von y zur Basis g. ($y = g^x~mod~p$) Jede Zahl aus \myZPStern~lässt sich als Potenz von g darstellen, wenn g ein erzeugendes Element von \myZPStern~ist. Ist dies nicht der Fall, so muss es nicht zu jedem $y$ \myin \myZPStern einen diskreten Logarithmus geben.~\cite{Kryptografie:in:Theorie:und:Praxis} Um das eigentliche Problem des diskreten Logarithmus zu verstehen ist es hilfreich nochmal konkret Logarithmen in \myMenge{R} mit Logarithmen in \myZPStern gegenüberzustellen.
++		\begin{minipage}{0.24\textwidth}
++			\begin{equation}
++				\begin{aligned}
++					x &= g^k\\
++					1024 &= 2^k\\
++					k &= log_2 1024\\
++					k &= 10
++				\end{aligned}
++				\label{Gleichung Log in Z}
++			\end{equation}
++		\end{minipage}
++		\begin{minipage}{0.24\textwidth}
++			\begin{equation}
++			\begin{aligned}
++				x &= g^k~mod~p\\
++				10 &= 2^k~mod~11\\
++				k &= log_2 10\\
++				k &= 3.32193...~\lightning
++			\end{aligned}
++			\label{Gleichung Log in ZP}
++			\end{equation}
++		\end{minipage}
++			
++		Die Gleichung \myRefGleichung{Gleichung Log in Z} zeigt wie der Logarithmus von x zur Basis g, mit der Logarithmusfunktion berechnet werden kann. Auf diese Weise sind Gleichungen für die positiven reellen Zahlen \myMenge{R^+} immer eindeutig lösbar. Bei der Gleichung \myRefGleichung{Gleichung Log in ZP} wird ebenfalls mit der Logarithmusfunktion versucht den Logarithmus von 10 zu Basis 2 zu erhalten. Als Ergebnis erhält man eine Zahl die nicht in \myZPStern~enthalten ist. Was auch nicht verwundert, da die Logarithmusfunktion $mod~11$ gar nicht berücksichtigt. Genau hier ist das grundsätzlich Problem beim diskreten Logarithmus. Es gibt keine mathematische Rechenoperation die es ermöglicht den diskreten Logarithmus in einem endlichen Körper mit nur einem Rechenschritt zu berechnen. Um dennoch eine Lösung zu erhalten, scheint das Enumerationsverfahren das naheliegendste zu sein. Hierbei werden einfach alle Werte die für $k$ in frage kommen durchprobiert. So ist die Lösung für Gleichung \myRefGleichung{Gleichung Log in ZP}, $k = 5$.~\cite{DLP:ECDLP:Probleme:und:Loesungen} Für sehr große Gruppen, wo k Beispielsweise eine 160 Bit große Zahl ist, gibt es bis heute keine Algorithmen die den diskreten Logarithmus effizient berechnen.\cite{Kryptografie:in:Theorie:und:Praxis} Es gibt allerdings eine ganze Reihe von Algorithmen die in der Lage sind den diskreten Logarithmus gezielter zu berechnen als das naive Ausprobieren. Nachfolgend soll der Baby-Step-Giant-Step-Algorithmus genauer betrachtet werden.
++>>>>>>> .merge_file_a05448
+ 		
+ 		%TODO nchmal schauen das will ich nochmal anders haben schauen ob die Reihenfolge geändert wird für (Das Problem des diskreten Logarithmus im Detail) <=> (Diskreter Logarithmus auf elliptische Kurven)
+ 		
