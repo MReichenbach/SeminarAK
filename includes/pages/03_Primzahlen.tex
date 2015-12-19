@@ -1,7 +1,13 @@
 \section{Primzahlen}
-	Primzahlen werden definiert durch Zahlen die nur durch Eins oder sich selbst teilbar sind.
+	Natürliche Primzahlen werden definiert durch Zahlen > 1 die nur durch Eins oder sich selbst teilbar sind. Wie im Kapitel Primfaktorzerlegung gezeigt, können alle natürlichen Zahlen mit einer Multiplikation von Primzahlen erzeugt werden. Sie bilden sozusagen die Bausteine aller natürlichen Zahlen. Die Unberechenbarkeit mit der sie auftreten gibt Mathematikern schon seit Jahrtausenden Rätsel auf und ist ein Grundstein unserer heutigen Verschlüsselungsverfahren.
+	In anderen Zahlensystemen als den natürlichen Zahlen ist die gewohnte Definition von Primzahlen nicht vollständig/korrekt. Sie sagt nur etwas über die Irreduzibelität eines Elements in einem Integritätsbereich aus. Da in den natürlichen Zahlen aber jedes irreduzibles Element auch prim ist reicht diese Definition für \myMenge{N} aus.
+	Für alle Integritätsbereiche gilt für die Primheit folgende Definition nach \cite{Algorithmische:Zahlentheorie}:
 	
-	Des weiteren gilt: Wenn m des Restklassenring \myMenge{Z}/m\myMenge{Z} eine Primzahl ist, ist \myMenge{Z}/m\myMenge{Z} ein Körper und wird auch \myMenge{F}\myTiefstellen{p} bezeichnet.
+	Ein Element \myMathRM{p \in R\setminus(R^* \cup~\{0\})} heißt prim oder Primelement, wenn für alle \myMathRM{a, b \in R\setminus\{0\}} gilt	
+	\begin{displaymath}
+		p~|~ab \Longrightarrow p~|~a~oder~p~|~b.
+	\end{displaymath}	
+	Mit Hilfe der Primzahlen kann der Restklassenring \myMenge{Z}/m\myMenge{Z} spezialisiert werden. Ist m eine Primzahl p, so ist \myMenge{Z}/p\myMenge{Z} ein Körper und wird auch \myMenge{F}\myTiefstellen{p} bzw. \myMenge{GF}\myTiefstellen{p} bezeichnet.
 
 	\subsection{Primfaktorzerlegung}
 	\subsection{Satz von Euler und Kleiner Satz von Fermat}
