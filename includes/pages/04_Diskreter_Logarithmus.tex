@@ -1,7 +1,7 @@
 \section{Diskreter Logarithmus}
 	In diesem Kapitel soll der diskreter Logarithmus betrachtet werden. Es werden Anwendungspeilspiele aufgezeigt und genauer erläutert weswegen sich der diskreter Logarithmus besonders gut in der Kryptografie als Einwegfunktion eignet. Zu beginn wird das grundsätzliche Problem beim diskreten Logarithmus an einem Beispiel praxisnahe erläutert, um im Anschluss auf Algorithmische Lösungen einzugehen wie der diskreten Logarithmus in \myZPStern~und auf elliptische Kurven berechnet werden kann. Hierfür wird der Baby-Step-Giant-Step-Algorithmus vorgestellt.
 
-	\subsection{Das Problem des diskreten Logarithmus im Detail}
+	\subsection{Das Problem des diskreten Logarithmus im Detail}\label{Das Problem des diskreten Logarithmus im Detail}
 		Es existiert eine Primzahl p, ein erzeugendes Element g für \myZPStern~sowie eine ganze Zahl x. Zu der diskreten Exponentialfunktion $g^x~mod~p$ gibt es die diskrete Logarithmusfunktion, die zu einem gegebenen y und g, x beschreibt. Somit ist x der diskrete Logarithmus von y zur Basis g. ($y = g^x~mod~p$) Jede Zahl aus \myZPStern~lässt sich als Potenz von g darstellen, wenn g ein erzeugendes Element von \myZPStern~ist. Ist dies nicht der Fall, so muss es nicht zu jedem $y$ \myin \myZPStern~einen diskreten Logarithmus geben.~\cite{Kryptografie:in:Theorie:und:Praxis} Um das eigentliche Problem des diskreten Logarithmus zu verstehen ist es hilfreich, die Logarithmen in \myMenge{R} mit Logarithmen in \myZPStern~gegenüberzustellen.
 		\begin{minipage}{0.24\textwidth}
 			\begin{equation}
@@ -81,3 +81,35 @@
 				\label{Gleichung Giant steps für elliptische Kurven}
 			\end{equation}
 			Bei gefundener Kollision kann aus $q$ und $r$, $k = qm + r$ errechnet werden und man erhält den diskreten Logarithmus von $Q$.
+	\subsection{Index-Calculus-Algorithmus}
+		Der Index-Calculus-Algorithmus kann das DLP \myAnfuehrungszeichen{besser} lösen als der Baby-Step-Giant-Step-Algorithmus. Es sei an dieser Stell schon vorweggenommen auch dieser ist vom effizienten Lösen noch weit entfernt. Ausgangsbasis ist die schon aus \ref{Das Problem des diskreten Logarithmus im Detail} bekannte Gleichung \myRefGleichung{Gleichung Diskreten Logarithmus aus ZPStern} zum diskreten Logarithmus aus \myZPStern.
+		\begin{equation}
+			y = g^x~mod~p
+			\label{Gleichung Diskreten Logarithmus aus ZPStern}
+		\end{equation}
+		
+		Für jedes $h \not\equiv 0~(mod~p)$ kann als $h \equiv g^k$ geschrieben werden, womit eindeutig $mod~p - 1$ bestimmt wird. Der diskrete Logarithmus von $x$ wird als $L(x)$ geschrieben, sodass $x = L(x)$ gilt. Daraus folgt:
+		\begin{equation}
+			g^{L_{(h)}} \equiv h~~~~(mod~p)
+			\label{Gleichung Diskreten Logarithmus äquivalent}
+		\end{equation}
+		
+		Weiter gelten für alle Werte $x_1, x_2 \in \mathbb{Z}_p$:
+		\begin{equation}
+			g^{L_{(h_1 h_2)}} \equiv h_1 h_2 \equiv g^{L_{(h_1)} + L_{(h_2)}}~~~~(mod~p)
+		\end{equation}
+		
+		Der diskrete Logarithmus des Produktes aus zwei Zahlen ist die Summe der diskreten Logarithmen der einzelnen Zahlen:
+		\begin{equation}
+			L(h_1 h_2) \equiv L(h_1) + L(h_2)~~~~(mod~p)
+		\end{equation}
+		
+		Die Grundidee beim Index-Calculus-Algorithmus ist, aus der Kenntnis des diskreten Logarithmus für einige Zahlen, kann über die passenden Gleichungen der diskrete Logarithmus von beliebigen Zahlen berechnet werden.
+		
+		Zunächst bildet man eine Faktorbasis Menge B aus kleinen Primzahlen. Als nächstes müssen passende Gleichungen gefunden werden wo die Primfaktorzerlegung von $g^x$ nur aus Potenzen von Elementen aus B besteht. Siehe dazu das Beispiel aus \cite{Elliptic:Curves:Number:Theory:and:Cryptography} S. 144. Nun kann durch einsetzen der diskrete Logarithmus sämtlicher gefundenen Gleichungen ermittelt werden. Es muss solange ein zufälliger wert für $j$ in Gleichung
+		\begin{equation}
+			g^j \cdot x = y~mod~p
+			\label{Gleichung Diskreten Logarithmus Gleichung 2}
+		\end{equation}
+		
+		eingesetzt werden bis ein $y$, das Produkt aus Elementen von B ist. Da die diskreten Logarithmen der Elemente aus B bekannt sind, kann mit dessen Hilfe wie in Gleichung \myRefGleichung{Gleichung Diskreten Logarithmus Gleichung 2} gezeigt der diskrete Logarithmus von y berechnet werden.
