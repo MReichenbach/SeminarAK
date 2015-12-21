@@ -94,7 +94,7 @@
 			\label{Gleichung Diskreten Logarithmus äquivalent}
 		\end{equation}
 		
-		Weiter gelten für alle Werte $x_1, x_2 \in \mathbb{Z}_p$:
+		Weiter gelten für alle Werte $x_1, x_2 \in$ \myZPStern:
 		\begin{equation}
 			g^{L_{(h_1 h_2)}} \equiv h_1 h_2 \equiv g^{L_{(h_1)} + L_{(h_2)}}~~~~(mod~p)
 		\end{equation}
@@ -104,9 +104,9 @@
 			L(h_1 h_2) \equiv L(h_1) + L(h_2)~~~~(mod~p)
 		\end{equation}
 		
-		Die Grundidee beim Index-Calculus-Algorithmus ist, aus der Kenntnis des diskreten Logarithmus für einige Zahlen, kann über die passenden Gleichungen der diskrete Logarithmus von beliebigen Zahlen berechnet werden.
+		Die Grundidee beim Index-Calculus-Algorithmus ist, aus der Kenntnis des diskreten Logarithmus für einige Zahlen, kann über die passenden Gleichungen der diskrete Logarithmus von beliebigen Zahlen berechnet werden.\cite{DLP:ECDLP:Probleme:und:Loesungen}
 		
-		Zunächst bildet man eine Faktorbasis Menge B aus kleinen Primzahlen. Als nächstes müssen passende Gleichungen gefunden werden wo die Primfaktorzerlegung von $g^x$ nur aus Potenzen von Elementen aus B besteht. Siehe dazu das Beispiel aus \cite{Elliptic:Curves:Number:Theory:and:Cryptography} S. 144. Nun kann durch einsetzen der diskrete Logarithmus sämtlicher gefundenen Gleichungen ermittelt werden. Es muss solange ein zufälliger wert für $j$ in Gleichung
+		Zunächst bildet man eine Faktorbasis Menge B aus kleinen Primzahlen. Als nächstes müssen passende Gleichungen gefunden werden wo die Primfaktorzerlegung von $g^x$ nur aus Potenzen von Elementen aus B besteht. Siehe dazu das Beispiel aus \cite{Elliptic:Curves:Number:Theory:and:Cryptography} S. 144. Nun kann durch einsetzen der diskrete Logarithmus sämtlicher gefundenen Gleichungen ermittelt werden. Es muss solange ein zufälliger Wert für $j$ in Gleichung
 		\begin{equation}
 			g^j \cdot x = y~mod~p
 			\label{Gleichung Diskreten Logarithmus Gleichung 2}
