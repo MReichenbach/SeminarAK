@@ -12,7 +12,7 @@
 	
 	Neben den normalen Primzahlen gibt es weitere sogenannte Pseudoprimzahlen. Diese Primzahlen verhalten sich bezogen auf einen Algorithmus genauso wie echte Primzahlen, sie sind jedoch zusammengesetzt. Ein Beispiel für solche Zahlen sind Carmichaelzahlen die in einem späteren Kapitel thematisiert sind.
 
-	Leider gibt es keine bekannten effizienten Verfahren um Primzahlen zu generieren. Dennoch kann man Primzahlen recht einfach raten. Grundsätzlich ist es möglich eine große Anzahl von Zahlen auszuschließen. Man denke an: nur ungerade Zahlen, die Teilungsgesetze und die Tatsache das alle Primzahlen > 3 in der Form 4k +1 oder 4k +3, k \myin \myMenge{N}, liegen. Alle geratenen Zahlen müssen jedoch einem Primzahltest(vgl. Kapitel \ref{Effiziente Primzahltests}) zur Verifizierung unterzogen werden. In \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} ist beschrieben wie ein Generierungsprozess erfolgen kann.
+	Leider gibt es keine bekannten effizienten Verfahren um Primzahlen zu generieren. Dennoch kann man Primzahlen recht einfach raten. Grundsätzlich ist es möglich eine große Anzahl von Zahlen auszuschließen. Man denke an: nur ungerade Zahlen, die Teilungsgesetze und die Tatsache das alle Primzahlen > 3 in der Form 4k +1 oder 4k +3, k \myin \myMenge{N} vorliegen. Alle geratenen Zahlen müssen jedoch einem Primzahltest(vgl. Kapitel \ref{Effiziente Primzahltests}) zur Verifizierung unterzogen werden. In \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} ist beschrieben wie ein Generierungsprozess erfolgen kann.
 
 	\subsection{Primfaktorzerlegung}
 	Jede natürliche Zahl größer als Eins kann als Produkt von Primzahlen geschrieben werden. Dieser zentrale Satz wird als Fundamentalsatz der Zahlentheorie bezeichnet und kann auf jeden euklidischen Ring R angewendet werden. Eine Primfaktorzerlegung wird mit x \myin R, u \myin R*, \myMathRM{e_1, e_2, ..., e_m} \myin \myMenge{N} ist wie folgt definiert:	
@@ -21,11 +21,9 @@
 	\end{displaymath}
 	wobei  \myMathRM{p_1 < p_2 < ... < p_m} Primelemente sind.
 	
-<<<<<<< HEAD
+
 	Neben der Existenz einer solchen Primfaktorzerlegung ist auch die Eindeutigkeit, die durch das Vergleichszeichen \grqq kleiner als\grqq ~implizit angegeben ist, von entscheidender Bedeutung. In \cite{Einfuehrung:in:Algebra:und:Zahlentheorie} und \cite{Algorithmische:Zahlentheorie} wird die Existenz und Eindeutigkeit bewiesen.
-=======
-	Neben der Existenz einer solchen Primfaktorzerlegung ist auch die Eindeutigkeit von entscheidender Bedeutung, die durch das Vergleichszeichen kleiner als implizit angegeben ist. In \cite{Einfuehrung:in:Algebra:und:Zahlentheorie} und \cite{Algorithmische:Zahlentheorie} wird die Existenz und Eindeutigkeit bewiesen.
->>>>>>> 1eddbe5ef1b8b0f4ecc7ea1e2a47a8154a1ec7e9
+
 	
 	Die meisten kryptographischen Algorithmen bauen auf die ineffiziente Berechnung der Primfaktoren. Es ist zwar einfach zwei Primzahlen mit einander zu multiplizieren, aber es ist schwer aus der multiplizierten Zahl die beiden Primfaktoren zurückzugewinnen. Kennt man jedoch eine der beiden Primzahlen so berechnet sich die zweite durch einfache Division. Zur Verschlüsselung ergibt sich damit die Idee einer sogenannte Falltür-Funktion, die die Primfaktoren mit Hilfe eines geheimen Hinweises schnell berechnen kann.
 		
