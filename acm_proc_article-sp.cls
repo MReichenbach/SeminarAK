@@ -1502,37 +1502,37 @@
 
 % Need Copyright Year and Copyright Data to be user definable (in .tex file).
 % Gerry Nov. 30th. 1999
-\newtoks\copyrtyr
-\newtoks\acmcopyr
-\newtoks\boilerplate
-\global\acmcopyr={X-XXXXX-XX-X/XX/XX}  % Default - 5/11/2001 *** Gerry
-\global\copyrtyr={20XX}                % Default - 3/3/2003 *** Gerry
-\def\acmPrice#1{\gdef\@acmPrice{#1}}
-\acmPrice{15.00} %article price  % Changed to 15 - June 2012 - Gerry
+%\newtoks\copyrtyr
+%\newtoks\acmcopyr
+%\newtoks\boilerplate
+%\global\acmcopyr={X-XXXXX-XX-X/XX/XX}  % Default - 5/11/2001 *** Gerry
+%\global\copyrtyr={20XX}                % Default - 3/3/2003 *** Gerry
+%\def\acmPrice#1{\gdef\@acmPrice{#1}}
+%\acmPrice{15.00} %article price  % Changed to 15 - June 2012 - Gerry
 
 % ISBN
 %
-\def\isbn#1{\global\acmcopyr={#1}}
-\isbn{978-1-4503-2138-9}
+%\def\isbn#1{\global\acmcopyr={#1}}
+%\isbn{978-1-4503-2138-9}
 
 
 %
-\newtoks\copyrightetc
-\global\copyrightetc{%
-  \if@printcopyright
-    \copyright\ \the\copyrtyr\ \@copyrightowner
-    \if@acmowned\else\\\fi
-  \fi
-  \if@acmowned\else ACM ISBN \fi
- \the\acmcopyr\ifx\@acmPrice\@empty\else\dots\@acmPrice\fi\\
-{DOI: \small\expandafter\printdoi\expandafter{\@doi}}} 
+%\newtoks\copyrightetc
+%\global\copyrightetc{%
+%  \if@printcopyright
+%    \copyright\ \the\copyrtyr\ \@copyrightowner
+%    \if@acmowned\else\\\fi
+%  \fi
+%  \if@acmowned\else ACM ISBN \fi
+% \the\acmcopyr\ifx\@acmPrice\@empty\else\dots\@acmPrice\fi\\
+%{DOI: \small\expandafter\printdoi\expandafter{\@doi}}} 
 
-\toappear{\fontsize{7pt}{8pt}\fontfamily{ptm}\selectfont\the\boilerplate\par
-{\confname{\the\conf}} \the\confinfo\par \the\copyrightetc}
+%\toappear{\fontsize{7pt}{8pt}\fontfamily{ptm}\selectfont\the\boilerplate\par
+%{\confname{\the\conf}} \the\confinfo\par \the\copyrightetc}
 
 
 
-\global\boilerplate={\@copyrightpermission}
+%\global\boilerplate={\@copyrightpermission}
 
 
 % End of ACM_PROC_ARTICLE-SP.CLS -- V3.2SP - 04/22/2009 --
