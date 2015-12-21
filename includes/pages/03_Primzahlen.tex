@@ -12,6 +12,8 @@
 	
 	Neben den normalen Primzahlen gibt es weitere sogenannte Pseudoprimzahlen. Diese Primzahlen verhalten sich bezogen auf einen Algorithmus genauso wie echte Primzahlen, sie sind jedoch zusammengesetzt. Ein Beispiel für solche Zahlen sind Carmichaelzahlen die in einem späteren Kapitel thematisiert sind.
 
+	Leider gibt es keine bekannten effizienten Verfahren um Primzahlen zu generieren. Dennoch kann man Primzahlen recht einfach raten. Grundsätzlich ist es möglich eine große Anzahl von Zahlen auszuschließen. Man denke an: nur ungerade Zahlen, die Teilungsgesetze und die Tatsache das alle Primzahlen > 3 in der Form 4k +1 oder 4k +3, k \myin \myMenge{N}, liegen. Alle geratenen Zahlen müssen jedoch einem Primzahltest(vgl. Kapitel \ref{Effiziente Primzahltests}) zur Verifizierung unterzogen werden. In \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} ist beschrieben wie ein Generierungsprozess erfolgen kann.
+
 	\subsection{Primfaktorzerlegung}
 	Jede natürliche Zahl größer als Eins kann als Produkt von Primzahlen geschrieben werden. Dieser zentrale Satz wird als Fundamentalsatz der Zahlentheorie bezeichnet und kann auf jeden euklidischen Ring R angewendet werden. Eine Primfaktorzerlegung wird mit x \myin R, u \myin R*, \myMathRM{e_1, e_2, ..., e_m} \myin \myMenge{N} ist wie folgt definiert:	
 	\begin{displaymath}
@@ -19,9 +21,9 @@
 	\end{displaymath}
 	wobei  \myMathRM{p_1 < p_2 < ... < p_m} Primelemente sind.
 	
-	Neben der Existenz einer solchen Primfaktorzerlegung ist auch die Eindeutigkeit von entscheidender Bedeutung, die durch das Vergleichszeichen kleiner als implizit angegeben ist. In \cite{Einführung:in:Algebra:und:Zahlentheorie} und \cite{Algorithmische:Zahlentheorie} wird die Existenz und Eindeutigkeit bewiesen.
+	Neben der Existenz einer solchen Primfaktorzerlegung ist auch die Eindeutigkeit, die durch das Vergleichszeichen \grqq kleiner als\grqq ~implizit angegeben ist, von entscheidender Bedeutung. In \cite{Einfuehrung:in:Algebra:und:Zahlentheorie} und \cite{Algorithmische:Zahlentheorie} wird die Existenz und Eindeutigkeit bewiesen.
 	
-	Die meisten kryptographischen Algorithmen bauen auf die ineffiziente Berechnung der Primfaktoren. Es ist zwar einfach zwei Primzahlen mit einander zu multiplizieren, aber es ist schwer aus der multiplizierten Zahl die beiden Primfaktoren zurückzugewinnen. Kennt man jedoch eine der beiden Primzahlen so ergibt sich die zweite durch einfache Division. Ein weiterer Baustein der noch fehlt ist ein effizienter Algorithmus der die Frage klärt, wann eine Zahl eine Primzahl ist.
+	Die meisten kryptographischen Algorithmen bauen auf die ineffiziente Berechnung der Primfaktoren. Es ist zwar einfach zwei Primzahlen mit einander zu multiplizieren, aber es ist schwer aus der multiplizierten Zahl die beiden Primfaktoren zurückzugewinnen. Kennt man jedoch eine der beiden Primzahlen so berechnet sich die zweite durch einfache Division. Zur Verschlüsselung ergibt sich damit die Idee einer sogenannte Falltür-Funktion, die die Primfaktoren mit Hilfe eines geheimen Hinweises schnell berechnen kann.
 		
 	\subsection{Satz von Euler und Kleiner Satz von Fermat}
 	Die Vermutung vom kleinen Satz von Fermat wurde von Fermat im 17 Jahrhundert aufgestellt und von Euler bewiesen. Euler konnte zudem zeigen das der kleine Satz von Fermat nur ein Spezialfall für Primzahlen darstellt. Der Satz von Euler lautet:
@@ -30,6 +32,11 @@
 	\begin{displaymath}
 		a^{\varphi(m)} \equiv~1~mod~m.
 	\end{displaymath}
+	Denn wie in \cite{Algorithmische:Zahlentheorie} anhand der Gruppentheorie bewiesen, ist
+	\begin{displaymath}
+		a^{Ord(G)} = a^{|G|} = e,
+	\end{displaymath}
+	wobei G eine endliche Gruppe ist, a \myin G und e das Einselement (neutrales Element einer multiplikativen Gruppe). Da das Einselement in \myMenge{N} 1 ist, folgt: Kongruenz 1 modulo m. 
 	
 	Da 	\myMathRM{\varphi(p) = Card((\mathbb{Z}/p\mathbb{Z})^*) = |\mathbb{F}^*_p| = p-1} ist, ergibt sich sofort der kleine Satz von Fermat:
 	\begin{displaymath}
@@ -39,7 +46,7 @@
 	Mit dem Satz von Euler und Fermat kann nun ein erster primitiver Primzahltest definiert werden.  
 	Für ein beliebiges 	a \myin \myMenge{N} mit 1 < a < m gilt:
 	\begin{displaymath}
-		a^{m-1} \not\equiv 1~mod~n \Longrightarrow nicht~prim
+		a^{m-1} \not\equiv 1~mod~m \Longrightarrow nicht~prim
 	\end{displaymath}
 	Leider ist der fermatsche Primzahltest nur ein negativ Test, der eindeutig zeigen kann das eine Zahl nicht prim ist. Wenn der Test einer Zahl kongruent 1 modulo m ergibt, muss m also nicht prim sein. Eine Zahl die für den Test prim ist, ist entweder eine echte Primzahl oder eine Pseudoprimzahl m zur Basis a.\cite{Elementare:Zahlentheorie}
 		
@@ -52,18 +59,19 @@
 	\begin{displaymath}
 		a^{m-1} \equiv 1~mod~m
 	\end{displaymath}
-	
 	%TODO evtl. Beispiel
-	
-	TODO evtl. Beispiel
-	
 	\subsection{Sieb des Eratosthenes}
+	Das Sieb des Eratosthenes ist eines der ältesten bekannten Verfahren Primzahlen zu erhalten. Es berechnet für ein gegebenes n \myin \myMenge{N} alle Primzahlen p \myin \myMenge{N} für die gilt 1 < p < n. Der Algorithmus iteriert dazu über alle nicht gestrichenen Zahlen von 1 bis \myMathRM{\sqrt{n}}. Als erstes wird die Zahl Zwei genommen, sie ist nicht gestrichen und somit eine Primzahl. Dann werden alle vielfache von Zwei gestrichen (die geraden Zahlen). Anschließend sucht der Algorithmus die nächste nicht gestrichene Zahl. In diesem Fall ist es die Drei und es werden wieder alle Vielfache von drei gestrichen. Das Verfahren wiederholt sich bis die Suche \myMathRM{\sqrt{n}} erreicht hat. Alle nicht gestrichen Zahlen sind die Primzahlen bis n. Die Abbildung \ref{ABBILDUNG_Primzahlen_100} illustriert die Primzahlen bis 100.
+	Wie in \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} gezeigt, hat das Sieb des Eratosthenes eine subexponentielle Laufzeit, da die Laufzeit von der Länge der Eingabe abhängt. Aus diesem Grund eignet es sich nicht für einen praktischen Primzahltest.
+	\begin{figure}
+		\centering
+		\epsfig{file=includes/images/primzahlen100.jpg, height=3in, width=3in}
+		\caption{Primzahlen bis 100 Quelle: http://www.mathe-lexikon.at/arithmetik/natuerliche-zahlen/teilbarkeit/primzahlen/sieb-des-eratosthenes.html}
+		\label{ABBILDUNG_Primzahlen_100}
+	\end{figure}
 	
-	Jo der einfache kram :D mit Bild
-	
-	
-	\subsection{Effiziente Primzahltests}
-		Die in diesem Kapitel vorgestellten Algorithmen zum Erkennen von Primzahlen sind effiziente Algorithmen im Sinne der Komplexitätsklasse P und im Gegensatz zum fermatschen Test nicht anfällig für starke Pseudoprimzahlen. Dennoch unterscheiden sich die beiden vorgestellten Verfahren deutlich voneinander. 
+	\subsection{Effiziente Primzahltests} \label{Effiziente Primzahltests}
+		Die in diesem Kapitel vorgestellten Algorithmen zum Erkennen von Primzahlen sind effiziente Algorithmen im Sinne der Komplexitätsklasse P und im Gegensatz zum fermatschen Test nicht anfällig für starke Pseudoprimzahlen. Dennoch unterscheiden sich die beiden vorgestellten Verfahren deutlich voneinander. Neben der Funktionsweise wird auch die Laufzeit gegenübergestellt.
 		
 		\subsubsection{Miller-Rabin-Test}
 		 Der Miller-Rabin-Test ist ein probabilistischer Primzahltest und gehört zu den Montecarlo- Algorithmen. Im Gegensatz zum fermatschen Primzahltest ist der Miller-Rabin-Test nicht so anfällig für Carmichaelzahlen.
