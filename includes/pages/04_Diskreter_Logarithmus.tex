@@ -102,14 +102,19 @@
 		Der diskrete Logarithmus des Produktes aus zwei Zahlen ist die Summe der diskreten Logarithmen der einzelnen Zahlen:
 		\begin{equation}
 			L(h_1 h_2) \equiv L(h_1) + L(h_2)~~~~(mod~p)
+			\label{Gleichung Diskreten Logarithmus additionSubtraktion}
 		\end{equation}
 		
 		Die Grundidee beim Index-Calculus-Algorithmus ist, aus der Kenntnis des diskreten Logarithmus für einige Zahlen, kann über die passenden Gleichungen der diskrete Logarithmus von beliebigen Zahlen berechnet werden.\cite{DLP:ECDLP:Probleme:und:Loesungen}
 		
-		Zunächst bildet man eine Faktorbasis Menge B aus kleinen Primzahlen. Als nächstes müssen passende Gleichungen gefunden werden wo die Primfaktorzerlegung von $g^x$ nur aus Potenzen von Elementen aus B besteht. Siehe dazu das Beispiel aus \cite{Elliptic:Curves:Number:Theory:and:Cryptography} S. 144. Nun kann durch einsetzen der diskrete Logarithmus sämtlicher gefundenen Gleichungen ermittelt werden. Es muss solange ein zufälliger Wert für $j$ in Gleichung
+		Zunächst bildet man eine Faktorbasis Menge B aus kleinen Primzahlen. Als nächstes müssen passende Gleichungen gefunden werden wo die Primfaktorzerlegung von $g^x$ nur aus Potenzen von Elementen aus B besteht. Ziel ist es nun ein Gleichungssystem aus Potenzen von Elementen aus B zu lösen. Durch umstellen der Gleichungen und multiplizieren mit den inversen Element, für Elemente aus B, kann der diskreten Logarithmus errechnet werden. Die so erlangen Ergebnisse können genutzten werden um auch die restlichen diskreten Logarithmen von Elementen aus B, mit Hilfe von Addition und Subtraktion wie in Gleichung \myRefGleichung{Gleichung Diskreten Logarithmus additionSubtraktion} gezeigt, zu errechnen. Siehe dazu das Beispiel aus \cite{Elliptic:Curves:Number:Theory:and:Cryptography} S. 144.
+		
+		Nun muss solange ein zufälliger Wert für $j$ in Gleichung
 		\begin{equation}
 			g^j \cdot x = y~mod~p
 			\label{Gleichung Diskreten Logarithmus Gleichung 2}
 		\end{equation}
 		
-		eingesetzt werden bis ein $y$, das Produkt aus Elementen von B ist. Da die diskreten Logarithmen der Elemente aus B bekannt sind, kann mit dessen Hilfe wie in Gleichung \myRefGleichung{Gleichung Diskreten Logarithmus Gleichung 2} gezeigt der diskrete Logarithmus von y berechnet werden.
+		eingesetzt werden bis ein $y$, das Produkt aus Elementen von B ist, gefunden wurde. Da die diskreten Logarithmen der Elemente aus B bekannt sind, kann mit dessen Hilfe wie in Gleichung \myRefGleichung{Gleichung Diskreten Logarithmus Gleichung 2} gezeigt der diskrete Logarithmus von y berechnet werden.
+		
+		Entscheidend für diesen Algorithmus ist das die Faktorbasis Menge B nicht zu klein gewählt wird, da man ansonsten nicht genügend Gleichungen für das Gleichungssystem findet. Die Menge darf aber auch nicht zu Groß werden, denn sonst wird das Gleichungssystem auch zu groß und komplex. Entscheidend für die Laufzeit diese Algorithmusses ist das finden von Gleichungen wo die Primfaktorzerlegung aus Potenzen von Elementen aus B besteht und das zufälliger raten von $j$, bis Produkt aus Elementen von B gefunden wurde.
