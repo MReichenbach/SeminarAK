@@ -1,0 +1,76 @@
+\section*{Grundlagen}~\label{Kapitel Grundlagen}
+	In diesem Kapitel werden die Grundlagen zur Analyse von Primzahlen und dem diskreten Logarithmus gegeben. Dazu werden im allg. nur die Definitionen und Sätze geliefert. Für Beweise der hier angeführten Sätze sei auf die Bücher \cite{Kryptografie:in:Theorie:und:Praxis}, \cite{Erste:Hilfe:in:Linearer:Algebra}, \cite{Kryptographie:und:IT-Sicherheit}, \cite{Information:und:Kommunikation} \textbf{[TODO noch weiter wenn nötig [x],[y],[z]]} verwiesen. Es wird vorausgesetzt, dass die Rechenvorschriften des Modulo bekannt ist.
+	
+	\subsection*{Algebraische Strukturen}
+		In diesem Kapitel werden die algebraischen Strukturen: Halbgruppen, Gruppen, Ringe und Körper vorgestellt. Diese werden für ein späteres Kapitel benötigt. Die algebraischen Strukturen beschreiben ein abstraktes Rechnen mit Zahlen. Dies ermöglicht gezielter nur die Rechenregeln an sich zu untersuchen, unabhängig von der Rechengröße und der jeweiligen Operation. Ein Anwendungsbereich ist u. a. in der Kryptographie zu finden.~\cite{Kryptographie:und:Algorithmen}
+		
+			\subsubsection{Halbgruppen}
+			Eine Halbgruppe ist eine Menge M mit einer assoziativen Operation \mycircOhne, geschrieben mit (M, \mycircOhne) oder einfach nur M. Zur Erinnerung, das Assoziativgesetz besagt: (a \mycirc b) \mycirc c = a \mycirc (b \mycirc c) für alle a, b, c \myin M. Es gilt für sämtliche Elemente einer Halbgruppe. Das Zeichen \mycirc ist Platzhalter für eine beliebige Operation. Der Wertebereich von \mycirc ist eine Teilmenge von M so dass, a \mycirc b \myin M für alle a, b \myin M. Für das Zeichen \mycirc werden auch die folgenden Operationszeichen verwendet: $*$, \mycdotOhne, +. Auch muss die Menge nicht zwangsläufig M sein.~\cite{Erste:Hilfe:in:Linearer:Algebra}
+			
+			Durch das Assoziativgesetz können also Klammern weggelassen werden. Zum besseren Verständnis konkrete Beispiele von Halbgruppen~\cite{Erste:Hilfe:in:Linearer:Algebra}:
+			
+			\begin{itemize}
+				\item \myMenge{N}, \myMenge{Z}, \myMenge{Q}, \myMenge{R}, \myMenge{C} sind Halbgruppen mit der Addition als Operation, ebenso wie mit der Multiplikation.
+				\item Wenn a \mycirc $b = |b - a|$ für alle $a$, $b$ \myin \myMenge{Z}, dann ist (\myMenge{Z}, \mycircOhne) keine Halbgruppe. Da in diesem Fall (1 \mycirc 2) \mycirc $3 = 1$ \mycirc $3 = 2$ ist, aber $1$ \mycirc ($2$ \mycirc $3$) $= 1$ \mycirc $1 = 0$ ist. Ein verändern der Klammerung ergibt unterschiedliche Ergebnisse, somit ist das Assoziativgesetz nicht mehr gewährleistet, wodurch \myMenge{Z} in diesem Fall keine Halbgruppe mehr sein kann.
+			\end{itemize}
+			
+			Sobald es ein neutrales Element in einer Halbgruppe gibt heißt dieses \textbf{Monoid}. Ein neutrales Element ist immer dann gegeben wenn es ein e \myin M gibt, sodass für alle a \myin M gilt: a \mycirc e = e \mycirc a = a. Dieses weitere Axiom muss von jeder Halbgruppe erfüllt werden um ein Monoid zu sein. Als Zeichen für ein Monoid wird neben e oft auch 1 verwendet, bei den Operationszeichen \mycircOhne, \mycdotOhne, $*$. Wird das + als Operationszeichen verwendet ist oft 0 das neutrale Element.~\cite{Erste:Hilfe:in:Linearer:Algebra}
+			
+			Wenn ein Monoid auch das folgende Axiom erfüllt, ist es eine \textbf{Gruppe}. Existiert für alle a \myin G ein b \myin G, sodass a \mycirc b = b \mycirc a = e gilt, so heißt b invers zu a.~\cite{Erste:Hilfe:in:Linearer:Algebra}
+
+		\subsubsection{Ringe}
+			In einem Ring als Algebraische Struktur sind mehr als nur eine Operation vorhanden. Eine Menge R mit den zwei Operationen + und \mycdot auf R ist genau dann ein Ring wenn folgenden drei Bedingungen gelten~\cite{Erste:Hilfe:in:Linearer:Algebra}:
+		
+			\begin{itemize}
+				\item (R, +) ist eine abelsche Gruppe. (Eine Operation \mycirc auf einer Menge M heiß kommutativ oder abelsch, wenn: a \mycirc b = b \mycirc a für alle a, b \myin M gilt.)
+				\item (R, \mycdotOhne) ist ein Monoid
+				\item Für alle a, b, c \myin R gilt: a(b + c) = ab + ac, (a + b)c = ac + bc (Distributivgesetze)
+			\end{itemize}
+			
+			Zusätzlich heißt ein Ring kommutativ, wenn die Operation \mycdot kommutativ ist. Ein Ring besitzt also immer eine kommutative Addition und eine nicht notwendigerweise kommutative Multiplikation. Die beiden Distributivgesetze verbinden diese beiden Operationen miteinander. Ein Ring heißt nullteilerfrei wenn a \mycdot b = 0 ist und dadurch impliziert wird, dass a = 0 oder b = 0 sein muss, für alle a, b \myin R. Wenn es für ein a \myin R ein b gibt, so dass ab = ba = 1 gilt, dann ist a invertierbar oder eine Einheit. Alle Elemente im Monoid (R, \mycdotOhne) wo dies zutrifft sind in einer multiplikativen Gruppe zusammengefasst, bezeichnet wird diese mit R$^*$.~\cite{Erste:Hilfe:in:Linearer:Algebra}
+			
+			Es gibt spezielle Ringe, die sogenannten Körper. Ist eine Menge (K, +, \mycdotOhne) ein Ring und ist ($K / \{0\}$, \mycdotOhne) eine kommutative Gruppe, heißt K ein Körper. Alle von Null verschiedenen Elementen sind Einheiten und es gilt: K* = $K / \{0\}$.~\cite{Erste:Hilfe:in:Linearer:Algebra}
+			
+		\subsubsection{Integritätsbereiche}
+			Wie in~\cite{Algorithmische:Zahlentheorie} angegeben ist ein Integritätsbereich ein kommutativer, nullteilerfreier Ring R mit Einselement. Aus dieser Definition ergeben sich die Integritätsbereiche der ganzen Zahlen \myMenge{Z}, der ganzen Gauß’schen Zahlen \myMenge{Z}[i] und des Polynomrings in einer Unbestimmten X über einem Körper K, der K[X] bezeichnet wird. 
+			\begin{displaymath}
+				\mathbb{Z}[i] = \{n + im  \in \mathbb{C} : n,m \in \mathbb{Z}\}
+			\end{displaymath}
+			\begin{displaymath}	
+				K[X] = \{p(X)= a_0 + a_1X + a_2X^2 + . . . + a_nX^n~|~a_i \in K, n \in \mathbb{N}\}					
+			\end{displaymath}
+			
+			Des weiteren wird ein Integritätsbereich mit einer Funktion  $\beta : R \longrightarrow$ \myMenge{N}, für die gilt: 
+			\begin{displaymath}
+				\mathrm{x = qy + r,~~~q, r \in R,	mit~r=0~oder~\beta(r) < \beta(y)}
+			\end{displaymath}
+			als euklidischer Ring bezeichnet und lässt die Division mit Rest zu. Wie in \cite{Algorithmische:Zahlentheorie} gezeigt, ist jeder der Ringe Z, Z[i] und K[X], für einen beliebigen Körper K, euklidisch. Die Erkenntnis das es weitere Integritätsbereiche als \myMenge{Z} gibt, wird in den effizienten Primzahltests wieder aufgegriffen. 
+			
+			Die Teilbarkeit einer Zahl a \myin R durch b \myin R ohne Rest wird b \myTeiler a geschrieben. Kann a durch b nicht ohne Rest geteilt werden, wird b \myNichtTeiler a geschrieben.
+			
+		\subsubsection{Restklassenringe in \myMenge{Z}}
+			Restklassenringe \myMenge{Z}/m\myMenge{Z} oder auch \myMathRM{\mathbb{Z}_m} ergeben sich aus der Definition einer Addition und Multiplikation auf Restklassen. Eine Restklasse bezeichnet zwei Zahlen \myin \myMenge{Z} die bei der Division durch m \myin \myMenge{N} den gleichen Rest haben. Diese zwei Zahlen sind also in der gleichen Restklasse. Die Anzahl der Restklassen in einem Restklassenring ist gleich m. Die Äquivalenzrelation der beiden Zahlen bezüglich der Restklasse, kann wie folgt definiert werden:
+			Zwei Zahlen x, y \myin \myMenge{Z} heißen kongruent modulo m \myin \myMenge{N} wenn m \myTeiler $x-y$. In Zeichen:
+			\begin{displaymath}
+				x \equiv y~mod~m
+			\end{displaymath}	
+			Die zugehörigen Beweise und Rechenvorschriften für Restklassenringe finden sich in \cite{Algorithmische:Zahlentheorie}.
+			
+	\subsection*{Euklidischer Algorithmus}
+		Der euklidische Algorithmus wird zur Berechnung des größten gemeinsamen Teiler zweier Zahlen benötigt. Der Algorithmus findet in fast allen weiteren Betrachtungen Anwendung und wird deshalb explizit angegeben. Wie in \cite{Diskrete:Strukturen} bewiesen, kann der Algorithmus folgend definiert werden:
+		
+		Sind m, n \myin \myMenge{N}\ zwei natürliche Zahlen mit m \myKleinerGleich n und m \myNichtTeiler n, so gilt:
+		\begin{displaymath}
+			ggT(m, n) = ggT(n~mod~m, m).
+		\end{displaymath}
+		
+	\subsection*{Euler’sche \myPhi -Funktion}
+		Die Eulersche phi Funktion \myPhi(m) berechnet die Anzahl teilerfremder Zahlen für eine gegebene Zahl m \myGroesser 1. Also gilt nach \cite{Algorithmische:Zahlentheorie}: 
+		\begin{displaymath}
+			\varphi(m) = Card((\mathbb{Z}/m\mathbb{Z})^*).
+		\end{displaymath}			
+		Mit Card(M) ist die Kardinalität der Menge M gemeint. Die Bezeichnung \myMathRM{(\mathbb{Z}/m\mathbb{Z})^*} steht für die Menge der Zahlen aus \myMathRM{\mathbb{Z}/m\mathbb{Z}} die ein multiplikatives Inverses besitzen. Geschrieben sieht die Menge wie folgt aus:
+		\begin{displaymath}
+			(\mathbb{Z}/m\mathbb{Z})^* = \mathbb{Z}_m^* = \{a \in \mathbb{Z}_m ~|~ggT(a,m) = 1\}.
+		\end{displaymath}
+		Die Menge \myMathRM{\mathbb{Z}_m^*} kann auch Einheitengruppe genannt werden. Ein Beispiel für den Restklassenring modulo 10 (\myMathRM{\mathbb{Z}_{10}^*}) sind die Elemente 1, 3, 7 und 9. In \cite{Mathematik:fuer:Informatiker} kann gut nachvollzogen werden warum ein multiplikatives Inverses von a existiert, wenn der ggT(a,m) = 1 ist.

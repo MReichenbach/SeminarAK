@@ -1,0 +1,386 @@
+\documentclass[deutsch, fontsize=11pt,a4paper,onecolumn]{scrreprt}
+
+%Using-Statements
+
+\usepackage[usenames, dvipsnames]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage [ ngerman ] { babel }
+\usepackage[pdfborder={0 0 0}] {hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[style=numeric, backend=bibtex,maxnames=10]{biblatex}
+\usepackage[babel]{csquotes}
+\usepackage{listings}
+\usepackage{varioref}
+\usepackage{epsfig}
+\usepackage{float}
+\usepackage{prettyref}
+\usepackage{titleref}
+\usepackage{xspace}
+\usepackage{datatool}
+\usepackage{color}
+\usepackage{todonotes}
+\usepackage[grey, palatino]{quotchap}
+\usepackage{rotating}
+\usepackage[automark]{scrpage2}
+\usepackage{shadethm}
+\usepackage{svg}
+\usepackage{scrpage2} \pagestyle{scrheadings}
+\clearscrheadfoot \ohead{\pagemark} \ihead{Beispiel}
+\setheadsepline{0.4pt} 
+\ihead{\headmark}
+\usepackage[subject={Top1},author={\AA{}nsgar Lund},version=1]{pdfcomment}
+
+\usepackage{amssymb}
+\usepackage{stmaryrd}
+
+%Settings
+%%% Refs %%%
+\newrefformat{sec}{Section~\ref{#1} \glqq\titleref{#1}\grqq \ on page \pageref{#1}}
+\bibliography{sources}
+\vrefwarning
+\setcounter{tocdepth}{2} 
+\setcounter{secnumdepth}{2}
+%\frenchspacing                  % no extra space after full stops
+
+%Definitions
+\newcommand{\HRule}{\rule{\linewidth}{1.0mm}}
+\newcommand{\includecode}[2][c]{\lstinputlisting[caption=#2, escapechar=, style=#1]{#2}}
+\newcommand{\wupp}{\bigskip \noindent}
+\newcommand{\wup}{\noindent}
+\newcommand{\bolditem}[1]{\item \textbf{#1}}
+\newcommand{\striche}[1]{\glqq{}#1\grqq{}}
+\renewcommand\chapterheadstartvskip{\vspace*{-3\baselineskip}}
+\renewcommand*{\chapterpagestyle}{chapter} 
+\newcommand*{\refFull}[1]{\hyperref[{#1}]{\textbf{\ref*{#1} \nameref*{#1}}}} % One single link
+\newcommand*{\refName}[1]{\hyperref[{#1}]{\textbf{\nameref*{#1}}}} % One single link
+\newcommand{\pic}[5][\empty]{
+\begin{figure}[h]
+	#1
+	\begin{minipage}[b]{0.5\textwidth} 
+   		\includegraphics[#2]{#3}
+   		\caption{#4}  
+    	#5
+    \end{minipage}
+    
+\end{figure}}
+
+\newcommand{\mycirc}{$\circ~$}
+\newcommand{\mycircOhne}{$\circ$}
+\newcommand{\mycdot}{$\cdot~$}
+\newcommand{\mycdotOhne}{$\cdot$}
+\newcommand{\myin}{$\in~$}
+\newcommand{\myMenge}[1]{$\mathbb{#1}$}
+\newcommand{\myInfty}{$\infty~$}
+\newcommand{\myInftyOhne}{$\infty$}
+\newcommand{\myTiefstellen}[1]{$\mathrm{_#1}$}
+\newcommand{\myHochstellen}[1]{$\mathrm{^#1}$}
+\newcommand{\myTeiler}{$\mathrm{\mid}$~}
+\newcommand{\myNichtTeiler}{$\mathrm{\nmid}$~}
+\newcommand{\myKleinerGleich}{$\mathrm{\leq}$~}
+\newcommand{\myGroesser}{$\mathrm{>}$~}
+\newcommand{\myGroesserGleich}{$\mathrm{\geq}$~}
+\newcommand{\myPhi}{$\mathrm{\varphi}$}
+\newcommand{\myZPStern}{\myMenge{Z}\myTiefstellen{p^*}}
+\newcommand{\myMathRM}[1]{$\mathrm{#1}$}
+\newcommand{\myRefGleichung}[1]{(\ref{#1})}
+\newcommand{\myAnfuehrungszeichen}[1]{\glqq{}#1\grqq{}}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{myHellGelb}{RGB}{255,255,200}
+
+\lstdefinestyle{customxml}{
+   belowcaptionskip=1\baselineskip,
+   breaklines=true,
+   frame=L,
+   xleftmargin=\parindent,
+   language=XML,
+   showstringspaces=false,
+   basicstyle=\footnotesize\ttfamily,
+      keywordstyle=\bfseries\color{green!40!black},
+      stringstyle=\color{blue},
+       morestring=[b]",
+  morestring=[s]{>}{<},
+   	literate=
+   	*{:}{{{\color{orange}{:}}}}{1}
+   	{name}{{{\color{orange}{name}}}}{4}
+   	{\{}{{{\color{delim}{\{}}}}{1}
+   	{\}}{{{\color{delim}{\}}}}}{1}
+   	{[}{{{\color{delim}{[}}}}{1}
+   	{]}{{{\color{delim}{]}}}}{1}
+}
+
+\lstdefinestyle{JavaScript}{
+	belowcaptionskip=1\baselineskip,
+	xleftmargin=\parindent,
+   	breaklines=true,
+   	frame=L,
+    basicstyle=\footnotesize\ttfamily,
+   keywordstyle=\bfseries\color{green!40!black},
+   commentstyle=\itshape\color{purple!40!black},
+   identifierstyle=\color{blue},
+   stringstyle=\color{black},
+  	morestring=[d]',
+  	morestring=[b]",
+  	showstringspaces=false,
+ 	literate=
+     *{:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1}
+}
+
+\lstdefinestyle{XMLSchemaInText}{
+	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b, 					% sets the caption-position to bottom                 
+	commentstyle=\color{mygreen},    % comment style
+	deletekeywords={},            % if you want to delete keywords from the given language
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	frame=none,                    % adds a frame around the code
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{black},       % keyword style
+	language=XSLT,                 % the language of the code
+	morekeywords={xsd:element, xsd:complexType, xsd:sequence, xsd:attributeGroup},            % if you want to add more keywords to the set
+	numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=7pt,                    % how far the line-numbers are from the code
+	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{black},     % string literal style
+	identifierstyle=\color{black},
+	tabsize=2,                       % sets default tabsize to 2 spaces
+	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\lstdefinestyle{XMLSchemaInAnhang}{
+	backgroundcolor=\color{myHellGelb},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b, 					% sets the caption-position to bottom                 
+	commentstyle=\color{mygreen},    % comment style
+	deletekeywords={},            % if you want to delete keywords from the given language
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	frame=single,                    % adds a frame around the code
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{blue},       % keyword style
+	language=XSLT,                 % the language of the code
+	morekeywords={xsd:element, xsd:complexType, xsd:sequence, xsd:attributeGroup, xsd:complexContent, xsd:extension},            % if you want to add more keywords to the set
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=7pt,                    % how far the line-numbers are from the code
+	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+	rulecolor=\color{mygray},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{black},     % string literal style
+	identifierstyle=\color{blue},
+	literate=
+	{/}{{{\color{mygray}{/}}}}{1}
+	{<}{{{\color{mygray}{<}}}}{1}
+	{>}{{{\color{mygray}{>}}}}{1}
+	{=}{{{\color{mygray}{=}}}}{1}
+	{name}{{{\color{cyan}{name}}}}{4}
+	{namespace}{{{\color{cyan}{namespace}}}}{8}
+	{type}{{{\color{cyan}{type}}}}{4}
+	{maxOccurs}{{{\color{cyan}{maxOccurs}}}}{8}
+	{minOccurs}{{{\color{cyan}{minOccurs}}}}{8}
+	{base}{{{\color{cyan}{base}}}}{4}
+	{base-id}{{{\color{black}{base-id}}}}{6}
+	{-base-}{{{\color{black}{-base-}}}}{5}
+	{"type"}{{{\color{black}{"type"}}}}{5}
+	{//}{{{\color{black}{//}}}}{2}
+	{/2}{{{\color{black}{/2}}}}{2}
+	{/1}{{{\color{black}{/1}}}}{2}
+	{1/}{{{\color{black}{1/}}}}{2}
+	{2/}{{{\color{black}{2/}}}}{2}
+	{ref}{{{\color{cyan}{ref}}}}{3},
+	tabsize=2                       % sets default tabsize to 2 spaces
+%	title=\caption                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\lstdefinestyle{XMLSchemaInText2}{
+	backgroundcolor=\color{White},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b, 					% sets the caption-position to bottom                 
+	commentstyle=\color{mygreen},    % comment style
+	deletekeywords={},            % if you want to delete keywords from the given language
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	frame=none,                    % adds a frame around the code
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{blue},       % keyword style
+	language=XSLT,                 % the language of the code
+	morekeywords={xsd:element, xsd:complexType, xsd:sequence, xsd:attributeGroup, xsd:complexContent, xsd:extension},            % if you want to add more keywords to the set
+	numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=7pt,                    % how far the line-numbers are from the code
+	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+	rulecolor=\color{mygray},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{black},     % string literal style
+	identifierstyle=\color{blue},
+	literate=
+	{/}{{{\color{mygray}{/}}}}{1}
+	{<}{{{\color{mygray}{<}}}}{1}
+	{>}{{{\color{mygray}{>}}}}{1}
+	{=}{{{\color{mygray}{=}}}}{1}
+	{name}{{{\color{cyan}{name}}}}{4}
+	{namespace}{{{\color{cyan}{namespace}}}}{8}
+	{type}{{{\color{cyan}{type}}}}{4}
+	{maxOccurs}{{{\color{cyan}{maxOccurs}}}}{8}
+	{minOccurs}{{{\color{cyan}{minOccurs}}}}{8}
+	{base}{{{\color{cyan}{base}}}}{4}
+	{base-id}{{{\color{black}{base-id}}}}{6}
+	{-base-}{{{\color{black}{-base-}}}}{5}
+	{"type"}{{{\color{black}{"type"}}}}{5}
+	{//}{{{\color{black}{//}}}}{2}
+	{/2}{{{\color{black}{/2}}}}{2}
+	{/1}{{{\color{black}{/1}}}}{2}
+	{1/}{{{\color{black}{1/}}}}{2}
+	{2/}{{{\color{black}{2/}}}}{2}
+	{ref}{{{\color{cyan}{ref}}}}{3},
+	tabsize=2                       % sets default tabsize to 2 spaces
+	%	title=\caption                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\lstdefinestyle{prologInText}{
+	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b,                    % sets the caption-position to bottom
+	commentstyle=\color{mygreen},    % comment style
+	deletekeywords={},            % if you want to delete keywords from the given language
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	frame=none,                    % adds a frame around the code
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{blue},       % keyword style
+	language=Prolog,                 % the language of the code
+	morekeywords={},            % if you want to add more keywords to the set
+	numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=7pt,                    % how far the line-numbers are from the code
+	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{black},     % string literal style
+	tabsize=2,                       % sets default tabsize to 2 spaces
+	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\lstdefinestyle{prologAnhang}{
+	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b, 					% sets the caption-position to bottom                 
+	commentstyle=\color{mygreen},    % comment style
+	deletekeywords={},            % if you want to delete keywords from the given language
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	frame=l,                    % adds a frame around the code
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{blue},       % keyword style
+	language=Prolog,                 % the language of the code
+	morekeywords={:-, karte, nachbar, inc, nb_setval, nb_getval, writef, loesung, member, bedroht_nicht, muster, dame},            % if you want to add more keywords to the set
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=7pt,                    % how far the line-numbers are from the code
+	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{mymauve},     % string literal style
+	tabsize=2,                       % sets default tabsize to 2 spaces
+	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\lstdefinestyle{irondetectPolicy}{
+	backgroundcolor=\color{myHellGelb},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+	basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b, 					% sets the caption-position to bottom                 
+	commentstyle=\color{mygreen},    % comment style
+	deletekeywords={},            % if you want to delete keywords from the given language
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	frame=single,                    % adds a frame around the code
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{blue},       % keyword style
+%	language=XSLT,                 % the language of the code
+	morekeywords={context, hint, anomaly, signature, condition, action, rule, if, do},            % if you want to add more keywords to the set
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=7pt,                    % how far the line-numbers are from the code
+	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{mymauve},     % string literal style
+	identifierstyle=\color{black},
+	tabsize=2,                       % sets default tabsize to 2 spaces
+%	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+
+\lstset{style=prologInText}
+
+\usepackage{hyperref}
+\makeindex
+
+\renewcommand*{\mkbibnamelast}[1]{\textsc{#1}}
+
+\newtheorem{defi}{Definition}
+\newtheorem{defiTest}{Beispiel Definition}
+\newtheorem{satz}[defi]{Satz}
+\newtheorem{bsp}[defi]{Beispiel}
+\newtheorem{AnforderungFunktional}{FA}
+\newtheorem{AnforderungNichtFunktional}{NFA}
+\newtheorem{AnforderungTechnische}{TA}
+
+\newtheorem{beweis}{Beweis}
+
+\begin{document}
+
+	\input{includes/pages/01_Einleitung.tex}
+	\input{includes/pages/02_Grundlagen.tex}
+	\input{includes/pages/03_Konzept.tex}
+	\input{includes/pages/04_Fazit.tex}
+	\input{includes/pages/05_Anhang.tex}
+	
+	\section*{Literaturverzeichnis}
+	\printbibliography[type=book,heading=subbibliography,title={Bücher}]
+	\printbibliography[type=thesis, heading=subbibliography,title={Promotionsarbeiten}]
+	\printbibliography[type=mvbook, heading=subbibliography,title={Abschlussarbeiten}]
+	\printbibliography[type=booklet, heading=subbibliography,title={Berichte}]
+	\printbibliography[type=unpublished, heading=subbibliography,title={Unveröffentlichtes}]
+	\printbibliography[type=manual,heading=subbibliography,title={Technische Dokumentationen}]
+	\printbibliography[type=article,heading=subbibliography,title={Zeitschriftenaufsätze}]
+	\printbibliography[type=online,heading=subbibliography,title={Websiten}]
+	\printbibliography[type=misc,heading=subbibliography,title={Sonstige}]
+	\printbibliography[nottype=book, nottype=thesis, nottype=mvbook, nottype=booklet, nottype=unpublished, nottype=manual, nottype=article, nottype=online, nottype=misc, heading=subbibliography, title={Alles Andere}]
+
+\end{document}
