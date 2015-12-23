@@ -1,8 +1,8 @@
 \section{Diskreter Logarithmus}\label{Kapitel Diskreter Logarithmus}
-	In diesem Kapitel soll der diskreter Logarithmus betrachtet werden. Es werden Anwendungspeilspiele aufgezeigt und genauer erläutert weswegen sich der diskreter Logarithmus besonders gut in der Kryptografie als Einwegfunktion eignet. Zu beginn wird das grundsätzliche Problem beim diskreten Logarithmus an einem Beispiel praxisnahe erläutert, um im Anschluss auf Algorithmische Lösungen einzugehen wie der diskreten Logarithmus in \myZPStern~und auf elliptische Kurven berechnet werden kann. Hierfür wird der Baby-Step-Giant-Step-Algorithmus vorgestellt.
+	In diesem Kapitel soll der diskrete Logarithmus betrachtet werden. Es werden Anwendungsbeispiele aufgezeigt und genau erläutert, weswegen sich der diskrete Logarithmus besonders gut in der Kryptografie als Einwegfunktion eignet. Zu Beginn wird das grundsätzliche Problem beim diskreten Logarithmus an einem Beispiel praxisnahe erläutert, um im Anschluss auf algorithmische Lösungen einzugehen wie der diskreten Logarithmus in \myZPStern~und auf elliptische Kurven berechnet werden kann. Hierfür wird der Baby-Step-Giant-Step-Algorithmus vorgestellt.
 
 	\subsection{Das Problem des diskreten Logarithmus im Detail}\label{Das Problem des diskreten Logarithmus im Detail}
-		Es existiert eine Primzahl p, ein erzeugendes Element g für \myZPStern~sowie eine ganze Zahl x. Zu der diskreten Exponentialfunktion $g^x~mod~p$ gibt es die diskrete Logarithmusfunktion, die zu einem gegebenen y und g, x beschreibt. Somit ist x der diskrete Logarithmus von y zur Basis g. ($y = g^x~mod~p$) Jede Zahl aus \myZPStern~lässt sich als Potenz von g darstellen, wenn g ein erzeugendes Element von \myZPStern~ist. Ist dies nicht der Fall, so muss es nicht zu jedem $y$ \myin \myZPStern~einen diskreten Logarithmus geben.~\cite{Kryptografie:in:Theorie:und:Praxis} Um das eigentliche Problem des diskreten Logarithmus zu verstehen ist es hilfreich, die Logarithmen in \myMenge{R} mit Logarithmen in \myZPStern~gegenüberzustellen.
+		Es existiert eine Primzahl p, ein erzeugendes Element g für \myZPStern~sowie eine ganze Zahl x. Zu der diskreten Exponentialfunktion $g^x~mod~p$ gibt es die diskrete Logarithmusfunktion, die zu einem gegebenen y und g, x beschreibt. Somit ist x der diskrete Logarithmus von y zur Basis g, ($y = g^x~mod~p$). Jede Zahl aus \myZPStern~lässt sich als Potenz von g darstellen, wenn g ein erzeugendes Element von \myZPStern~ist. Ist dies nicht der Fall, so muss es nicht zu jedem $y$ \myin \myZPStern~einen diskreten Logarithmus geben.~\cite{Kryptografie:in:Theorie:und:Praxis} Um das eigentliche Problem des diskreten Logarithmus zu verstehen ist es hilfreich, die Logarithmen in \myMenge{R} mit Logarithmen in \myZPStern~gegenüberzustellen.
 		\begin{minipage}{0.24\textwidth}
 			\begin{equation}
 			\begin{aligned}
@@ -26,19 +26,19 @@
 			\end{equation}
 		\end{minipage}
 
-		Die Gleichungen aus \myRefGleichung{Gleichung Log in Z} zeigen wie der Logarithmus von x zur Basis g, mit der Logarithmusfunktion berechnet werden kann. Auf diese Weise sind Gleichungen für die positiven reellen Zahlen \myMenge{R^+} immer eindeutig lösbar. Für die Gleichungen aus \myRefGleichung{Gleichung Log in ZP} wird ebenfalls mit der Logarithmusfunktion versucht, den Logarithmus von 10 zu Basis 2 zu erhalten. Als Ergebnis erhält man eine Zahl die nicht in \myZPStern~enthalten ist. Was auch nicht verwundert, da die Logarithmusfunktion $mod~11$ gar nicht berücksichtigt. Genau hier ist das grundsätzlich Problem beim diskreten Logarithmus. Es gibt keine mathematische Rechenoperation die es ermöglicht den diskreten Logarithmus in einem endlichen Körper mit nur einem Rechenschritt zu berechnen. Um dennoch eine Lösung zu erhalten, scheint das Enumerationsverfahren das naheliegendste zu sein. Hierbei werden einfach alle Werte die für $x$ in frage kommen durchprobiert. So ist die Lösung der Gleichungen aus \myRefGleichung{Gleichung Log in ZP}, $x = 5$.~\cite{DLP:ECDLP:Probleme:und:Loesungen} Für sehr große Gruppen, wo x Beispielsweise eine 160 Bit große Zahl ist, gibt es bis heute keine Algorithmen die den diskreten Logarithmus effizient berechnen.\cite{Kryptografie:in:Theorie:und:Praxis} Es gibt allerdings eine ganze Reihe von Algorithmen die in der Lage sind den diskreten Logarithmus gezielter zu berechnen als das naive Ausprobieren. Nachfolgend soll der Baby-Step-Giant-Step-Algorithmus genauer betrachtet werden.
+		Die Gleichungen aus \myRefGleichung{Gleichung Log in Z} zeigen wie der Logarithmus von x zur Basis g, mit der Logarithmusfunktion berechnet werden kann. Auf diese Weise sind Gleichungen für die positiven reellen Zahlen \myMenge{R^+} immer eindeutig lösbar. Für die Gleichungen aus \myRefGleichung{Gleichung Log in ZP} wird ebenfalls mit der Logarithmusfunktion versucht, den Logarithmus von 10 zur Basis 2 zu erhalten. Als Ergebnis erhält man eine Zahl die nicht in \myZPStern~enthalten ist, was auch nicht verwundert, da die Logarithmusfunktion $mod~11$ gar nicht berücksichtigt. Genau hier ist das grundsätzliche Problem beim diskreten Logarithmus. Es gibt keine mathematische Rechenoperation die, es ermöglicht, den diskreten Logarithmus in einem endlichen Körper mit nur einem Rechenschritt zu berechnen. Um dennoch eine Lösung zu erhalten, scheint das Enumerationsverfahren das naheliegendste zu sein. Hierbei werden einfach alle Werte, die für $x$ in Frage kommen, durchprobiert. So ist die Lösung der Gleichungen aus \myRefGleichung{Gleichung Log in ZP}, $x = 5$.~\cite{DLP:ECDLP:Probleme:und:Loesungen} Für sehr große Gruppen, wo x beispielsweise eine 160 Bit große Zahl ist, gibt es bis heute keine Algorithmen die den diskreten Logarithmus effizient berechnen.\cite{Kryptografie:in:Theorie:und:Praxis} Es gibt allerdings eine ganze Reihe von Algorithmen, die in der Lage sind, den diskreten Logarithmus gezielter zu berechnen als das naive Ausprobieren, siehe hierfür Kapitel   \ref{Kapitel Baby Step Giant Step Algorithmus}.
 		
 		%TODO nchmal schauen das will ich nochmal anders haben schauen ob die Reihenfolge geändert wird für (Das Problem des diskreten Logarithmus im Detail) <=> (Diskreter Logarithmus auf elliptische Kurven)
 		
 		\subsubsection{Diskreter Logarithmus auf elliptische Kurven}
-		In Kapitel \ref{Elliptischen Kurven Grundlagen} wurde die Addition von Punkten und Skalaren auf elliptische Kurven beschrieben. In diesem Unterkapitel soll kurz beschrieben werden was genau der Logarithmus auf einer elliptische Kurven über \myZPStern~ist. Für eine elliptische Kurve $E$ über den Primkörper \myZPStern~mit den Punkten $P, Q \in E$(\myZPStern), gibt es ein $k \in$ \myZPStern~sodass die folgende Gleichung erfüllt ist:
-		\begin{displaymath}
-		Q = kP
-		\end{displaymath}
-		So wird die Zahl $k$ als diskreter Logarithmus von $Q$ zur Basis $P$ bezeichnet. Den diskreten Logarithmus aus $E$(\myZPStern) zu bestimmen, ist noch einmal ungleich komplexer als aus \myZPStern. Dieses Berechnungsproblem wird \textbf{E}lliptic \textbf{C}urve \textbf{D}iscrete \textbf{L}ogarithmen \textbf{P}roblem, kurz \textbf{ECDLP}, genannt.
+			In Kapitel \ref{Elliptischen Kurven Grundlagen} wurde die Addition von Punkten und Skalaren auf elliptische Kurven beschrieben. In diesem Unterkapitel soll kurz beschrieben werden, was genau der Logarithmus auf einer elliptischen Kurve über \myZPStern~ist. Für eine elliptische Kurve $E$ über den Primkörper \myZPStern~mit den Punkten $P, Q \in E$(\myZPStern), gibt es ein $k \in$ \myZPStern~sodass die folgende Gleichung erfüllt ist:
+			\begin{displaymath}
+			Q = kP
+			\end{displaymath}
+			So wird die Zahl $k$ als diskreter Logarithmus von $Q$ zur Basis $P$ bezeichnet. Den diskreten Logarithmus aus $E$(\myZPStern) zu bestimmen, ist noch einmal ungleich komplexer als aus \myZPStern. Dieses Berechnungsproblem wird \textbf{E}lliptic \textbf{C}urve \textbf{D}iscrete \textbf{L}ogarithm \textbf{P}roblem, kurz \textbf{ECDLP}, genannt.
 
-	\subsection{Baby-Step-Giant-Step-Algorithmus}
-		In der Praxis ist es mit diesem Algorithmus nicht möglich eine Verschlüsselung die auf dem DLP aufbaut zu brechen. Die Komplexität diese Algorithmus liegt in $O(\sqrt[]{p-1})$ ist somit schon deutlich besser als eine naive vollständige Suche, deren Komplexität in $O(p-1)$ liegt, dennoch zu stark von der Größe der zugrundeliegenden Gruppe abhängig ist. Anzumerken ist, dieser Algorithmus ist ein sogenannter generischer Algorithmus, womit dieser für jede Gruppe funktioniert und nicht von einer speziellen Struktur der Gruppe abhängt.~\cite{Kryptografie:in:Theorie:und:Praxis}
+	\subsection{Baby-Step-Giant-Step-Algorithmus}\label{Kapitel Baby Step Giant Step Algorithmus}
+		In der Praxis ist es mit diesem Algorithmus nicht möglich eine Verschlüsselung die auf dem DLP aufbaut zu brechen. Die Komplexität diese Algorithmus liegt in $O(\sqrt[]{p-1})$ und ist somit schon deutlich besser als eine naive vollständige Suche, deren Komplexität in $O(p-1)$ liegt, und dennoch zu stark von der Größe der zugrundeliegenden Gruppe abhängig ist. Anzumerken ist, dass dieser Algorithmus ein sogenannter generischer Algorithmus ist, womit dieser für jede Gruppe funktioniert und nicht von einer speziellen Struktur der Gruppe abhängt.~\cite{Kryptografie:in:Theorie:und:Praxis}
 		
 		Zuerst wählt der Algorithmus eine Zahl t \myin \myMenge{N}, sodass $t \geq \sqrt[]{p-1}$ ist. Mit einer zweiten Zahl r ($0 \leq r<t$) lässt sich die Gleichung des diskreten Logarithmus schreiben als:
 		\begin{equation}
@@ -58,37 +58,37 @@
 		Sollte ein Eintrag vorhanden sein der in beiden Listen vorkommt, liefert dieser den diskreten Logarithmus x.~\cite{Kryptografie:in:Theorie:und:Praxis}
 		
 		\subsubsection{Baby-Step-Giant-Step Vorgehen}
-			Zu erst errechnet man t mit $\sqrt[]{p-1}$. Nun werden alle baby steps benötigt, diese werden mit Gleichung \myRefGleichung{Gleichung Baby steps} ermittelt:
+			Zuerst errechnet man t mit $\sqrt[]{p-1}$. Nun werden alle Baby-Steps benötigt, diese werden mit Gleichung \myRefGleichung{Gleichung Baby steps} ermittelt:
 			\begin{equation}
 				B = \{~(x \cdot g^{-r}~mod~p,~r)~:~0 \leq r < t~\}
 			\label{Gleichung Baby steps}
 			\end{equation}
-			Die Ergebnisse von \myRefGleichung{Gleichung Baby steps} mit dem dazugehörigen $r$ werden in einer Liste gespeichert. Mit Gleichung \myRefGleichung{Gleichung Giant steps} werden nun die giant step berechnet.
+			Die Ergebnisse von \myRefGleichung{Gleichung Baby steps} mit dem dazugehörigen $r$ werden in einer Liste gespeichert. Mit Gleichung \myRefGleichung{Gleichung Giant steps} werden nun die Giant-Steps berechnet.
 			\begin{equation}
 				G = \{~g^{t \cdot q}~mod~p~:~q = 1,2,3,...~\}
 			\label{Gleichung Giant steps}
 			\end{equation}
-			Die so ermittelten Lösungen von \myRefGleichung{Gleichung Giant steps} werden mit denen aus der Liste der baby steps verglichen. Stimmen baby step und giant step überein, wurde eine Kollision gefunden und die Gleichung aus \myRefGleichung{Gleichung Baby steps Giant steps} ist erfüllt. Die so ermittelten Werte für $q$ und $r$ können nun in Gleichung \myRefGleichung{Gleichung Diskreter Logarithmus} eingesetzt werden und erhält so den diskreten Logarithmus von $y$.
-		\subsubsection{Baby-Step-Giant-Step zum lösen des ECDLP}
-			Am Grundsätzlichen Vorgehen beim Baby-Step-Giant-Step-Algorithmus auf elliptische Kurven ändert sich nicht viel, weswegen hier nur noch einmal die Unterschiede gezeigt werden. Die baby steps werden nach Gleichung \myRefGleichung{Gleichung Baby steps für elliptische Kurven} berechnet:
+			Die so ermittelten Lösungen von \myRefGleichung{Gleichung Giant steps} werden mit denen aus der Liste der Baby-Steps verglichen. Stimmen Baby-Step und Giant-Step überein, wurde eine Kollision gefunden und die Gleichung aus \myRefGleichung{Gleichung Baby steps Giant steps} ist erfüllt. Die so ermittelten Werte für $q$ und $r$ können nun in Gleichung \myRefGleichung{Gleichung Diskreter Logarithmus} eingesetzt werden und man erhält so den diskreten Logarithmus von $y$.
+		\subsubsection{Baby-Step-Giant-Step zum Lösen des ECDLP}
+			Am grundsätzlichen Vorgehen beim Baby-Step-Giant-Step-Algorithmus auf elliptische Kurven ändert sich nicht viel, weswegen hier nur noch einmal die Unterschiede gezeigt werden. Die Baby-Steps werden nach Gleichung \myRefGleichung{Gleichung Baby steps für elliptische Kurven} berechnet:
 			\begin{equation}
 				B = \{~(~Q- rP,~r~)~:~0 \leq r < t~\}
 				\label{Gleichung Baby steps für elliptische Kurven}
 			\end{equation}
-			Diese werden in einer Liste gespeichert um sie in einem weiteren Schritt mit den giant steps zu vergleichen:
+			Diese werden in einer Liste gespeichert, um sie in einem weiteren Schritt mit den giant steps zu vergleichen:
 			\begin{equation}
 				G = \{~(~qmP,~q~)~:~0 \leq q < t~\}
 				\label{Gleichung Giant steps für elliptische Kurven}
 			\end{equation}
 			Bei gefundener Kollision kann aus $q$ und $r$, $k = qm + r$ errechnet werden und man erhält den diskreten Logarithmus von $Q$.
 	\subsection{Index-Calculus-Algorithmus}
-		Der Index-Calculus-Algorithmus kann das DLP \myAnfuehrungszeichen{besser} lösen als der Baby-Step-Giant-Step-Algorithmus. Es sei an dieser Stell schon vorweggenommen auch dieser ist vom effizienten Lösen noch weit entfernt. Ausgangsbasis ist die schon aus \ref{Das Problem des diskreten Logarithmus im Detail} bekannte Gleichung \myRefGleichung{Gleichung Diskreten Logarithmus aus ZPStern} zum diskreten Logarithmus aus \myZPStern.
+		Der Index-Calculus-Algorithmus kann das DLP \myAnfuehrungszeichen{besser} lösen als der Baby-Step-Giant-Step-Algorithmus. Es sei an dieser Stelle schon vorweggenommen, dass auch dieser vom effizienten Lösen noch weit entfernt ist. Ausgangsbasis ist die schon aus \ref{Das Problem des diskreten Logarithmus im Detail} bekannte Gleichung \myRefGleichung{Gleichung Diskreten Logarithmus aus ZPStern} zum diskreten Logarithmus aus \myZPStern.
 		\begin{equation}
 			y = g^x~mod~p
 			\label{Gleichung Diskreten Logarithmus aus ZPStern}
 		\end{equation}
 		
-		Für jedes $h \not\equiv 0~(mod~p)$ kann als $h \equiv g^k$ geschrieben werden, womit eindeutig $mod~p - 1$ bestimmt wird. Der diskrete Logarithmus von $x$ wird als $L(x)$ geschrieben, sodass $x = L(x)$ gilt. Daraus folgt:
+		Jedes $h \not\equiv 0~(mod~p)$ kann als $h \equiv g^k$ geschrieben werden, womit eindeutig $mod~p - 1$ bestimmt wird. Der diskrete Logarithmus von $x$ wird als $L(x)$ geschrieben, sodass $x = L(x)$ gilt. Daraus folgt:
 		\begin{equation}
 			g^{L_{(h)}} \equiv h~~~~(mod~p)
 			\label{Gleichung Diskreten Logarithmus äquivalent}
@@ -107,7 +107,7 @@
 		
 		Die Grundidee beim Index-Calculus-Algorithmus ist, aus der Kenntnis des diskreten Logarithmus für einige Zahlen, kann über die passenden Gleichungen der diskrete Logarithmus von beliebigen Zahlen berechnet werden.\cite{DLP:ECDLP:Probleme:und:Loesungen}
 		
-		Zunächst bildet man eine Faktorbasis Menge B aus kleinen Primzahlen. Als nächstes müssen passende Gleichungen gefunden werden wo die Primfaktorzerlegung von $g^x$ nur aus Potenzen von Elementen aus B besteht. Ziel ist es nun ein Gleichungssystem aus Potenzen von Elementen aus B zu lösen. Durch umstellen der Gleichungen und multiplizieren mit den inversen Element, für Elemente aus B, kann der diskreten Logarithmus errechnet werden. Die so erlangen Ergebnisse können genutzten werden um auch die restlichen diskreten Logarithmen von Elementen aus B, mit Hilfe von Addition und Subtraktion wie in Gleichung \myRefGleichung{Gleichung Diskreten Logarithmus additionSubtraktion} gezeigt, zu errechnen. Siehe dazu das Beispiel aus \cite{Elliptic:Curves:Number:Theory:and:Cryptography} S. 144.
+		Zunächst bildet man eine Faktorbasis Menge B aus kleinen Primzahlen. Als nächstes müssen passende Gleichungen gefunden werden wo die Primfaktorzerlegung von $g^x$ nur aus Potenzen von Elementen aus B besteht. Ziel ist es nun ein Gleichungssystem aus Potenzen von Elementen aus B zu lösen. Durch Umstellen der Gleichungen und Multiplizieren mit den inversen Element, für Elemente aus B, kann der diskrete Logarithmus errechnet werden. Die so erlangten Ergebnisse können genutzt werden, um auch die restlichen diskreten Logarithmen von Elementen aus B, mit Hilfe von Addition und Subtraktion wie in Gleichung \myRefGleichung{Gleichung Diskreten Logarithmus additionSubtraktion} gezeigt, zu errechnen. Siehe dazu das Beispiel aus \cite{Elliptic:Curves:Number:Theory:and:Cryptography} S. 144.
 		
 		Nun muss solange ein zufälliger Wert für $j$ in Gleichung
 		\begin{equation}
@@ -115,6 +115,6 @@
 			\label{Gleichung Diskreten Logarithmus Gleichung 2}
 		\end{equation}
 		
-		eingesetzt werden bis ein $y$, das Produkt aus Elementen von B ist, gefunden wurde. Da die diskreten Logarithmen der Elemente aus B bekannt sind, kann mit dessen Hilfe wie in Gleichung \myRefGleichung{Gleichung Diskreten Logarithmus Gleichung 2} gezeigt der diskrete Logarithmus von y berechnet werden.
+		eingesetzt werden, bis ein $y$, dass das Produkt aus Elementen von B ist, gefunden wurde. Da die diskreten Logarithmen der Elemente aus B bekannt sind, kann mit dessen Hilfe, wie in Gleichung \myRefGleichung{Gleichung Diskreten Logarithmus Gleichung 2} gezeigt, der diskrete Logarithmus von y berechnet werden.
 		
-		Entscheidend für diesen Algorithmus ist das die Faktorbasis Menge B nicht zu klein gewählt wird, da man ansonsten nicht genügend Gleichungen für das Gleichungssystem findet. Die Menge darf aber auch nicht zu Groß werden, denn sonst wird das Gleichungssystem auch zu groß und komplex. Entscheidend für die Laufzeit diese Algorithmusses ist das finden von Gleichungen wo die Primfaktorzerlegung aus Potenzen von Elementen aus B besteht und das zufälliger raten von $j$, bis Produkt aus Elementen von B gefunden wurde.
+		Entscheidend für diesen Algorithmus ist, dass die Faktorbasis Menge B nicht zu klein gewählt wird, da man ansonsten nicht genügend Gleichungen für das Gleichungssystem findet. Die Menge darf aber auch nicht zu groß werden, denn sonst wird das Gleichungssystem auch zu groß und komplex. Entscheidend für die Laufzeit diese Algorithmus ist das Finden von Gleichungen wo die Primfaktorzerlegung aus Potenzen von Elementen aus B besteht und das zufällige raten von $j$, bis das Produkt aus Elementen von B gefunden wurde.
