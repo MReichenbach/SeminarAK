@@ -1,5 +1,7 @@
 \section{Grundlagen}\label{Kapitel Grundlagen}
-	In diesem Kapitel werden die Grundlagen zur Analyse von Primzahlen und dem diskreten Logarithmus gegeben. Dazu werden im allg. nur die Definitionen und Sätze geliefert. Für Beweise der hier angeführten Sätze sei auf die Bücher \cite{Kryptografie:in:Theorie:und:Praxis}, \cite{Erste:Hilfe:in:Linearer:Algebra}, \cite{Kryptographie:und:IT-Sicherheit}, \cite{Information:und:Kommunikation} \textbf{[TODO noch weiter wenn nötig [x],[y],[z]]} verwiesen. Es wird vorausgesetzt, dass die Rechenvorschriften des Modulo bekannt sind.
+	In diesem Kapitel werden die Grundlagen zur Analyse von Primzahlen und dem diskreten Logarithmus gegeben. Dazu werden im allg. nur die Definitionen und Sätze geliefert. Für Beweise der hier angeführten Sätze sei auf die Bücher \cite{Kryptografie:in:Theorie:und:Praxis}, \cite{Erste:Hilfe:in:Linearer:Algebra}, \cite{Kryptographie:und:IT-Sicherheit} und \cite{Information:und:Kommunikation}
+	%\textbf{[TODO noch weiter wenn nötig [x],[y],[z]]}
+	verwiesen. Es wird vorausgesetzt, dass die Rechenvorschriften des Modulo bekannt sind.
 	
 	Für dies Ausarbeitung wurden diverse Quellen unterstützend verwendet. Da es Notations Unterschiede der einzelnen Quellen gibt, führt dies dazu, dass sich nicht an die Notation aller genutzten Quellen gehalten werden kann. Speziell in \cite{Erste:Hilfe:in:Linearer:Algebra} wird eine multiplikative Gruppe aller Einheiten in $G$ mit $G^X$ bezeichnet. Von dieser Notation wird abgesehen und die aus den anderen Quellen weiter verbreitete Notation $G^*$ verwendet.
 	
@@ -35,7 +37,7 @@
 			Es gibt spezielle Ringe, die sogenannten Körper. Ist eine Menge (K, +, \mycdotOhne) ein Ring und ist ($K / \{0\}$, \mycdotOhne) eine kommutative Gruppe, ist K ein Körper. Alle von Null verschiedenen Elemente sind Einheiten und es gilt: K* = $K / \{0\}$.~\cite{Erste:Hilfe:in:Linearer:Algebra}
 			
 		\subsubsection{Integritätsbereiche}
-			Wie in~\cite{Algorithmische:Zahlentheorie} angegeben ist ein Integritätsbereich ein kommutativer, nullteilerfreier Ring R mit Einselement. Aus dieser Definition ergeben sich die Integritätsbereiche der ganzen Zahlen \myMenge{Z}, der ganzen Gauß’schen Zahlen \myMenge{Z}[i] und des Polynomrings in einer Unbestimmten X über einem Körper K, der K[X] bezeichnet wird. 
+			Wie in~\cite{Algorithmische:Zahlentheorie} angegeben ist ein Integritätsbereich ein kommutativer, nullteilerfreier Ring R mit Einselement. Aus dieser Definition ergeben sich die Integritätsbereiche der ganzen Zahlen \myMenge{Z}, der ganzen Gauß’schen Zahlen \myMenge{Z}[i] und des Polynomrings in einem unbestimmten X über einem Körper K, der K[X] bezeichnet wird. 
 			\begin{displaymath}
 				\mathbb{Z}[i] = \{n + im  \in \mathbb{C} : n,m \in \mathbb{Z}\}
 			\end{displaymath}
@@ -47,12 +49,12 @@
 			\begin{displaymath}
 				\mathrm{x = qy + r,~~~q, r \in R,	mit~r=0~oder~\beta(r) < \beta(y)}
 			\end{displaymath}
-			als euklidischer Ring bezeichnet und lässt die Division mit Rest zu. Wie in \cite{Algorithmische:Zahlentheorie} gezeigt, ist jeder der Ringe Z, Z[i] und K[X], für einen beliebigen Körper K, euklidisch. Die Erkenntnis das es weitere Integritätsbereiche als \myMenge{Z} gibt, wird in den effizienten Primzahltests wieder aufgegriffen. 
+			als euklidischer Ring bezeichnet und lässt die Division mit Rest zu. Wie in \cite{Algorithmische:Zahlentheorie} gezeigt, ist jeder der Ringe Z, Z[i] und K[X], für einen beliebigen Körper K, euklidisch. Die Erkenntnis, dass es weitere Integritätsbereiche als \myMenge{Z} gibt, wird in den effizienten Primzahltests wieder aufgegriffen. 
 			
 			Die Teilbarkeit einer Zahl a \myin R durch b \myin R ohne Rest wird b \myTeiler a geschrieben. Kann a durch b nicht ohne Rest geteilt werden, wird b \myNichtTeiler a geschrieben.
 		
 		\subsubsection{Restklassenringe in \myMenge{Z}}
-			Restklassenringe \myMenge{Z}/m\myMenge{Z} oder auch \myMathRM{\mathbb{Z}_m} ergeben sich aus der Definition einer Addition und Multiplikation auf Restklassen. Eine Restklasse bezeichnet zwei Zahlen \myin \myMenge{Z} die bei der Division durch m \myin \myMenge{N} den gleichen Rest haben. Diese zwei Zahlen sind also in der gleichen Restklasse. Die Anzahl der Restklassen in einem Restklassenring ist gleich m. Die Äquivalenzrelation der beiden Zahlen bezüglich der Restklasse, kann wie folgt definiert werden:
+			Restklassenringe \myMenge{Z}/m\myMenge{Z} oder auch \myMathRM{\mathbb{Z}_m} ergeben sich aus der Definition einer Addition und Multiplikation auf Restklassen. Eine Restklasse bezeichnet zwei Zahlen \myin \myMenge{Z} die bei der Division durch m \myin \myMenge{N} den gleichen Rest haben. Diese zwei Zahlen sind also in der gleichen Restklasse. Die Anzahl der Restklassen in einem Restklassenring ist gleich m. Die Äquivalenzrelation der beiden Zahlen bezüglich der Restklasse kann wie folgt definiert werden:
 			Zwei Zahlen x, y \myin \myMenge{Z} heißen kongruent modulo m \myin \myMenge{N} wenn m \myTeiler $x-y$. In Zeichen:
 			\begin{displaymath}
 				x \equiv y~mod~m
@@ -60,7 +62,7 @@
 			Die zugehörigen Beweise und Rechenvorschriften für Restklassenringe finden sich in \cite{Algorithmische:Zahlentheorie}.
 			
 		\subsection{Euklidischer Algorithmus}
-			Der euklidische Algorithmus wird zur Berechnung des größten gemeinsamen Teiler zweier Zahlen benötigt. Der Algorithmus findet in fast allen weiteren Betrachtungen Anwendung und wird deshalb explizit angegeben. Wie in \cite{Diskrete:Strukturen} bewiesen, kann der Algorithmus folgend definiert werden:
+			Der euklidische Algorithmus wird zur Berechnung des größten gemeinsamen Teilers zweier Zahlen benötigt. Der Algorithmus findet in fast allen weiteren Betrachtungen Anwendung und wird deshalb explizit angegeben. Wie in \cite{Diskrete:Strukturen} bewiesen, kann der Algorithmus wie folgt definiert werden:
 			
 			Sind m, n \myin \myMenge{N}\ zwei natürliche Zahlen mit m \myKleinerGleich n und m \myNichtTeiler n, so gilt:
 			\begin{displaymath}
@@ -68,7 +70,7 @@
 			\end{displaymath}
 						
 		\subsection{Euler’sche \myPhi -Funktion}
-			Die Eulersche phi Funktion \myPhi(m) berechnet die Anzahl teilerfremder Zahlen für eine gegebene Zahl m \myGroesser 1. Also gilt nach \cite{Algorithmische:Zahlentheorie}: 
+			Die Eulersche phi-Funktion \myPhi(m) berechnet die Anzahl teilerfremder Zahlen für eine gegebene Zahl m \myGroesser 1. Also gilt nach \cite{Algorithmische:Zahlentheorie}: 
 			\begin{displaymath}
 				\varphi(m) = Card((\mathbb{Z}/m\mathbb{Z})^*).
 			\end{displaymath}			

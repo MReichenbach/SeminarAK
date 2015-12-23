@@ -1,6 +1,6 @@
 \section{Primzahlen}\label{Kapitel Primzahlen}
 	Natürliche Primzahlen werden definiert durch Zahlen > 1 die nur durch Eins oder sich selbst teilbar sind. Wie im Kapitel Primfaktorzerlegung gezeigt, können alle natürlichen Zahlen mit einer Multiplikation von Primzahlen erzeugt werden. Sie bilden sozusagen die Bausteine aller natürlichen Zahlen. Die Unberechenbarkeit mit der sie auftreten gibt Mathematikern schon seit Jahrtausenden Rätsel auf und ist ein Grundstein unserer heutigen Verschlüsselungsverfahren.
-	In anderen Zahlensystemen als den natürlichen Zahlen ist die gewohnte Definition von Primzahlen nicht vollständig/korrekt. Sie sagt nur etwas über die Irreduzibelität eines Elements in einem Integritätsbereich aus. Da in den natürlichen Zahlen aber jedes irreduzibles Element auch prim ist reicht diese Definition für \myMenge{N} aus.
+	In anderen Zahlensystemen als den natürlichen Zahlen ist die gewohnte Definition von Primzahlen nicht vollständig/korrekt. Sie sagt nur etwas über die Irreduzibelität eines Elements in einem Integritätsbereich aus. Da in den natürlichen Zahlen aber jedes irreduzibles Element auch prim ist, reicht diese Definition für \myMenge{N} aus.
 	Für alle Integritätsbereiche gilt für die Primheit folgende Definition nach \cite{Algorithmische:Zahlentheorie}:
 	
 	Ein Element \myMathRM{p \in R\setminus(R^* \cup~\{0\})} heißt prim oder Primelement, wenn für alle \myMathRM{a, b \in R\setminus\{0\}} gilt:	
@@ -12,7 +12,7 @@
 	
 	Neben den normalen Primzahlen gibt es weitere sogenannte Pseudoprimzahlen. Diese Primzahlen verhalten sich bezogen auf einen Algorithmus genauso wie echte Primzahlen, sie sind jedoch zusammengesetzt. Ein Beispiel für solche Zahlen sind Carmichaelzahlen die in einem späteren Kapitel thematisiert sind.
 
-	Leider gibt es keine bekannten effizienten Verfahren um Primzahlen zu generieren. Dennoch kann man Primzahlen recht einfach raten. Grundsätzlich ist es möglich eine große Anzahl von Zahlen auszuschließen. Man denke an: nur ungerade Zahlen, die Teilungsgesetze und die Tatsache das alle Primzahlen > 3 in der Form 4k +1 oder 4k +3, k \myin \myMenge{N} vorliegen. Alle geratenen Zahlen müssen jedoch einem Primzahltest(vgl. Kapitel \ref{Effiziente Primzahltests}) zur Verifizierung unterzogen werden. In \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} ist beschrieben wie ein Generierungsprozess erfolgen kann.
+	Leider gibt es keine bekannten effizienten Verfahren um Primzahlen zu generieren. Dennoch kann man Primzahlen recht einfach raten. Grundsätzlich ist es möglich eine große Anzahl von Zahlen auszuschließen. Man denke an: nur ungerade Zahlen, die Teilungsgesetze und die Tatsache, dass alle Primzahlen > 3 in der Form 4k +1 oder 4k +3, k \myin \myMenge{N} vorliegen. Alle geratenen Zahlen müssen jedoch einem Primzahltest (vgl. Kapitel \ref{Effiziente Primzahltests}) zur Verifizierung unterzogen werden. In \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} ist beschrieben wie ein Generierungsprozess erfolgen kann.
 
 	\subsection{Primfaktorzerlegung}
 	Jede natürliche Zahl größer als Eins kann als Produkt von Primzahlen geschrieben werden. Dieser zentrale Satz wird als Fundamentalsatz der Zahlentheorie bezeichnet und kann auf jeden euklidischen Ring R angewendet werden. Eine Primfaktorzerlegung wird mit x \myin R, u \myin R*, \myMathRM{e_1, e_2, ..., e_m} \myin \myMenge{N} wie folgt definiert:	
@@ -21,14 +21,12 @@
 	\end{displaymath}
 	wobei  \myMathRM{p_1 < p_2 < ... < p_m} Primelemente sind.
 	
-
 	Neben der Existenz einer solchen Primfaktorzerlegung ist auch die Eindeutigkeit, die durch das Vergleichszeichen \grqq kleiner als\grqq ~implizit angegeben ist, von entscheidender Bedeutung. In \cite{Einfuehrung:in:Algebra:und:Zahlentheorie} und \cite{Algorithmische:Zahlentheorie} wird die Existenz und Eindeutigkeit bewiesen.
 
-	
-	Die meisten kryptographischen Algorithmen bauen auf die ineffiziente Berechnung der Primfaktoren. Es ist zwar einfach zwei Primzahlen mit einander zu multiplizieren, aber es ist schwer aus der multiplizierten Zahl die beiden Primfaktoren zurückzugewinnen. Kennt man jedoch eine der beiden Primzahlen so berechnet sich die zweite durch einfache Division. Zur Verschlüsselung ergibt sich damit die Idee einer sogenannten Falltür-Funktion, die die Primfaktoren mit Hilfe eines geheimen Hinweises schnell berechnen kann.
+	Die meisten kryptographischen Algorithmen bauen auf die ineffiziente Berechnung der Primfaktoren. Es ist zwar einfach zwei Primzahlen miteinander zu multiplizieren, aber es ist schwer aus der multiplizierten Zahl die beiden Primfaktoren zurückzugewinnen. Kennt man jedoch eine der beiden Primzahlen, so berechnet sich die zweite durch einfache Division. Zur Verschlüsselung ergibt sich damit die Idee einer sogenannten Falltür-Funktion, die die Primfaktoren mit Hilfe eines geheimen Hinweises schnell berechnen kann.
 		
 	\subsection{Satz von Euler und Kleiner Satz von Fermat}
-	Die Vermutung vom kleinen Satz von Fermat wurde von Fermat im 17 Jahrhundert aufgestellt und von Euler bewiesen. Euler konnte zudem zeigen das der kleine Satz von Fermat nur ein Spezialfall für Primzahlen darstellt. Der Satz von Euler lautet:
+	Die Vermutung vom kleinen Satz von Fermat wurde von Fermat im 17. Jahrhundert aufgestellt und von Euler bewiesen. Euler konnte zudem zeigen, dass der kleine Satz von Fermat nur ein Spezialfall für Primzahlen darstellt. Der Satz von Euler lautet:
 	
 	Sei m \myGroesserGleich 2 \myin \myMenge{N}. Dann gilt für jede zu m teilerfremde Zahl a \myin \myMenge{N}
 	\begin{displaymath}
@@ -51,10 +49,10 @@
 	\begin{displaymath}
 		a^{m-1} \not\equiv 1~mod~m \Longrightarrow nicht~prim
 	\end{displaymath}
-	Leider ist der fermatsche Primzahltest nur ein negativ Test, der eindeutig zeigen kann das eine Zahl nicht prim ist. Wenn der Test einer Zahl kongruent 1 modulo m ergibt, muss m also nicht prim sein. Eine Zahl die für den Test prim ist, ist entweder eine echte Primzahl oder eine Pseudoprimzahl m zur Basis a.\cite{Elementare:Zahlentheorie}
+	Leider ist der fermatsche Primzahltest nur ein negativ Test, der eindeutig zeigen kann, dass eine Zahl nicht prim ist. Wenn der Test einer Zahl kongruent 1 modulo m ergibt, muss m also nicht prim sein. Eine Zahl, die für den Test prim ist, ist entweder eine echte Primzahl oder eine Pseudoprimzahl m zur Basis a.\cite{Elementare:Zahlentheorie}
 		
 	\subsection{Carmichaelzahlen}
-	Da Pseudoprimzahlen die Primalität immer zu einer Basis aufweisen, liegt der Versuch nahe andere Basen zu suchen für die der fermatsche Test nachweisen kann, dass die vermeintliche Primzahl gar keine ist. Dies ist der Grundbaustein für probabilistische Primzahltest. Dennoch gibt es Zahlen für die der fermatsche Test bei allen teilerfremden Basen kongruent eins Äquivalenz feststellt. Diese starken fermatschen Pseudoprimzahlen heißen Carmichaelzahlen.
+	Da Pseudoprimzahlen die Primalität immer zu einer Basis aufweisen, liegt der Versuch nahe andere Basen zu suchen, für die der fermatsche Test nachweisen kann, dass die vermeintliche Primzahl gar keine ist. Dies ist der Grundbaustein für probabilistische Primzahltests. Dennoch gibt es Zahlen für die der fermatsche Test bei allen teilerfremden Basen kongruent eins Äquivalenz feststellt. Diese starken fermatschen Pseudoprimzahlen heißen Carmichaelzahlen.
 	
 	Carmichaelzahlen werden nach \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} so definiert:
 	
@@ -71,7 +69,7 @@
 	gilt.	
 	
 	\subsection{Sieb des Eratosthenes}
-	Das Sieb des Eratosthenes ist eines der ältesten bekannten Verfahren Primzahlen zu erhalten. Es berechnet für ein gegebenes n \myin \myMenge{N} alle Primzahlen p \myin \myMenge{N} für die gilt 1 < p < n. Der Algorithmus iteriert dazu über alle nicht gestrichenen Zahlen von 1 bis \myMathRM{\sqrt{n}}. Als erstes wird die Zahl Zwei genommen, sie ist nicht gestrichen und somit eine Primzahl. Dann werden alle vielfache von Zwei gestrichen (die geraden Zahlen). Anschließend sucht der Algorithmus die nächste nicht gestrichene Zahl. In diesem Fall ist es die Drei und es werden wieder alle Vielfache von drei gestrichen. Das Verfahren wiederholt sich bis die Suche \myMathRM{\sqrt{n}} erreicht hat. Alle nicht gestrichen Zahlen sind die Primzahlen bis n. Die Abbildung \ref{ABBILDUNG_Primzahlen_100} illustriert die Primzahlen bis 100.
+	Das Sieb des Eratosthenes ist eines der ältesten bekannten Verfahren um Primzahlen zu erhalten. Es berechnet für ein gegebenes n \myin \myMenge{N} alle Primzahlen p \myin \myMenge{N}, für die gilt 1 < p < n. Der Algorithmus iteriert dazu über alle nicht gestrichenen Zahlen von 1 bis \myMathRM{\sqrt{n}}. Als erstes wird die Zahl Zwei genommen, sie ist nicht gestrichen und somit eine Primzahl. Dann werden alle Vielfache von Zwei gestrichen (die geraden Zahlen). Anschließend sucht der Algorithmus die nächste nicht gestrichene Zahl. In diesem Fall ist es die Drei und es werden wieder alle Vielfache von drei gestrichen. Das Verfahren wiederholt sich bis die Suche \myMathRM{\sqrt{n}} erreicht hat. Alle nicht gestrichen Zahlen sind die Primzahlen bis n. Die Abbildung \ref{ABBILDUNG_Primzahlen_100} illustriert die Primzahlen bis 100.
 	Wie in \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} gezeigt, hat das Sieb des Eratosthenes eine subexponentielle Laufzeit, da die Laufzeit von der Länge der Eingabe abhängt. Aus diesem Grund eignet es sich nicht für einen praktischen Primzahltest.
 	\begin{figure}
 		\centering
@@ -125,8 +123,8 @@
  		Eine interessante Aussage die in \cite{Algorithmische:Zahlentheorie} getroffen wird, ist dass der Miller-Rabin-Test unter Annahme der Riemannschen Vermutung zu einem deterministischen polynomialen Test wird.
  		
  		%TODO Hier Pseudocode
-		 
-			
+
+
 		\subsubsection{AKS-Test}
 		Der 2004 von M. Agrawal, N. Kayal und N. Saxena entwickelte AKS-Test ist ein deterministischer in polynomialer Zeit durchführbarer Primzahltest. Bei diesem Test stellt die Rechnung in einem Polynomring (\myMenge{Z}/m)[X] den größten Unterschied zu den bisherigen Tests da. Besonders wertvoll ist hier die notwendige und hinreichende Bedingung für die Primmalität.
 		
@@ -139,29 +137,6 @@
 		
 		TODO Der AKS TEST SATZ als pseudocode 
 		
-		Laufzeit daran erklären also wo sind die lange dauernden sachen
+		%TODO Laufzeit daran erklären also wo sind die lange dauernden sachen
 		
-		warum ist der test polynomiel erklären
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		%TODO warum ist der test polynomiel erklären
