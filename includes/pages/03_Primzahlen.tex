@@ -15,7 +15,7 @@
 	Leider gibt es keine bekannten effizienten Verfahren um Primzahlen zu generieren. Dennoch kann man Primzahlen recht einfach raten. Grundsätzlich ist es möglich eine große Anzahl von Zahlen auszuschließen. Man denke an: nur ungerade Zahlen, die Teilungsgesetze und die Tatsache das alle Primzahlen > 3 in der Form 4k +1 oder 4k +3, k \myin \myMenge{N} vorliegen. Alle geratenen Zahlen müssen jedoch einem Primzahltest(vgl. Kapitel \ref{Effiziente Primzahltests}) zur Verifizierung unterzogen werden. In \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} ist beschrieben wie ein Generierungsprozess erfolgen kann.
 
 	\subsection{Primfaktorzerlegung}
-	Jede natürliche Zahl größer als Eins kann als Produkt von Primzahlen geschrieben werden. Dieser zentrale Satz wird als Fundamentalsatz der Zahlentheorie bezeichnet und kann auf jeden euklidischen Ring R angewendet werden. Eine Primfaktorzerlegung wird mit x \myin R, u \myin R*, \myMathRM{e_1, e_2, ..., e_m} \myin \myMenge{N} ist wie folgt definiert:	
+	Jede natürliche Zahl größer als Eins kann als Produkt von Primzahlen geschrieben werden. Dieser zentrale Satz wird als Fundamentalsatz der Zahlentheorie bezeichnet und kann auf jeden euklidischen Ring R angewendet werden. Eine Primfaktorzerlegung wird mit x \myin R, u \myin R*, \myMathRM{e_1, e_2, ..., e_m} \myin \myMenge{N} wie folgt definiert:	
 	\begin{displaymath}
 		x = u \cdot p^{e_1}_1 \cdot p^{e_2}_2 \cdot . . . \cdot p^{e_m}_m,
 	\end{displaymath}
@@ -25,7 +25,7 @@
 	Neben der Existenz einer solchen Primfaktorzerlegung ist auch die Eindeutigkeit, die durch das Vergleichszeichen \grqq kleiner als\grqq ~implizit angegeben ist, von entscheidender Bedeutung. In \cite{Einfuehrung:in:Algebra:und:Zahlentheorie} und \cite{Algorithmische:Zahlentheorie} wird die Existenz und Eindeutigkeit bewiesen.
 
 	
-	Die meisten kryptographischen Algorithmen bauen auf die ineffiziente Berechnung der Primfaktoren. Es ist zwar einfach zwei Primzahlen mit einander zu multiplizieren, aber es ist schwer aus der multiplizierten Zahl die beiden Primfaktoren zurückzugewinnen. Kennt man jedoch eine der beiden Primzahlen so berechnet sich die zweite durch einfache Division. Zur Verschlüsselung ergibt sich damit die Idee einer sogenannte Falltür-Funktion, die die Primfaktoren mit Hilfe eines geheimen Hinweises schnell berechnen kann.
+	Die meisten kryptographischen Algorithmen bauen auf die ineffiziente Berechnung der Primfaktoren. Es ist zwar einfach zwei Primzahlen mit einander zu multiplizieren, aber es ist schwer aus der multiplizierten Zahl die beiden Primfaktoren zurückzugewinnen. Kennt man jedoch eine der beiden Primzahlen so berechnet sich die zweite durch einfache Division. Zur Verschlüsselung ergibt sich damit die Idee einer sogenannten Falltür-Funktion, die die Primfaktoren mit Hilfe eines geheimen Hinweises schnell berechnen kann.
 		
 	\subsection{Satz von Euler und Kleiner Satz von Fermat}
 	Die Vermutung vom kleinen Satz von Fermat wurde von Fermat im 17 Jahrhundert aufgestellt und von Euler bewiesen. Euler konnte zudem zeigen das der kleine Satz von Fermat nur ein Spezialfall für Primzahlen darstellt. Der Satz von Euler lautet:
@@ -40,7 +40,8 @@
 	\end{displaymath}
 	wobei G eine endliche Gruppe ist, a \myin G und e das Einselement (neutrales Element einer multiplikativen Gruppe). Da das Einselement in \myMenge{N} 1 ist, folgt: Kongruenz 1 modulo m. 
 	
-	Da 	\myMathRM{\varphi(p) = Card((\mathbb{Z}/p\mathbb{Z})^*) = |\mathbb{F}^*_p| = p-1} ist, ergibt sich sofort der kleine Satz von Fermat:
+	Des weiteren ergibt sich mit \myMathRM{\varphi(p) = Card((\mathbb{Z}/p\mathbb{Z})^*)} =
+	\myMathRM{ |\mathbb{F}^*_p| = p-1} sofort der kleine Satz von Fermat:
 	\begin{displaymath}
 		a^{p-1} \equiv~1~mod~p
 	\end{displaymath}
@@ -61,7 +62,14 @@
 	\begin{displaymath}
 		a^{m-1} \equiv 1~mod~m
 	\end{displaymath}
-	%TODO evtl. Beispiel
+	Die weiteren zwei folgenden Eigenschaften seien zudem genannt, da sie für den probabilistischen Primzahltest von Miller und Rabin von entscheidender Bedeutung sind.
+	
+	Eine zusammengesetzte Zahl m \myMathRM{\geq} 3 \myin N ist eine Carmichaelzahl, wenn m keine mehrfachen gleichen Primfaktoren enthält und jeder Primfaktor p | m auch 
+	\begin{displaymath}
+		p-1~|~m-1
+	\end{displaymath}
+	gilt.	
+	
 	\subsection{Sieb des Eratosthenes}
 	Das Sieb des Eratosthenes ist eines der ältesten bekannten Verfahren Primzahlen zu erhalten. Es berechnet für ein gegebenes n \myin \myMenge{N} alle Primzahlen p \myin \myMenge{N} für die gilt 1 < p < n. Der Algorithmus iteriert dazu über alle nicht gestrichenen Zahlen von 1 bis \myMathRM{\sqrt{n}}. Als erstes wird die Zahl Zwei genommen, sie ist nicht gestrichen und somit eine Primzahl. Dann werden alle vielfache von Zwei gestrichen (die geraden Zahlen). Anschließend sucht der Algorithmus die nächste nicht gestrichene Zahl. In diesem Fall ist es die Drei und es werden wieder alle Vielfache von drei gestrichen. Das Verfahren wiederholt sich bis die Suche \myMathRM{\sqrt{n}} erreicht hat. Alle nicht gestrichen Zahlen sind die Primzahlen bis n. Die Abbildung \ref{ABBILDUNG_Primzahlen_100} illustriert die Primzahlen bis 100.
 	Wie in \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} gezeigt, hat das Sieb des Eratosthenes eine subexponentielle Laufzeit, da die Laufzeit von der Länge der Eingabe abhängt. Aus diesem Grund eignet es sich nicht für einen praktischen Primzahltest.
@@ -76,17 +84,84 @@
 		Die in diesem Kapitel vorgestellten Algorithmen zum Erkennen von Primzahlen sind effiziente Algorithmen im Sinne der Komplexitätsklasse P und im Gegensatz zum fermatschen Test nicht anfällig für starke Pseudoprimzahlen. Dennoch unterscheiden sich die beiden vorgestellten Verfahren deutlich voneinander. Neben der Funktionsweise wird auch die Laufzeit gegenübergestellt.
 		
 		\subsubsection{Miller-Rabin-Test}
-		 Der Miller-Rabin-Test ist ein probabilistischer Primzahltest und gehört zu den Montecarlo- Algorithmen. Im Gegensatz zum fermatschen Primzahltest ist der Miller-Rabin-Test nicht so anfällig für Carmichaelzahlen.
+		 Der Miller-Rabin-Test ist ein probabilistischer Primzahltest und gehört zu den Montecarlo- Algorithmen. Im Gegensatz zum fermatschen Primzahltest ist der Miller-Rabin-Test nicht so anfällig für Carmichaelzahlen, denn es können immer Basen gefunden werden die die Carmichaelzahlen entlarven. Dieser Test wird am häufigsten in Primzahlgeneratoren eingesetzt und hat damit die größte praktische Relevanz. Nach der Vorstellung des Tests werden die Unterschiede zum fermatschen Test herausgearbeitet.
+		 
+		 Der Test lautet wie folgt:
+		 
+		 Wenn m \myin \myMenge{N} > 9  eine ungerade Zahl und \myMathRM{m - 1 = 2^tn} mit ungeradem n ist, dann gilt für jede teilerfremde Zahl a \myin \myMenge{Z}:
+		 
+	 	\begin{equation} \label{eq:Miller}
+			a^n \equiv 1~mod~m~oder~\exists s \in \{0,..., t - 1\} : a^{2^sn} \equiv -1~mod~m
+		\end{equation}
+		dann ist m prim oder nicht prim.
 		
-		\begin{comment}
-		Wichtig: wegen +-1
-		
-				Ein interessanter Aspekt des Satzes von Fermat ist folgender: Sei p eine ungerade
-				Primzahl und a zu p teilerfremd. Dann gilt (a(p−1)/2)2 ≡ 1 mod p. Da die Gleichung
-				x2 = 1 im Körper Fp nur die Lösungen x = ±1 hat, folgt also a(p−1)/2 ≡ ±1 mod p
-		\end{comment}	
+		Aber wenn m nicht prim ist so gilt außerdem für die Menge A aller zu m teilerfremden a, 0 < a < m die (\ref{eq:Miller}) erfüllen:
+	 	\begin{equation} \label{eq:Miller}
+		 	Card(A) \leq 1/4 \varphi(m)
+	 	\end{equation}
+	 	Durch diese zusätzliche Aussage kann eine Wahrscheinlichkeit angegeben werden mit der die getestete Zahl prim ist. Wiederholt man den Test t mal ergibt sich somit eine Wahrscheinlichkeit von \myMathRM{1/4^t}. Nach zehn Iterationen ist somit die Wahrscheinlichkeit für eine zusammengesetzte Zahl kleiner als \myMathRM{10^{-6}}.
+	 	
+	 	Um die Ausdrücke in (\ref{eq:Miller}) zu verstehen müssen folgende Vorüberlegungen gemacht werden.
+	 	Jeder Körper \myMathRM{F^*_p} kann nach \cite{Algorithmische:Zahlentheorie} in die zwei Teile (Untergruppen) der Quadrate und nicht Quadrate geteilt werden. Jede dieser Gruppen besteht aus \myMathRM{Card(F^*_p)/2 = (p-1)/2} Elementen. Dies folgt aus der Tatsache das \myMathRM{x^2 \equiv~a~mod~p} in \myMathRM{F^*_p} nur die Lösungen +1 oder -1 hat. Ein Element ist ein Quadrat wenn es gleich dem quadratischen Rest eines \myMathRM{x^2~mod~p} ist.
+	 	
+	 	Eine weitere Überlegung ergibt sich aus dem umgekehrten Satz des Eulerkriteriums der wie folgt lautet.
+	 	Sei \myMathRM{m \geq 3} eine ungerade ganze Zahl, so dass (m - 1)/2 ungerade ist.
+	 	Es gilt dann für jede zu m teilerfremde ganze Zahl a
+	 	\begin{equation}
+		 	a^{(m-1)/2} \equiv~^+_-1~mod~m,
+	 	\end{equation}
+	 	so dass m eine Primzahl ist.
+	 	
+	 	Wenn (m - 1)/2 gerade ist kann diese Aussage nicht getroffen werden. Für den Fall das m eine Carmichaelzahl ist, ist auch \myMathRM{m - 1 = 2^{s_i}u_i(p_i - 1)} , da alle Primfaktoren m-1 teilen, wobei \myMathRM{u_i} ungerade ist. Es gilt dann:
+ 		\begin{displaymath}
+	 		a^{(m-1)/2^s} \equiv1 ~fuer~alle~a \in \mathbb{Z}^*_m
+ 		\end{displaymath}
+ 		Anschließend müssen wie in \cite{Algorithmische:Zahlentheorie} durchgeführt, mehrere Fallunterscheidungen für gerade und ungerade vielfache von (\myMathRM{a^{(m-1)/2^{s+1}}}) durchgeführt werden. Dabei können die Ergebnisse der Kongruenzen in Teilmengen eingeteilt werden. Die Kardinalität der Mengen gibt dabei die Wahrscheinlichkeit der Zusammengesetzten Zahlen vor.
+ 		
+ 		Etwas abstrakter dargestellt zielt der Test darauf ab im Gegensatz zu dem fermatschen Test die Quadratwurzeln der Carmichaelzahlen in dem Primzahlkriterium zu berücksichtigen. Durch diese Erweiterung kommt es nur noch maximal bei einem Viertel der Basen zur Annahme es handle sich um eine Primzahl.
+ 		
+ 		Wie in \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} angegeben benötigt der Test O(t * (log m)) arithmetische Operationen und   O(t * (log m)\myMathRM{^3}) Bit Operationen bezogen auf die Eingabelänge von m und liegt damit in der polynomialen Laufzeitklasse.
+ 		
+ 		Eine interessante Aussage die in \cite{Algorithmische:Zahlentheorie} getroffen wird, ist dass der Miller-Rabin-Test unter Annahme der Riemannschen Vermutung zu einem deterministischen polynomialen Test wird.
+ 		
+ 		%TODO Hier Pseudocode
+		 
+			
 		\subsubsection{AKS-Test}
-		Der AKS-TestEntwickelt von ... ist ein deterministischer in polinimieller Zeit durchführbarer Primzahltest. 
+		Der 2004 von M. Agrawal, N. Kayal und N. Saxena entwickelte AKS-Test ist ein deterministischer in polynomialer Zeit durchführbarer Primzahltest. Bei diesem Test stellt die Rechnung in einem Polynomring (\myMenge{Z}/m)[X] den größten Unterschied zu den bisherigen Tests da. Besonders wertvoll ist hier die notwendige und hinreichende Bedingung für die Primmalität.
+		
+		Der Satz lautet in \cite{Algorithmische:Zahlentheorie} wie folgt:
+		Sei m > 1 eine natürliche Zahl und a eine zu m teilerfremde ganze
+		Zahl. Genau dann ist m prim, wenn
+		\begin{displaymath}
+			(X + a)^m \equiv X^m + a~mod~m
+		\end{displaymath}
+		
+		TODO Der AKS TEST SATZ als pseudocode 
+		
+		Laufzeit daran erklären also wo sind die lange dauernden sachen
+		
+		warum ist der test polynomiel erklären
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
