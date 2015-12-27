@@ -6,3 +6,5 @@ AlgorithmischeZahlentheorie.pdf
 AlgorithmischeZahlentheorie-blx.bib
 AlgorithmischeZahlentheorie.run.xml
 AlgorithmischeZahlentheorie.log
+*.log
+handout/Handout.pdf
