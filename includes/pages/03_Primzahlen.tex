@@ -94,7 +94,7 @@
 		dann ist m prim oder nicht prim.
 		
 		Aber wenn m nicht prim ist so gilt außerdem für die Menge A aller zu m teilerfremden a, 0 < a < m die (\ref{eq:Miller}) erfüllen:
-	 	\begin{equation} \label{eq:Miller}
+	 	\begin{equation}
 		 	Card(A) \leq 1/4 \varphi(m)
 	 	\end{equation}
 	 	Durch diese zusätzliche Aussage kann eine Wahrscheinlichkeit angegeben werden mit der die getestete Zahl prim ist. Wiederholt man den Test t mal ergibt sich somit eine Wahrscheinlichkeit von \myMathRM{1/4^t}. Nach zehn Iterationen ist somit die Wahrscheinlichkeit für eine zusammengesetzte Zahl kleiner als \myMathRM{10^{-6}}.
@@ -110,7 +110,7 @@
 	 	\end{equation}
 	 	so dass m eine Primzahl ist.
 	 	
-	 	Wenn (m - 1)/2 gerade ist kann diese Aussage nicht getroffen werden. Für den Fall das m eine Carmichaelzahl ist, ist auch \myMathRM{m - 1 = 2^{s_i}u_i(p_i - 1)} , da alle Primfaktoren m-1 teilen, wobei \myMathRM{u_i} ungerade ist. Es gilt dann:
+	 	Wenn (m - 1)/2 gerade ist kann diese Aussage nicht getroffen werden. Für den Fall das m eine Carmichaelzahl ist, ist auch \myMathRM{m - 1 = 2^{s_i}u_i(p_i - 1)} , da alle Primfaktoren m-1 teilen, wobei \myMathRM{u_i} ungerade ist. Es gilt dann O.B.d.A mit \myMathRM{s_1 \leq s_2 \leq . . . \leq s_r~und~s = s_1}:
  		\begin{displaymath}
 	 		a^{(m-1)/2^s} \equiv1 ~fuer~alle~a \in \mathbb{Z}^*_m
  		\end{displaymath}
@@ -118,7 +118,7 @@
  		
  		Etwas abstrakter dargestellt zielt der Test darauf ab im Gegensatz zu dem fermatschen Test die Quadratwurzeln der Carmichaelzahlen in dem Primzahlkriterium zu berücksichtigen. Durch diese Erweiterung kommt es nur noch maximal bei einem Viertel der Basen zur Annahme es handle sich um eine Primzahl.
  		
- 		Wie in \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} angegeben benötigt der Test O(t * (log m)) arithmetische Operationen und   O(t * (log m)\myMathRM{^3}) Bit Operationen bezogen auf die Eingabelänge von m und liegt damit in der polynomialen Laufzeitklasse.
+ 		Wie in \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} angegeben benötigt der Test, da die Exponentiation effizient berechenbar ist, O(t * (log m)) arithmetische Operationen und O(t * (log m)\myMathRM{^3}) Bit Operationen bezogen auf die Eingabelänge von m. Damit liegt der Test in der polynomialen Laufzeitklasse.
  		
  		Eine interessante Aussage die in \cite{Algorithmische:Zahlentheorie} getroffen wird, ist dass der Miller-Rabin-Test unter Annahme der Riemannschen Vermutung zu einem deterministischen polynomialen Test wird.
  		
@@ -126,7 +126,7 @@
 
 
 		\subsubsection{AKS-Test}
-		Der 2004 von M. Agrawal, N. Kayal und N. Saxena entwickelte AKS-Test ist ein deterministischer in polynomialer Zeit durchführbarer Primzahltest. Bei diesem Test stellt die Rechnung in einem Polynomring (\myMenge{Z}/m)[X] den größten Unterschied zu den bisherigen Tests da. Besonders wertvoll ist hier die notwendige und hinreichende Bedingung für die Primmalität.
+		Der 2004 von M. Agrawal, N. Kayal und N. Saxena entwickelte AKS-Test ist ein deterministischer in polynomialer Zeit durchführbarer Primzahltest. Bei diesem Test stellt die Rechnung in einem Polynomring (\myMenge{Z}/m)[X] den größten Unterschied zu den bisherigen Tests da. Besonders wertvoll ist hier die notwendige und hinreichende Bedingung für die Primmalität des folgenden Satzes. 
 		
 		Der Satz lautet in \cite{Algorithmische:Zahlentheorie} wie folgt:
 		Sei m > 1 eine natürliche Zahl und a eine zu m teilerfremde ganze
@@ -135,8 +135,28 @@
 			(X + a)^m \equiv X^m + a~mod~m
 		\end{displaymath}
 		
-		TODO Der AKS TEST SATZ als pseudocode 
+		Dieser Satz ist natürlich noch nicht schneller als die Probedivision bis \myMathRM{\sqrt{m}}, aber folgende Erweiterungen führen zu einem polynominelle Laufzeitverhalten. Die Idee hinter der Erweiterung ist ein Polynom zu finden das mit getestet 
+		wird und dadurch die Laufzeit reduziert. Ein solches Polynom ist \myMathRM{P(x) = x^r - 1}, r ist prim . Mit diesem Zusatz ist der Test wiederum nur ein notwendiges Kriterium für eine Primzahl. Dies kann verhindert werden indem versucht wird eine Menge Zahlen zu finden, die für eine beliebige zusammengesetzte Zahl m das Kriterium nicht erfüllt. Diese Menge kann angegeben werden und lautet wie folgt:
+		\begin{displaymath}
+			A(r,m) = \{1, 2, . . . , 2 * \lfloor log~m *\sqrt{\varphi(r)} \rfloor\}
+		\end{displaymath}
 		
-		%TODO Laufzeit daran erklären also wo sind die lange dauernden sachen
+		Mit diesen Überlegungen kann im folgenden der Satz von Agrawal, Kayal und Saxena nach \cite{Algorithmische:Zahlentheorie} aufgestellt werden.
 		
-		%TODO warum ist der test polynomiel erklären
+		Sei m > 1 eine ungerade Zahl. Weiter sei r eine Primzahl mit folgenden Eigenschaften:
+		
+		1. m hat keinen Primteiler \myMathRM{\leq} r.
+		
+		2. \myMathRM{ord_{(\mathbb{Z}/r)^*}(m) > (log_2 m)^2}.
+		
+		Gilt dann für alle \myMathRM{a = 1, 2, . . . , A:= \lfloor \sqrt{r}~log_2~m \rfloor}
+		\begin{displaymath}		
+			(X + a)^m \equiv X^m + a~mod~(m,X^r - 1),
+		\end{displaymath}
+		so ist m eine Primzahlpotenz, d.h. m = \myMathRM{p^k}, p prim, k \myMathRM{\geq} 1.
+		
+		
+		
+			
+		Leider eignet sich der AKS-Test nicht für die Praxis, da Polynome mit sehr hohem Grad berechnet werden müssen. Für die theoretische Betrachtung war die Entdeckung des AKS-Test der Beweis das auch lange erforschte Gebiete neue Erkenntnisse erbringen können. 
+		
