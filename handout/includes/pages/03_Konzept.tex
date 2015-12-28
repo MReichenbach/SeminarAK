@@ -1,5 +1,5 @@
 	\section*{Primzahlen}\label{Kapitel Primzahlen}
-		Natürliche Primzahlen werden definiert durch Zahlen > 1 die nur durch Eins oder sich selbst teilbar sind. Wie im Kapitel Primfaktorzerlegung gezeigt, können alle natürlichen Zahlen mit einer Multiplikation von Primzahlen erzeugt werden. Sie bilden sozusagen die Bausteine aller natürlichen Zahlen. Die Unberechenbarkeit mit der sie auftreten gibt Mathematikern schon seit Jahrtausenden Rätsel auf und ist ein Grundstein unserer heutigen Verschlüsselungsverfahren.
+		Natürliche Primzahlen werden definiert durch Zahlen $> 1$ die nur durch Eins oder sich selbst teilbar sind. Alle natürlichen Zahlen können mit einer Multiplikation von Primzahlen erzeugt werden. Sie bilden sozusagen die Bausteine aller natürlichen Zahlen. Die Unberechenbarkeit mit der sie auftreten gibt Mathematikern schon seit Jahrtausenden Rätsel auf und ist ein Grundstein unserer heutigen Verschlüsselungsverfahren.
 		In anderen Zahlensystemen als den natürlichen Zahlen ist die gewohnte Definition von Primzahlen nicht vollständig/korrekt. Sie sagt nur etwas über die Irreduzibelität eines Elements in einem Integritätsbereich aus. Da in den natürlichen Zahlen aber jedes irreduzibles Element auch prim ist, reicht diese Definition für \myMenge{N} aus.
 		Für alle Integritätsbereiche gilt für die Primheit folgende Definition nach \cite{Algorithmische:Zahlentheorie}:
 			
@@ -10,10 +10,11 @@
 			
 		\wup Mit Hilfe der Primzahlen kann der Restklassenring \myMenge{Z}/m\myMenge{Z} spezialisiert werden. Ist m eine Primzahl p, so ist \myMenge{Z}/p\myMenge{Z} ein Körper und wird auch \myMenge{F}\myTiefstellen{p} bzw. \myMenge{GF}\myTiefstellen{p} bezeichnet.
 			
-		\wup Neben den normalen Primzahlen gibt es weitere sogenannte Pseudoprimzahlen. Diese Primzahlen verhalten sich bezogen auf einen Algorithmus genauso wie echte Primzahlen, sie sind jedoch zusammengesetzt. Ein Beispiel für solche Zahlen sind Carmichaelzahlen die in einem späteren Kapitel thematisiert sind.
+		\wup Neben den normalen Primzahlen gibt es weitere sogenannte Pseudoprimzahlen. Diese Primzahlen verhalten sich bezogen auf einen Algorithmus genauso wie echte Primzahlen, sie sind jedoch zusammengesetzt. Ein Beispiel für solche Zahlen sind Carmichaelzahlen die im Vortrag weiter thematisiert werden.
 			
-		\wup Leider gibt es keine bekannten effizienten Verfahren um Primzahlen zu generieren. Dennoch kann man Primzahlen recht einfach raten. Grundsätzlich ist es möglich eine große Anzahl von Zahlen auszuschließen. Man denke an: nur ungerade Zahlen, die Teilungsgesetze und die Tatsache, dass alle Primzahlen \myGroesser 3 in der Form 4k +1 oder 4k +3, k \myin \myMenge{N} vorliegen. Alle geratenen Zahlen müssen jedoch einem Primzahltest zur Verifizierung unterzogen werden. In \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} ist beschrieben wie ein Generierungsprozess erfolgen kann.
-
+		\wup Leider gibt es keine bekannten effizienten Verfahren um Primzahlen zu generieren. Dennoch kann man Primzahlen recht einfach raten. Alle geratenen Zahlen müssen jedoch einem Primzahltest zur Verifizierung unterzogen werden. Im Vortrag werden ausgewählte Primzahltests zur Verifizierung vorgestellt.
+		
+	\section*{Diskreter Algorithmus}
 		\wup In diesem Kapitel soll der diskrete Logarithmus betrachtet werden. Es werden Anwendungsbeispiele aufgezeigt und genau erläutert, weswegen sich der diskrete Logarithmus besonders gut in der Kryptografie als Einwegfunktion eignet. Zu Beginn wird das grundsätzliche Problem beim diskreten Logarithmus an einem Beispiel praxisnahe erläutert, um im Anschluss auf algorithmische Lösungen einzugehen wie der diskreten Logarithmus in \myZPStern~und auf elliptische Kurven berechnet werden kann. Hierfür wird der Baby-Step-Giant-Step-Algorithmus vorgestellt.
 	
 	\section*{Das Problem des diskreten Logarithmus im Detail}\label{Das Problem des diskreten Logarithmus im Detail}

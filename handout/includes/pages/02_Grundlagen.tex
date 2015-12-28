@@ -1,11 +1,9 @@
 \section*{Grundlagen}~\label{Kapitel Grundlagen}
-	\wup In diesem Kapitel werden die Grundlagen zur Analyse von Primzahlen und dem diskreten Logarithmus gegeben. Dazu werden im allg. nur die Definitionen und Sätze geliefert. Für Beweise der hier angeführten Sätze sei auf die Bücher \cite{Kryptografie:in:Theorie:und:Praxis}, \cite{Erste:Hilfe:in:Linearer:Algebra}, \cite{Kryptographie:und:IT-Sicherheit} und \cite{Information:und:Kommunikation}
-	%\textbf{[TODO noch weiter wenn nötig [x],[y],[z]]}
-	verwiesen. Es wird vorausgesetzt, dass die Rechenvorschriften des Modulo bekannt sind.
+	\wup In diesem Abschnitt werden die Grundlagen zur Analyse von Primzahlen und dem diskreten Logarithmus gegeben. Dazu werden im allg. nur die Definitionen und Sätze geliefert. Es wird vorausgesetzt, dass die Rechenvorschriften des Modulo bekannt sind.
 	
 	\subsection*{Algebraische Strukturen}
-		%TODO wenn nötig und möglich noch mal zu den anderen Struktruen je 1 -2 konkrete Beispiele mit aufnehmen wie bei Halbgruppen
-		In diesem Kapitel werden die algebraischen Strukturen: Halbgruppen, Gruppen, Ringe und Körper vorgestellt. Diese werden für die ausgewählte Algorithmen benötigt. Die algebraischen Strukturen beschreiben ein abstraktes Rechnen mit Zahlen. Dies ermöglicht gezielter nur die Rechenregeln an sich zu untersuchen, unabhängig von der Rechengröße und der jeweiligen Operation. Ein Anwendungsbereich ist u. a. in der Kryptographie zu finden.~\cite{Kryptographie:und:Algorithmen}
+
+		Algebraische Strukturen sind Halbgruppen, Gruppen, Ringe und Körper die für die ausgewählten Algorithmen benötigt werden. Diese Strukturen beschreiben ein abstraktes Rechnen mit Zahlen. Dies ermöglicht nur die Rechenregeln an sich zu untersuchen, unabhängig von der Rechengröße und der jeweiligen Operation.
 	
 		\subsubsection*{Halbgruppen}
 			Eine Halbgruppe ist eine Menge M mit einer assoziativen Operation \mycircOhne, geschrieben mit (M, \mycircOhne) oder einfach nur M. Zur Erinnerung, das Assoziativgesetz besagt: (a \mycirc b) \mycirc c = a \mycirc (b \mycirc c) für alle a, b, c \myin M. Dies gilt für sämtliche Elemente einer Halbgruppe. Das Zeichen \mycirc ist Platzhalter für eine beliebige Operation. Der Wertebereich von \mycirc ist eine Teilmenge von M, sodass a \mycirc b \myin M für alle a, b \myin M. Für das Zeichen \mycirc werden auch die folgenden Operationszeichen verwendet: $*$, \mycdotOhne, +. Auch muss die Menge nicht zwangsläufig M sein.~\cite{Erste:Hilfe:in:Linearer:Algebra}
@@ -47,7 +45,7 @@
 			\begin{displaymath}
 				\mathrm{x = qy + r,~~~q, r \in R,	mit~r=0~oder~\beta(r) < \beta(y)}
 			\end{displaymath}
-			als euklidischer Ring bezeichnet und lässt die Division mit Rest zu. Wie in \cite{Algorithmische:Zahlentheorie} gezeigt, ist jeder der Ringe Z, Z[i] und K[X], für einen beliebigen Körper K, euklidisch. Die Erkenntnis, dass es weitere Integritätsbereiche als \myMenge{Z} gibt, wird in den effizienten Primzahltests wieder aufgegriffen. 
+			als euklidischer Ring bezeichnet und lässt die Division mit Rest zu. Wie in \cite{Algorithmische:Zahlentheorie} gezeigt, ist jeder der Ringe Z, Z[i] und K[X], für einen beliebigen Körper K, euklidisch. Die Erkenntnis, dass es weitere Integritätsbereiche als \myMenge{Z} gibt, ist z.B. ein elementarer Baustein des AKS-Primzahltests. 
 			
 			\wup Die Teilbarkeit einer Zahl a \myin R durch b \myin R ohne Rest wird b \myTeiler a geschrieben. Kann a durch b nicht ohne Rest geteilt werden, wird b \myNichtTeiler a geschrieben.
 			
@@ -56,8 +54,7 @@
 			Zwei Zahlen x, y \myin \myMenge{Z} heißen kongruent modulo m \myin \myMenge{N} wenn m \myTeiler $x-y$. In Zeichen:
 			\begin{displaymath}
 			x \equiv y~mod~m
-			\end{displaymath}	
-			Die zugehörigen Beweise und Rechenvorschriften für Restklassenringe finden sich in \cite{Algorithmische:Zahlentheorie}.
+			\end{displaymath}
 			
 	\subsection*{Euklidischer Algorithmus}
 		Der euklidische Algorithmus wird zur Berechnung des größten gemeinsamen Teilers zweier Zahlen benötigt. Der Algorithmus findet in fast allen weiteren Betrachtungen Anwendung und wird deshalb explizit angegeben. Wie in \cite{Diskrete:Strukturen} bewiesen, kann der Algorithmus wie folgt definiert werden:
