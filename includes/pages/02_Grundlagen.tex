@@ -3,7 +3,7 @@
 	%\textbf{[TODO noch weiter wenn nötig [x],[y],[z]]}
 	verwiesen. Es wird vorausgesetzt, dass die Rechenvorschriften des Modulo bekannt sind.
 	
-	Für dies Ausarbeitung wurden diverse Quellen unterstützend verwendet. Da es Notations Unterschiede der einzelnen Quellen gibt, führt dies dazu, dass sich nicht an die Notation aller genutzten Quellen gehalten werden kann. Speziell in \cite{Erste:Hilfe:in:Linearer:Algebra} wird eine multiplikative Gruppe aller Einheiten in $G$ mit $G^X$ bezeichnet. Von dieser Notation wird abgesehen und die aus den anderen Quellen weiter verbreitete Notation $G^*$ verwendet.
+	Für diese Ausarbeitung wurden diverse Quellen unterstützend verwendet. Da es Notations Unterschiede der einzelnen Quellen gibt, führt dies dazu, dass sich nicht an die Notation aller genutzten Quellen gehalten werden kann. Speziell in \cite{Erste:Hilfe:in:Linearer:Algebra} wird eine multiplikative Gruppe aller Einheiten in $G$ mit $G^X$ bezeichnet. Von dieser Notation wird abgesehen und die aus den anderen Quellen weiter verbreitete Notation $G^*$ verwendet.
 	
 	\subsection{Algebraische Strukturen}
 		%TODO wenn nötig und möglich noch mal zu den anderen Struktruen je 1 -2 konkrete Beispiele mit aufnehmen wie bei Halbgruppen
@@ -118,7 +118,7 @@
 		\end{displaymath}
 
 		\subsubsection{Asymmetrische Verschlüsselung mit Elliptischen Kurven}
-			Um Elliptische Kurven für Asymmetrische Verschlüsselung einsetzen zu können, muss in einem endlichen Körper gerechnet werden um Rundungsfehler zu vermeiden. Bei der Addition und Multiplikation in endlichen Körpern sind diese so definiert, dass das Ergebnis immer wider ein Element des endlichem Körpers ist. Aufgrund dessen muss eine weitere Operation durchgeführt werden: $mod~|Z|$. Dies stellt sicher, dass der resultierende Rest in jedem Fall wieder ein Element aus Z ist. Für die Addition besitzt jedes Element ein inverses Element -a, damit gilt für die Subtraktion: $b - a = b + (-a)$. Bei der Multiplikation ist das inverse Element $a^{-1}$, damit gilt für die Division: $b / a = b$ \mycdot $a^{-1}$. Für ein konkretes Beispiel sei an dieser Stelle auf S. 154 - 257 in \cite{Information:und:Kommunikation} verwiesen.
+			Um Elliptische Kurven für Asymmetrische Verschlüsselung einsetzen zu können, muss in einem endlichen Körper gerechnet werden um Rundungsfehler zu vermeiden. Bei der Addition und Multiplikation in endlichen Körpern sind diese so definiert, dass das Ergebnis immer wider ein Element des endlichen Körpers ist. Aufgrund dessen muss eine weitere Operation durchgeführt werden: $mod~|Z|$. Dies stellt sicher, dass der resultierende Rest in jedem Fall wieder ein Element aus Z ist. Für die Addition besitzt jedes Element ein inverses Element -a, damit gilt für die Subtraktion: $b - a = b + (-a)$. Bei der Multiplikation ist das inverse Element $a^{-1}$, damit gilt für die Division: $b / a = b$ \mycdot $a^{-1}$. Für ein konkretes Beispiel sei an dieser Stelle auf S. 154 - 257 in \cite{Information:und:Kommunikation} verwiesen.
 			
 			Um elliptische Kurven für kryptologische Anwendungsfälle zu nutzen, muss die Ordnung eines Punktes der elliptischen Kurve berechnet werden.
 			
@@ -134,10 +134,10 @@
 			P + P = 2P \Rightarrow 2P +P = 3P \Rightarrow ... \Rightarrow xP + P = (x+1)P
 			\end{displaymath}
 			
-			P ist dabei immer ein Punkt auf der elliptischen Kurve. Irgendwann ist x\myTiefstellen{i}P = \myInfty, somit kein Punkt mehr auf der Kurve, und damit hat der Punkt P die Ordnung x\myTiefstellen{i}, im weiteren verlauf als n bezeichnet.
+			P ist dabei immer ein Punkt auf der elliptischen Kurve. Irgendwann ist x\myTiefstellen{i}P = \myInfty, somit kein Punkt mehr auf der Kurve, und damit hat der Punkt P die Ordnung x\myTiefstellen{i}, im weiteren Verlauf als n bezeichnet.
 			
 		\subsubsection{Schlüsselaustausch mit elliptischen Kurven}
-			Zuerst muss der Körper und eine elliptische Kurve bestimmt werden. Dazu wählt man ein große Primzahl und die Kurvenparameter a und b. Weiter wird nun ein Erzeugerpunkt G vereinbart. Dabei soll die Ordnung des Punktes G möglichst groß und eine Primzahl sein. A wählt eine geheime ganze Zahl n\myTiefstellen{A} welche kleiner sein muss als n und berechnet daraus den öffentlichen Schlüssel P\myTiefstellen{A} = n\myTiefstellen{A} \mycdot G. Teilnehmer B macht das Gleiche jeweils mit n\myTiefstellen{B} und P\myTiefstellen{B}. P\myTiefstellen{A} und P\myTiefstellen{B} können über eine unsichere Leitung ausgetauscht werden. Nun kann Teilnehmer A den Schlüssel K = n\myTiefstellen{A} \mycdot P\myTiefstellen{B} berechnen. B berechnet ebenfalls K mit n\myTiefstellen{B} und P\myTiefstellen{A}. So habe beide ein und das selbe geheime K berechnet.
+			Zuerst muss der Körper und eine elliptische Kurve bestimmt werden. Dazu wählt man ein große Primzahl und die Kurvenparameter a und b. Weiter wird nun ein Erzeugerpunkt G vereinbart. Dabei soll die Ordnung des Punktes G möglichst groß und eine Primzahl sein. A wählt eine geheime ganze Zahl n\myTiefstellen{A} welche kleiner sein muss als n und berechnet daraus den öffentlichen Schlüssel P\myTiefstellen{A} = n\myTiefstellen{A} \mycdot G. Teilnehmer B macht das Gleiche jeweils mit n\myTiefstellen{B} und P\myTiefstellen{B}. P\myTiefstellen{A} und P\myTiefstellen{B} können über eine unsichere Leitung ausgetauscht werden. Nun kann Teilnehmer A den Schlüssel K = n\myTiefstellen{A} \mycdot P\myTiefstellen{B} berechnen. B berechnet ebenfalls K mit n\myTiefstellen{B} und P\myTiefstellen{A}. So haben beide ein und das selbe geheime K berechnet.
 			
 			Es folgt der Beweis, dass A und B wirklich das gleiche K berechnet haben müssen:
 			\begin{quote}

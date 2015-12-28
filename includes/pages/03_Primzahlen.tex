@@ -89,18 +89,17 @@
 		 
 		 Der Test lautet wie folgt:
 		 
-		 Wenn m \myin \myMenge{N} > 9  eine ungerade Zahl und \myMathRM{m - 1 = 2^tn} mit ungeradem n ist, dann gilt für jede teilerfremde Zahl a \myin \myMenge{Z}:
-		 
+		 Wenn m \myin \myMenge{N} > 9  eine ungerade Zahl und \myMathRM{m - 1 = 2^tn} mit ungeradem n ist, dann gilt für jede teilerfremde Zahl a \myin \myMenge{Z}:		 
 	 	\begin{equation} \label{eq:Miller}
 			a^n \equiv 1~mod~m~oder~\exists s \in \{0,..., t - 1\} : a^{2^sn} \equiv -1~mod~m
 		\end{equation}
 		dann ist m prim oder nicht prim.
 		
-		Aber wenn m nicht prim ist so gilt außerdem für die Menge A aller zu m teilerfremden a, 0 < a < m die (\ref{eq:Miller}) erfüllen:
+		Aber wenn m nicht prim ist, so gilt außerdem für die Menge A aller zu m teilerfremden a, 0 < a < m die (\ref{eq:Miller}) erfüllen:
 	 	\begin{displaymath}
 		 	Card(A) \leq 1/4 \varphi(m)
 	 	\end{displaymath}
-	 	Durch diese zusätzliche Aussage kann eine Wahrscheinlichkeit angegeben werden mit der die getestete Zahl prim ist. Wiederholt man den Test t mal ergibt sich somit eine Wahrscheinlichkeit von \myMathRM{1/4^t}. Nach zehn Iterationen ist somit die Wahrscheinlichkeit für eine zusammengesetzte Zahl kleiner als \myMathRM{10^{-6}}.
+	 	Durch diese zusätzliche Aussage kann eine Wahrscheinlichkeit angegeben werden mit der die getestete Zahl prim ist. Wiederholt man den Test t mal, ergibt sich somit eine Wahrscheinlichkeit von \myMathRM{1/4^t}. Nach nur zehn Iterationen ist die Wahrscheinlichkeit für eine zusammengesetzte Zahl kleiner als \myMathRM{10^{-6}}.
 	 	
 	 	Um die Ausdrücke in (\ref{eq:Miller}) zu verstehen müssen folgende Vorüberlegungen gemacht werden.
 	 	Jeder Körper \myMathRM{F^*_p} kann nach \cite{Algorithmische:Zahlentheorie} in die zwei Teile (Untergruppen) der Quadrate und nicht Quadrate geteilt werden. Jede dieser Gruppen besteht aus \myMathRM{Card(F^*_p)/2 = (p-1)/2} Elementen. Dies folgt aus der Tatsache das \myMathRM{x^2 \equiv~a~mod~p} in \myMathRM{F^*_p} nur die Lösungen +1 oder -1 hat. Ein Element ist ein Quadrat wenn es gleich dem quadratischen Rest eines \myMathRM{x^2~mod~p} ist.
@@ -142,7 +141,7 @@
 		\begin{displaymath}
 			A(r,m) = \{1, 2, . . . , 2 * \lfloor log~m *\sqrt{\varphi(r)} \rfloor\}
 		\end{displaymath}
-		Anders ausgedrückt muss jedes Element in der Menge A(r,m) (\ref{eq:AKS}) erfüllen, damit m prim sein kann.
+		Anders ausgedrückt muss jedes Element in der Menge A(r,m) die weiter unten angeführte Bedingung (\ref{eq:AKS}) erfüllen, damit m prim sein kann.
 		
 		Mit diesen Überlegungen kann im folgenden der Satz von Agrawal, Kayal und Saxena nach \cite{Algorithmische:Zahlentheorie} aufgestellt werden.
 		
