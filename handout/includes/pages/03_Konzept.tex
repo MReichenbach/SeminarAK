@@ -1,56 +1,54 @@
-\section*{Konzept}~\label{Kapitel Konzept}
-	TODO Konzept...
-	
-	\subsection*{Primzahlen}\label{Kapitel Primzahlen}
+	\section*{Primzahlen}\label{Kapitel Primzahlen}
 		Natürliche Primzahlen werden definiert durch Zahlen > 1 die nur durch Eins oder sich selbst teilbar sind. Wie im Kapitel Primfaktorzerlegung gezeigt, können alle natürlichen Zahlen mit einer Multiplikation von Primzahlen erzeugt werden. Sie bilden sozusagen die Bausteine aller natürlichen Zahlen. Die Unberechenbarkeit mit der sie auftreten gibt Mathematikern schon seit Jahrtausenden Rätsel auf und ist ein Grundstein unserer heutigen Verschlüsselungsverfahren.
-		In anderen Zahlensystemen als den natürlichen Zahlen ist die gewohnte Definition von Primzahlen nicht vollständig/korrekt. Sie sagt nur etwas über die Irreduzibelität eines Elements in einem Integritätsbereich aus. Da in den natürlichen Zahlen aber jedes irreduzibles Element auch prim ist reicht diese Definition für \myMenge{N} aus.
+		In anderen Zahlensystemen als den natürlichen Zahlen ist die gewohnte Definition von Primzahlen nicht vollständig/korrekt. Sie sagt nur etwas über die Irreduzibelität eines Elements in einem Integritätsbereich aus. Da in den natürlichen Zahlen aber jedes irreduzibles Element auch prim ist, reicht diese Definition für \myMenge{N} aus.
 		Für alle Integritätsbereiche gilt für die Primheit folgende Definition nach \cite{Algorithmische:Zahlentheorie}:
-	
+			
 		Ein Element \myMathRM{p \in R\setminus(R^* \cup~\{0\})} heißt prim oder Primelement, wenn für alle \myMathRM{a, b \in R\setminus\{0\}} gilt:	
 		\begin{displaymath}
 			p~|~ab \Longrightarrow p~|~a~oder~p~|~b.
 		\end{displaymath}
-		
-		Mit Hilfe der Primzahlen kann der Restklassenring \myMenge{Z}/m\myMenge{Z} spezialisiert werden. Ist m eine Primzahl p, so ist \myMenge{Z}/p\myMenge{Z} ein Körper und wird auch \myMenge{F}\myTiefstellen{p} bzw. \myMenge{GF}\myTiefstellen{p} bezeichnet.
-		
-		Neben den normalen Primzahlen gibt es weitere sogenannte Pseudoprimzahlen. Diese Primzahlen verhalten sich bezogen auf einen Algorithmus genauso wie echte Primzahlen, sie sind jedoch zusammengesetzt. Ein Beispiel für solche Zahlen sind Carmichaelzahlen die in einem späteren Kapitel thematisiert sind.
-		
-		Leider gibt es keine bekannten effizienten Verfahren um Primzahlen zu generieren. Dennoch kann man Primzahlen recht einfach raten. Grundsätzlich ist es möglich eine große Anzahl von Zahlen auszuschließen. Man denke an: nur ungerade Zahlen, die Teilungsgesetze und die Tatsache das alle Primzahlen > 3 in der Form 4k +1 oder 4k +3, k \myin \myMenge{N} vorliegen. Alle geratenen Zahlen müssen jedoch einem Primzahltest(vgl. Kapitel \ref{Effiziente Primzahltests}) zur Verifizierung unterzogen werden. In \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} ist beschrieben wie ein Generierungsprozess erfolgen kann.
+			
+		\wup Mit Hilfe der Primzahlen kann der Restklassenring \myMenge{Z}/m\myMenge{Z} spezialisiert werden. Ist m eine Primzahl p, so ist \myMenge{Z}/p\myMenge{Z} ein Körper und wird auch \myMenge{F}\myTiefstellen{p} bzw. \myMenge{GF}\myTiefstellen{p} bezeichnet.
+			
+		\wup Neben den normalen Primzahlen gibt es weitere sogenannte Pseudoprimzahlen. Diese Primzahlen verhalten sich bezogen auf einen Algorithmus genauso wie echte Primzahlen, sie sind jedoch zusammengesetzt. Ein Beispiel für solche Zahlen sind Carmichaelzahlen die in einem späteren Kapitel thematisiert sind.
+			
+		\wup Leider gibt es keine bekannten effizienten Verfahren um Primzahlen zu generieren. Dennoch kann man Primzahlen recht einfach raten. Grundsätzlich ist es möglich eine große Anzahl von Zahlen auszuschließen. Man denke an: nur ungerade Zahlen, die Teilungsgesetze und die Tatsache, dass alle Primzahlen \myGroesser 3 in der Form 4k +1 oder 4k +3, k \myin \myMenge{N} vorliegen. Alle geratenen Zahlen müssen jedoch einem Primzahltest zur Verifizierung unterzogen werden. In \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} ist beschrieben wie ein Generierungsprozess erfolgen kann.
+
+		\wup In diesem Kapitel soll der diskrete Logarithmus betrachtet werden. Es werden Anwendungsbeispiele aufgezeigt und genau erläutert, weswegen sich der diskrete Logarithmus besonders gut in der Kryptografie als Einwegfunktion eignet. Zu Beginn wird das grundsätzliche Problem beim diskreten Logarithmus an einem Beispiel praxisnahe erläutert, um im Anschluss auf algorithmische Lösungen einzugehen wie der diskreten Logarithmus in \myZPStern~und auf elliptische Kurven berechnet werden kann. Hierfür wird der Baby-Step-Giant-Step-Algorithmus vorgestellt.
 	
-		In diesem Kapitel soll der diskreter Logarithmus betrachtet werden. Es werden Anwendungspeilspiele aufgezeigt und genauer erläutert weswegen sich der diskreter Logarithmus besonders gut in der Kryptografie als Einwegfunktion eignet. Zu beginn wird das grundsätzliche Problem beim diskreten Logarithmus an einem Beispiel praxisnahe erläutert, um im Anschluss auf Algorithmische Lösungen einzugehen wie der diskreten Logarithmus in \myZPStern~und auf elliptische Kurven berechnet werden kann. Hierfür wird der Baby-Step-Giant-Step-Algorithmus vorgestellt.
-	
-	\subsection*{Das Problem des diskreten Logarithmus im Detail}\label{Das Problem des diskreten Logarithmus im Detail}
-		Es existiert eine Primzahl p, ein erzeugendes Element g für \myZPStern~sowie eine ganze Zahl x. Zu der diskreten Exponentialfunktion $g^x~mod~p$ gibt es die diskrete Logarithmusfunktion, die zu einem gegebenen y und g, x beschreibt. Somit ist x der diskrete Logarithmus von y zur Basis g. ($y = g^x~mod~p$) Jede Zahl aus \myZPStern~lässt sich als Potenz von g darstellen, wenn g ein erzeugendes Element von \myZPStern~ist. Ist dies nicht der Fall, so muss es nicht zu jedem $y$ \myin \myZPStern~einen diskreten Logarithmus geben.~\cite{Kryptografie:in:Theorie:und:Praxis} Um das eigentliche Problem des diskreten Logarithmus zu verstehen ist es hilfreich, die Logarithmen in \myMenge{R} mit Logarithmen in \myZPStern~gegenüberzustellen.
-		\begin{minipage}{0.24\textwidth}
+	\section*{Das Problem des diskreten Logarithmus im Detail}\label{Das Problem des diskreten Logarithmus im Detail}
+		Es existiert eine Primzahl p, ein erzeugendes Element g für \myZPStern~sowie eine ganze Zahl x. Zu der diskreten Exponentialfunktion $g^x~mod~p$ gibt es die diskrete Logarithmusfunktion, die zu einem gegebenen y und g, x beschreibt. Somit ist x der diskrete Logarithmus von y zur Basis g, ($y = g^x~mod~p$). Jede Zahl aus \myZPStern~lässt sich als Potenz von g darstellen, wenn g ein erzeugendes Element von \myZPStern~ist. Ist dies nicht der Fall, so muss es nicht zu jedem $y$ \myin \myZPStern~einen diskreten Logarithmus geben.~\cite{Kryptografie:in:Theorie:und:Praxis} Um das eigentliche Problem des diskreten Logarithmus zu verstehen ist es hilfreich, die Logarithmen in \myMenge{R} mit Logarithmen in \myZPStern~gegenüberzustellen.
+		
+		\begin{minipage}{0.44\textwidth}
 			\begin{equation}
-				\begin{aligned}
-					y &= g^x\\
-					1024 &= 2^x\\
-					x &= log_2 1024\\
-					x &= 10
-				\end{aligned}
-				\label{Gleichung Log in Z}
+			\begin{aligned}
+			y &= g^x\\
+			1024 &= 2^x\\
+			x &= log_2 1024\\
+			x &= 10
+			\end{aligned}
+			\label{Gleichung Log in Z}
 			\end{equation}
 		\end{minipage}
-		\begin{minipage}{0.24\textwidth}
+		\begin{minipage}{0.44\textwidth}
 			\begin{equation}
-				\begin{aligned}
-					y &= g^x~mod~p\\
-					10 &= 2^x~mod~11\\
-					x &= log_2 10\\
-					x &= 3.32193...~\lightning
-				\end{aligned}
-				\label{Gleichung Log in ZP}
+			\begin{aligned}
+			y &= g^x~mod~p\\
+			10 &= 2^x~mod~11\\
+			x &= log_2 10\\
+			x &= 3.32193...~\lightning
+			\end{aligned}
+			\label{Gleichung Log in ZP}
 			\end{equation}
 		\end{minipage}
 		
-		Die Gleichungen aus \myRefGleichung{Gleichung Log in Z} zeigen wie der Logarithmus von x zur Basis g, mit der Logarithmusfunktion berechnet werden kann. Auf diese Weise sind Gleichungen für die positiven reellen Zahlen \myMenge{R^+} immer eindeutig lösbar. Für die Gleichungen aus \myRefGleichung{Gleichung Log in ZP} wird ebenfalls mit der Logarithmusfunktion versucht, den Logarithmus von 10 zu Basis 2 zu erhalten. Als Ergebnis erhält man eine Zahl die nicht in \myZPStern~enthalten ist. Was auch nicht verwundert, da die Logarithmusfunktion $mod~11$ gar nicht berücksichtigt. Genau hier ist das grundsätzlich Problem beim diskreten Logarithmus. Es gibt keine mathematische Rechenoperation die es ermöglicht den diskreten Logarithmus in einem endlichen Körper mit nur einem Rechenschritt zu berechnen. Um dennoch eine Lösung zu erhalten, scheint das Enumerationsverfahren das naheliegendste zu sein. Hierbei werden einfach alle Werte die für $x$ in frage kommen durchprobiert. So ist die Lösung der Gleichungen aus \myRefGleichung{Gleichung Log in ZP}, $x = 5$.~\cite{DLP:ECDLP:Probleme:und:Loesungen} Für sehr große Gruppen, wo x Beispielsweise eine 160 Bit große Zahl ist, gibt es bis heute keine Algorithmen die den diskreten Logarithmus effizient berechnen.\cite{Kryptografie:in:Theorie:und:Praxis} Es gibt allerdings eine ganze Reihe von Algorithmen die in der Lage sind den diskreten Logarithmus gezielter zu berechnen als das naive Ausprobieren. Nachfolgend soll der Baby-Step-Giant-Step-Algorithmus genauer betrachtet werden.
+		\wupp Die Gleichungen aus \myRefGleichung{Gleichung Log in Z} zeigen wie der Logarithmus von x zur Basis g, mit der Logarithmusfunktion berechnet werden kann. Auf diese Weise sind Gleichungen für die positiven reellen Zahlen \myMenge{R^+} immer eindeutig lösbar. Für die Gleichungen aus \myRefGleichung{Gleichung Log in ZP} wird ebenfalls mit der Logarithmusfunktion versucht, den Logarithmus von 10 zur Basis 2 zu erhalten. Als Ergebnis erhält man eine Zahl die nicht in \myZPStern~enthalten ist, was auch nicht verwundert, da die Logarithmusfunktion $mod~11$ gar nicht berücksichtigt. Genau hier ist das grundsätzliche Problem beim diskreten Logarithmus. Es gibt keine mathematische Rechenoperation die, es ermöglicht, den diskreten Logarithmus in einem endlichen Körper mit nur einem Rechenschritt zu berechnen. Um dennoch eine Lösung zu erhalten, scheint das Enumerationsverfahren das naheliegendste zu sein. Hierbei werden einfach alle Werte, die für $x$ in Frage kommen, durchprobiert. So ist die Lösung der Gleichungen aus \myRefGleichung{Gleichung Log in ZP}, $x = 5$.~\cite{DLP:ECDLP:Probleme:und:Loesungen} Für sehr große Gruppen, wo x beispielsweise eine 160 Bit große Zahl ist, gibt es bis heute keine Algorithmen die den diskreten Logarithmus effizient berechnen.\cite{Kryptografie:in:Theorie:und:Praxis} Es gibt allerdings eine ganze Reihe von Algorithmen, die in der Lage sind, den diskreten Logarithmus gezielter zu berechnen als das naive Ausprobieren, siehe hierfür die Präsentation.
 		
 		%TODO nchmal schauen das will ich nochmal anders haben schauen ob die Reihenfolge geändert wird für (Das Problem des diskreten Logarithmus im Detail) <=> (Diskreter Logarithmus auf elliptische Kurven)
 		
-		\subsubsection{Diskreter Logarithmus auf elliptische Kurven}
-			In Kapitel \ref{Elliptischen Kurven Grundlagen} wurde die Addition von Punkten und Skalaren auf elliptische Kurven beschrieben. In diesem Unterkapitel soll kurz beschrieben werden was genau der Logarithmus auf einer elliptische Kurven über \myZPStern~ist. Für eine elliptische Kurve $E$ über den Primkörper \myZPStern~mit den Punkten $P, Q \in E$(\myZPStern), gibt es ein $k \in$ \myZPStern~sodass die folgende Gleichung erfüllt ist:
+		\subsection*{Diskreter Logarithmus auf elliptische Kurven}
+			In diesem Unterkapitel soll kurz beschrieben werden, was genau der Logarithmus auf einer elliptischen Kurve über \myZPStern~ist. Für eine elliptische Kurve $E$ über den Primkörper \myZPStern~mit den Punkten $P, Q \in E$(\myZPStern), gibt es ein $k \in$ \myZPStern~sodass die folgende Gleichung erfüllt ist:
 			\begin{displaymath}
 				Q = kP
 			\end{displaymath}
-			So wird die Zahl $k$ als diskreter Logarithmus von $Q$ zur Basis $P$ bezeichnet. Den diskreten Logarithmus aus $E$(\myZPStern) zu bestimmen, ist noch einmal ungleich komplexer als aus \myZPStern. Dieses Berechnungsproblem wird \textbf{E}lliptic \textbf{C}urve \textbf{D}iscrete \textbf{L}ogarithmen \textbf{P}roblem, kurz \textbf{ECDLP}, genannt.
+			So wird die Zahl $k$ als diskreter Logarithmus von $Q$ zur Basis $P$ bezeichnet. Den diskreten Logarithmus aus $E$(\myZPStern) zu bestimmen, ist noch einmal ungleich komplexer als aus \myZPStern. Dieses Berechnungsproblem wird \textbf{E}lliptic \textbf{C}urve \textbf{D}iscrete \textbf{L}ogarithm \textbf{P}roblem, kurz \textbf{ECDLP}, genannt.
