@@ -38,8 +38,11 @@
 	\end{displaymath}
 	wobei G eine endliche Gruppe ist, a \myin G und e das Einselement (neutrales Element einer multiplikativen Gruppe). Da das Einselement in \myMenge{N} 1 ist, folgt: Kongruenz 1 modulo m. 
 	
-	Des weiteren ergibt sich mit \myMathRM{\varphi(p) = Card((\mathbb{Z}/p\mathbb{Z})^*)} =
-	\myMathRM{ |\mathbb{F}^*_p| = p-1} sofort der kleine Satz von Fermat:
+	Des weiteren ergibt sich mit 
+	\begin{displaymath}
+		\varphi(p) = Card((\mathbb{Z}/p\mathbb{Z})^*) = |\mathbb{F}^*_p| = p-1
+	\end{displaymath}
+	sofort der kleine Satz von Fermat:
 	\begin{displaymath}
 		a^{p-1} \equiv~1~mod~p
 	\end{displaymath}
@@ -62,7 +65,7 @@
 	\end{displaymath}
 	Die weiteren zwei folgenden Eigenschaften seien zudem genannt, da sie für den probabilistischen Primzahltest von Miller und Rabin von entscheidender Bedeutung sind.
 	
-	Eine zusammengesetzte Zahl m \myMathRM{\geq} 3 \myin N ist eine Carmichaelzahl, wenn m keine mehrfachen gleichen Primfaktoren enthält und jeder Primfaktor p | m auch 
+	Eine zusammengesetzte Zahl m \myMathRM{\geq} 3 \myin N ist eine Carmichaelzahl, wenn m keine mehrfachen gleichen Primfaktoren enthält und für jeden Primfaktor p | m auch 
 	\begin{displaymath}
 		p-1~|~m-1
 	\end{displaymath}
@@ -82,7 +85,7 @@
 		Die in diesem Kapitel vorgestellten Algorithmen zum Erkennen von Primzahlen sind effiziente Algorithmen im Sinne der Komplexitätsklasse P und im Gegensatz zum fermatschen Test nicht anfällig für starke Pseudoprimzahlen. Dennoch unterscheiden sich die beiden vorgestellten Verfahren deutlich voneinander. Neben der Funktionsweise wird auch die Laufzeit gegenübergestellt.
 		
 		\subsubsection{Miller-Rabin-Test}
-		 Der Miller-Rabin-Test ist ein probabilistischer Primzahltest und gehört zu den Montecarlo- Algorithmen. Im Gegensatz zum fermatschen Primzahltest ist der Miller-Rabin-Test nicht so anfällig für Carmichaelzahlen, denn es können immer Basen gefunden werden die die Carmichaelzahlen entlarven. Dieser Test wird am häufigsten in Primzahlgeneratoren eingesetzt und hat damit die größte praktische Relevanz. Nach der Vorstellung des Tests werden die Unterschiede zum fermatschen Test herausgearbeitet.
+		 Der Miller-Rabin-Test ist ein probabilistischer Primzahltest und gehört zu den Montecarlo- Algorithmen. Im Gegensatz zum fermatschen Primzahltest ist der Miller-Rabin-Test nicht so anfällig für Carmichaelzahlen, denn es können immer Basen gefunden werden, die die Carmichaelzahlen entlarven. Dieser Test wird am häufigsten in Primzahlgeneratoren eingesetzt und hat damit die größte praktische Relevanz. Nach der Vorstellung des Tests werden die Unterschiede zum fermatschen Test herausgearbeitet.
 		 
 		 Der Test lautet wie folgt:
 		 
@@ -94,9 +97,9 @@
 		dann ist m prim oder nicht prim.
 		
 		Aber wenn m nicht prim ist so gilt außerdem für die Menge A aller zu m teilerfremden a, 0 < a < m die (\ref{eq:Miller}) erfüllen:
-	 	\begin{equation}
+	 	\begin{displaymath}
 		 	Card(A) \leq 1/4 \varphi(m)
-	 	\end{equation}
+	 	\end{displaymath}
 	 	Durch diese zusätzliche Aussage kann eine Wahrscheinlichkeit angegeben werden mit der die getestete Zahl prim ist. Wiederholt man den Test t mal ergibt sich somit eine Wahrscheinlichkeit von \myMathRM{1/4^t}. Nach zehn Iterationen ist somit die Wahrscheinlichkeit für eine zusammengesetzte Zahl kleiner als \myMathRM{10^{-6}}.
 	 	
 	 	Um die Ausdrücke in (\ref{eq:Miller}) zu verstehen müssen folgende Vorüberlegungen gemacht werden.
@@ -105,9 +108,9 @@
 	 	Eine weitere Überlegung ergibt sich aus dem umgekehrten Satz des Eulerkriteriums der wie folgt lautet.
 	 	Sei \myMathRM{m \geq 3} eine ungerade ganze Zahl, so dass (m - 1)/2 ungerade ist.
 	 	Es gilt dann für jede zu m teilerfremde ganze Zahl a
-	 	\begin{equation}
+	 	\begin{displaymath}
 		 	a^{(m-1)/2} \equiv~^+_-1~mod~m,
-	 	\end{equation}
+	 	\end{displaymath}
 	 	so dass m eine Primzahl ist.
 	 	
 	 	Wenn (m - 1)/2 gerade ist kann diese Aussage nicht getroffen werden. Für den Fall das m eine Carmichaelzahl ist, ist auch \myMathRM{m - 1 = 2^{s_i}u_i(p_i - 1)} , da alle Primfaktoren m-1 teilen, wobei \myMathRM{u_i} ungerade ist. Es gilt dann O.B.d.A mit \myMathRM{s_1 \leq s_2 \leq . . . \leq s_r~und~s = s_1}:
@@ -116,7 +119,7 @@
  		\end{displaymath}
  		Anschließend müssen wie in \cite{Algorithmische:Zahlentheorie} durchgeführt, mehrere Fallunterscheidungen für gerade und ungerade vielfache von (\myMathRM{a^{(m-1)/2^{s+1}}}) durchgeführt werden. Dabei können die Ergebnisse der Kongruenzen in Teilmengen eingeteilt werden. Die Kardinalität der Mengen gibt dabei die Wahrscheinlichkeit der Zusammengesetzten Zahlen vor.
  		
- 		Etwas abstrakter dargestellt zielt der Test darauf ab im Gegensatz zu dem fermatschen Test die Quadratwurzeln der Carmichaelzahlen in dem Primzahlkriterium zu berücksichtigen. Durch diese Erweiterung kommt es nur noch maximal bei einem Viertel der Basen zur Annahme es handle sich um eine Primzahl.
+ 		Etwas abstrakter dargestellt zielt der Test darauf ab, im Gegensatz zu dem fermatschen Test, die Quadratwurzeln der Carmichaelzahlen in dem Primzahlkriterium zu berücksichtigen. Durch diese Erweiterung kommt es nur noch maximal bei einem Viertel der Basen zur Annahme es handle sich um eine Primzahl.
  		
  		Wie in \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} angegeben benötigt der Test, da die Exponentiation effizient berechenbar ist, O(t * (log m)) arithmetische Operationen und O(t * (log m)\myMathRM{^3}) Bit Operationen bezogen auf die Eingabelänge von m. Damit liegt der Test in der polynomialen Laufzeitklasse.
  		
@@ -131,15 +134,15 @@
 		Der Satz lautet in \cite{Algorithmische:Zahlentheorie} wie folgt:
 		Sei m > 1 eine natürliche Zahl und a eine zu m teilerfremde ganze
 		Zahl. Genau dann ist m prim, wenn
-		\begin{displaymath}
+		\begin{displaymath} 
 			(X + a)^m \equiv X^m + a~mod~m
 		\end{displaymath}
 		
-		Dieser Satz ist natürlich noch nicht schneller als die Probedivision bis \myMathRM{\sqrt{m}}, aber folgende Erweiterungen führen zu einem polynominelle Laufzeitverhalten. Die Idee hinter der Erweiterung ist ein Polynom zu finden das mit getestet 
-		wird und dadurch die Laufzeit reduziert. Ein solches Polynom ist \myMathRM{P(x) = x^r - 1}, r ist prim . Mit diesem Zusatz ist der Test wiederum nur ein notwendiges Kriterium für eine Primzahl. Dies kann verhindert werden indem versucht wird eine Menge Zahlen zu finden, die für eine beliebige zusammengesetzte Zahl m das Kriterium nicht erfüllt. Diese Menge kann angegeben werden und lautet wie folgt:
+		Dieser Satz ist natürlich noch nicht schneller als die Probedivision bis \myMathRM{\sqrt{m}}, aber folgende Erweiterungen führen zu einem polynominelle Laufzeitverhalten. Die Idee hinter der Erweiterung ist ein Polynom zu finden das mit getestet wird und dadurch die Laufzeit reduziert. Ein solches Polynom ist \myMathRM{P(x) = x^r - 1}, r ist prim . Mit diesem Zusatz ist der Test wiederum nur ein notwendiges Kriterium für eine Primzahl. Dies kann verhindert werden indem versucht wird eine Menge Zahlen zu finden, in der mindestens ein Element für eine beliebige zusammengesetzte Zahl m das Kriterium nicht erfüllt. Diese Menge kann angegeben werden und lautet wie folgt:
 		\begin{displaymath}
 			A(r,m) = \{1, 2, . . . , 2 * \lfloor log~m *\sqrt{\varphi(r)} \rfloor\}
 		\end{displaymath}
+		Anders ausgedrückt muss jedes Element in der Menge A(r,m) (\ref{eq:AKS}) erfüllen, damit m prim sein kann.
 		
 		Mit diesen Überlegungen kann im folgenden der Satz von Agrawal, Kayal und Saxena nach \cite{Algorithmische:Zahlentheorie} aufgestellt werden.
 		
@@ -150,13 +153,28 @@
 		2. \myMathRM{ord_{(\mathbb{Z}/r)^*}(m) > (log_2 m)^2}.
 		
 		Gilt dann für alle \myMathRM{a = 1, 2, . . . , A:= \lfloor \sqrt{r}~log_2~m \rfloor}
-		\begin{displaymath}		
+		\begin{equation} \label{eq:AKS}		
 			(X + a)^m \equiv X^m + a~mod~(m,X^r - 1),
-		\end{displaymath}
+		\end{equation}
 		so ist m eine Primzahlpotenz, d.h. m = \myMathRM{p^k}, p prim, k \myMathRM{\geq} 1.
 		
+		Wie in \cite{Algorithmische:Zahlentheorie} und \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} beschrieben lässt sich der vollständige Test so ausdrücken:
 		
+		Sei \myMathRM{m > 2^{24}} eine ganze Zahl. Um zu entscheiden, ob m prim ist, gehe man
+		wie folgt vor:
 		
-			
-		Leider eignet sich der AKS-Test nicht für die Praxis, da Polynome mit sehr hohem Grad berechnet werden müssen. Für die theoretische Betrachtung war die Entdeckung des AKS-Test der Beweis das auch lange erforschte Gebiete neue Erkenntnisse erbringen können. 
+		1. Im Intervall \myMathRM{(log_2~m)^2 < r < (log_2~m)^5} suche man nach einer Primzahl r mit
+		r \myNichtTeiler m und \myMathRM{ord_{(\mathbb{Z}/r)^*}(m) > (log_2~m)^2}.
+		Falls es kein solches r gibt, ist m nicht prim.
+		
+		2. Man vergewissere sich, dass m keinen Primteiler \myMathRM{p \leq r} besitzt.
+		
+		3. Für alle ganzen Zahlen a mit \myMathRM{1 \leq a \leq  \lfloor \sqrt{r}~log_2~m \rfloor} überprüfe man die Kongruenz (\ref{eq:AKS}).
+		Ist diese Kongruenz auch nur für ein einziges a nicht erfüllt, ist m nicht prim.
+		
+		4. Hat m die Tests 1. bis 3. bestanden, ist m prim oder eine Primzahlpotenz.
+		Man hat deshalb noch auszuschließen, dass sich m als Potenz \myMathRM{m = n^k} einer
+		ganzen Zahl n mit einem Exponenten \myMathRM{k \geq 2} darstellen lässt.
+		
+		Wie in \cite{Algorithmische:Zahlentheorie} und \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} gut dargestellt, beträgt die Gesamtlaufzeit des Algorithmus unter bewiesenen Annahmen \myMathRM{O(log^{7,5} m)}. Schritt 3 spielt bei der praktischen Laufzeitbetrachtung die größte Rolle, da hier sehr große Polynome miteinander verrechnet werden müssen. Leider eignet sich der AKS-Test dadurch nicht für die Praxis. Für die theoretische Betrachtung war die Entdeckung des AKS-Test jedoch ein großer Erfolg, da nach sehr langer Zeit bewiesen werden konnte, dass die Primzahlerkennung in polynomieller Zeit durchführbar ist.
 		
