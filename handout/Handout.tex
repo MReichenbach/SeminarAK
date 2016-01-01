@@ -34,6 +34,12 @@
 \usepackage{amssymb}
 \usepackage{stmaryrd}
 
+\usepackage{titlesec}
+
+\newcommand*{\justifyheading}{\raggedright}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries\justifyheading}{\chaptertitlename\ \thechapter}{20pt}{}
+
 %Settings
 %%% Refs %%%
 \newrefformat{sec}{Section~\ref{#1} \glqq\titleref{#1}\grqq \ on page \pageref{#1}}
