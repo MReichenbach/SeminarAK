@@ -74,6 +74,8 @@
 	\subsection{Sieb des Eratosthenes}
 	Das Sieb des Eratosthenes ist eines der ältesten bekannten Verfahren, um Primzahlen zu erhalten. Es berechnet für ein gegebenes n \myin \myMenge{N} alle Primzahlen p \myin \myMenge{N}, für die gilt 1 < p < n. Der Algorithmus iteriert dazu über alle nicht gestrichenen Zahlen von 1 bis \myMathRM{\sqrt{n}}. Als erstes wird die Zahl Zwei genommen, sie ist nicht gestrichen und somit eine Primzahl. Dann werden alle Vielfache von Zwei gestrichen (die geraden Zahlen). Anschließend sucht der Algorithmus die nächste nicht gestrichene Zahl. In diesem Fall ist es die Drei und es werden wieder alle Vielfache von drei gestrichen. Das Verfahren wiederholt sich, bis die Suche \myMathRM{\sqrt{n}} erreicht hat. Alle nicht gestrichen Zahlen sind die Primzahlen bis n. Die Abbildung \ref{ABBILDUNG_Primzahlen_100} illustriert die Primzahlen bis 100.
 	Wie in \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} gezeigt, hat das Sieb des Eratosthenes eine subexponentielle Laufzeit, da die Laufzeit von der Länge der Eingabe abhängt. Aus diesem Grund eignet es sich nicht für einen praktischen Primzahltest.
+	\\
+	\\
 	\begin{figure}
 		\centering
 		\epsfig{file=includes/images/primzahlen100.jpg, height=3in, width=3in}
@@ -116,7 +118,7 @@
  		\begin{displaymath}
 	 		a^{(m-1)/2^s} \equiv1 ~fuer~alle~a \in \mathbb{Z}^*_m
  		\end{displaymath}
- 		Anschließend müssen wie in \cite{Algorithmische:Zahlentheorie} durchgeführt, mehrere Fallunterscheidungen für gerade und ungerade Vielfache von \myMathRM{(a^{(m-1)/2^{s+1}})} durchgeführt werden. Dabei können die Ergebnisse der Kongruenzen in Teilmengen eingeteilt werden. Die Kardinalität der Mengen gibt dabei die Wahrscheinlichkeit der Zusammengesetzten Zahlen vor.
+ 		Anschließend müssen wie in \cite{Algorithmische:Zahlentheorie} und \cite{Algebraische:und:zahlentheoretische:Grundlagen:fuer:die:Informatik} gezeigt, Fallunterscheidungen für gerade Vielfache \myMathRM{a^{(m-1)/2^{s+1}}} von \myMathRM{(p_r-1)} und  für ungerade Vielfache \myMathRM{a^{(m-1)/2^{s+1}}} von \myMathRM{(p_i - 1)/2}~ durchgeführt werden. Dabei können die Ergebnisse der Kongruenzen in Teilmengen eingeteilt werden. Das Verhältnis der Kardinalitäten der Mengen gibt dabei die Wahrscheinlichkeit für zusammengesetzte Zahlen vor.
  		
  		Etwas abstrakter dargestellt zielt der Test darauf ab, im Gegensatz zu dem fermatschen Test, die Quadratwurzeln der Carmichaelzahlen in dem Primzahlkriterium zu berücksichtigen. Durch diese Erweiterung kommt es nur noch maximal bei einem Viertel der Basen zur Annahme, es handle sich um eine Primzahl.
  		
@@ -124,8 +126,6 @@
  		
  		Eine interessante Aussage die in \cite{Algorithmische:Zahlentheorie} getroffen wird, ist dass der Miller-Rabin-Test unter Annahme der Riemannschen Vermutung zu einem deterministischen polynomialen Test wird.
  		
- 		%TODO Hier Pseudocode
-
 
 		\subsubsection{AKS-Test}
 		Der 2004 von M. Agrawal, N. Kayal und N. Saxena entwickelte AKS-Test \cite{Primes:is:in:P} ist ein deterministischer in polynomialer Zeit durchführbarer Primzahltest. Bei diesem Test stellt die Rechnung in einem Polynomring (\myMenge{Z}/m)[X] den größten Unterschied zu den bisherigen Tests da. Besonders wertvoll ist hier die notwendige und hinreichende Bedingung für die Primmalität des folgenden Satzes. 
